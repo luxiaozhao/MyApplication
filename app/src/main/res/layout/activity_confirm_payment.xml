@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.example.wisdom.partybuilding.mvp.activity.home.ConfirmPaymentActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_20"
+        android:background="#ff0000" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_52"
+        android:background="#ff0000">
+
+        <ImageView
+            android:id="@+id/confirm_return"
+            android:layout_marginLeft="@dimen/lay_10"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/lay_25"
+            android:layout_height="@dimen/lay_25"
+            android:src="@mipmap/top_back"/>
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="党费缴纳"
+            android:textSize="@dimen/font_18"
+            android:textColor="#FFF"/>
+
+
+        <TextView
+            android:id="@+id/confirm_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="明细"
+            android:textColor="#FFF"
+            android:textSize="@dimen/font_15"
+            android:layout_marginRight="@dimen/lay_15"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/lay_75"
+        android:src="@mipmap/defray_success" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/lay_21"
+        android:text="支付成功"
+        android:textColor="#FF0000"
+        android:textSize="@dimen/font_22" />
+
+
+    <TextView
+        android:id="@+id/confirm_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/lay_15"
+        android:text="成功缴纳8月份党费200元！"
+        android:textColor="#FF0000"
+        android:textSize="@dimen/font_15" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/lay_15"
+        android:layout_marginTop="@dimen/lay_45"
+        android:layout_marginRight="@dimen/lay_15">
+
+
+        <TextView
+            android:id="@+id/confirm_continue_pay"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/lay_40"
+            android:layout_weight="1"
+            android:background="@drawable/button_border_redandwhite"
+            android:gravity="center"
+            android:text="继续缴费"
+            android:textColor="#FF0000"
+            android:textSize="@dimen/font_16" />
+
+
+        <View
+            android:layout_width="@dimen/lay_20"
+            android:layout_height="@dimen/lay_1" />
+
+        <TextView
+            android:id="@+id/confirm_back_home"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/lay_40"
+            android:layout_weight="1"
+            android:background="@drawable/button_border_red"
+            android:gravity="center"
+            android:text="返回首页"
+            android:textColor="#FFF"
+            android:textSize="@dimen/font_16" />
+
+    </LinearLayout>
+
+</LinearLayout>

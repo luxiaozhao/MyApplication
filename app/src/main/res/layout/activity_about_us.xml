@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="@mipmap/about_us"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mvp.activity.mine.AboutUsActivity">
+    <RelativeLayout
+        android:layout_marginTop="@dimen/lay_20"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_52">
+
+        <ImageView
+            android:id="@+id/aboutus_return"
+            android:layout_width="@dimen/lay_25"
+            android:layout_height="@dimen/lay_25"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/lay_10"
+            android:src="@mipmap/fanhui_hei" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="关于我们"
+            android:textColor="#000000"
+            android:textSize="@dimen/font_18" />
+
+    </RelativeLayout>
+</RelativeLayout>

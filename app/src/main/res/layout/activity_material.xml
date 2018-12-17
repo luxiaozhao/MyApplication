@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7"
+    android:orientation="vertical"
+    tools:context="com.example.wisdom.partybuilding.mvp.activity.mine.MaterialActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_10"
+        android:background="#ff0000" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_52"
+        android:background="#ff0000">
+
+        <ImageView
+            android:id="@+id/material_return"
+            android:layout_width="@dimen/lay_25"
+            android:layout_height="@dimen/lay_25"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/lay_10"
+            android:src="@mipmap/top_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="个人资料"
+            android:textColor="#FFF"
+            android:textSize="@dimen/font_18" />
+
+
+        <TextView
+            android:id="@+id/material_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/lay_10"
+            android:text="保存"
+            android:textColor="#FFF"
+            android:textSize="@dimen/font_15" />
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_10" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:background="#FFF"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="姓名"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="卢晓昭"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:background="#FFF"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="性别"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="男"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:background="#FFF"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="身份证号"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_identity_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="111111111111"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:background="#FFF"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="出生日期"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_born"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="1987-11-24"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="民族"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_ethnic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="汉族"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="籍贯"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_birthplace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="湖北省"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="联系电话"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_fixed_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="12345678901"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="手机号码"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_mobilephone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="111111111111"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="邮箱"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_postbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="1113130879@qq.com"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="家庭住址"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="北京市通州区xxxxx小区"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+
+                android:background="#f7f7f7" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="学位"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_degree"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="硕士"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="学历"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_education"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="硕士研究生"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="单位"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_unit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="超锐科技"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:layout_marginTop="@dimen/lay_18"
+                android:layout_marginRight="@dimen/lay_7"
+                android:layout_marginBottom="@dimen/lay_18"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="工作岗位"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/material_job_position"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_10"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="公有经济控股企业管理岗位"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_50"
+                android:background="#f7f7f7"></LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
