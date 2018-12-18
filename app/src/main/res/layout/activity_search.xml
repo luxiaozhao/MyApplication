@@ -56,7 +56,6 @@
                 android:singleLine="true"
                 android:textColor="#888888"
                 android:textSize="@dimen/font_14" />
-            <!--android:text="智慧党建平台"-->
 
         </LinearLayout>
 

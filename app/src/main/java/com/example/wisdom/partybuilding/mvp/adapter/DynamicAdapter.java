@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.wisdom.partybuilding.R;
-import com.example.wisdom.partybuilding.mvp.bean.Bww;
 import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
 import com.example.wisdom.partybuilding.utils.DateUtils;
 
@@ -62,6 +61,7 @@ public class DynamicAdapter extends RecyclerView.Adapter<DynamicAdapter.ViewHold
                 }
             }
         });
+
     }
 
     @Override

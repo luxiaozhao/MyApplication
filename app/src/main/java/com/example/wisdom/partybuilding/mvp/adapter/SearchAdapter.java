@@ -9,51 +9,52 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.wisdom.partybuilding.R;
+import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
 import com.example.wisdom.partybuilding.mvp.bean.home.PartyknowledgeBean;
+import com.example.wisdom.partybuilding.utils.DateUtils;
 
 import java.util.List;
 
-public class PartyAffairs_Adapter extends RecyclerView.Adapter<PartyAffairs_Adapter.ViewHolder> {
+public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
     private Context context;
-    private List<PartyknowledgeBean.CarouselmapBean> list;
+    private List<DynamicBean.NewsBean> list;
 
     //接口监听     通知 FolderAdapter
-    PartyAffairs_Adapter.onClickLinstener onClickLinstener;
+    SearchAdapter.onClickLinstener onClickLinstener;
 
 
-    public void setOnClickLinstener(PartyAffairs_Adapter.onClickLinstener onClickLinstener) {
+    public void setOnClickLinstener(SearchAdapter.onClickLinstener onClickLinstener) {
         this.onClickLinstener = onClickLinstener;
     }
 
-    public PartyAffairs_Adapter(Context context, List<PartyknowledgeBean.CarouselmapBean> datalist) {
+    public SearchAdapter(Context context, List<DynamicBean.NewsBean> datalist) {
         this.context = context;
         this.list = datalist;
     }
 
     @Override
-    public PartyAffairs_Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SearchAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.notice_adapter_layout, null);
         RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(layoutParams);
-        PartyAffairs_Adapter.ViewHolder viewHolder = new PartyAffairs_Adapter.ViewHolder(view);
+        SearchAdapter.ViewHolder viewHolder = new SearchAdapter.ViewHolder(view);
         return viewHolder;
     }
 
 
     @Override
-    public void onBindViewHolder(final PartyAffairs_Adapter.ViewHolder holder, final int position) {
-        holder.notice_adapter_name.setText(list.get(position).getBt());
-        holder.notice_adapter_time.setText(list.get(position).getReleasetime());
+    public void onBindViewHolder(final SearchAdapter.ViewHolder holder, final int position) {
+        holder.notice_adapter_name.setText(list.get(position).getTitile());
+        holder.notice_adapter_type.setVisibility(View.VISIBLE);
+        holder.notice_adapter_type.setText(list.get(position).getTypename()+"");
+        try {
+            long releasetime = list.get(position).getReleasetime();
+            long    releasetimess =   releasetime/1000;
+            String releasetimes = DateUtils.timesTwo(releasetimess + "");
+            holder.notice_adapter_time.setText(releasetimes);
 
-
-//        try {
-//            long releasetime = list.get(position).getReleasetime();
-//            long    releasetimess =   releasetime/1000;
-//            String releasetimes = DateUtils.timesTwo(releasetimess + "");
-//            holder.notice_adapter_time.setText(releasetimes);
-//
-//        } catch (Exception e) {
-//        }
+        } catch (Exception e) {
+        }
 
         holder.notice_adapter_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,11 +76,12 @@ public class PartyAffairs_Adapter extends RecyclerView.Adapter<PartyAffairs_Adap
         private TextView notice_adapter_name;
         private TextView notice_adapter_time;
         private LinearLayout notice_adapter_layout;
-
+private TextView notice_adapter_type;
         public ViewHolder(View itemView) {
             super(itemView);
             notice_adapter_name = itemView.findViewById(R.id.notice_adapter_name);
             notice_adapter_time = itemView.findViewById(R.id.notice_adapter_time);
+            notice_adapter_type= itemView.findViewById(R.id.notice_adapter_type);
             notice_adapter_layout = itemView.findViewById(R.id.notice_adapter_layout);
         }
     }

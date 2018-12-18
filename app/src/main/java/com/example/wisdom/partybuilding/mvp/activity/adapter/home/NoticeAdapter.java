@@ -45,6 +45,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
     public void onBindViewHolder(final NoticeAdapter.ViewHolder holder, final int position) {
         holder.notice_adapter_name.setText(list.get(position).getName());
         holder.notice_adapter_time.setText(list.get(position).getShijian());
+
         holder.notice_adapter_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,12 +65,13 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
 
         private TextView notice_adapter_name;
         private TextView notice_adapter_time;
-private LinearLayout notice_adapter_layout;
+        private LinearLayout notice_adapter_layout;
+
         public ViewHolder(View itemView) {
             super(itemView);
             notice_adapter_name = itemView.findViewById(R.id.notice_adapter_name);
             notice_adapter_time = itemView.findViewById(R.id.notice_adapter_time);
-            notice_adapter_layout=  itemView.findViewById(R.id.notice_adapter_layout);
+            notice_adapter_layout = itemView.findViewById(R.id.notice_adapter_layout);
         }
     }
 

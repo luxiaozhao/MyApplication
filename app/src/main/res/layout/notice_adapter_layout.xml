@@ -19,16 +19,40 @@
         android:textColor="#0b0b0b"
         android:textSize="@dimen/font_16" />
 
-    <TextView
-        android:id="@+id/notice_adapter_time"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/lay_14"
-        android:layout_marginBottom="@dimen/lay_14"
-        android:gravity="right"
-        android:text=""
-        android:textColor="#aaa"
-        android:textSize="@dimen/font_14" />
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/notice_adapter_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/lay_14"
+            android:layout_marginBottom="@dimen/lay_14"
+            android:gravity="right"
+            android:text=""
+            android:textColor="#aaa"
+            android:textSize="@dimen/font_14" />
+
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/notice_adapter_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/lay_14"
+            android:gravity="right"
+            android:text=""
+            android:textColor="#aaa"
+            android:textSize="@dimen/font_14" />
+
+    </LinearLayout>
+
+
+
+
 
     <View
         android:layout_width="match_parent"
