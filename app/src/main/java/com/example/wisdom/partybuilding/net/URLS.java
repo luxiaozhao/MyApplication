@@ -45,7 +45,10 @@ public class URLS {
     /*
      * 在线考试
      * */
-    public static final String ONLINEEXAM = "exam/course/appcourse.ht";
+    public static final String ONLINEEXAM = BASE_URL+"exam/exam/appplan.ht?sid=";
+//      http://192.168.1.199:9999/FHBE/exam/exam/appplan.ht?  sid=31B6D8E295BD72ED1878D989C40FABA6&pid=14272319760723301X
+
+//    public static final String ONLINEEXAM = "exam/course/appcourse.ht";
 //    http://192.168.1.199:9999/FHBE/mobile/mobileNews/mobileNews/listnews.ht?pageSize=5&pageIndex=2&itemName=中央精神
 
     /*

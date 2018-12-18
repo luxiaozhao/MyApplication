@@ -128,7 +128,6 @@ public class Home_Fragment extends BaseFragment {
                                 public void onError(Call call, Exception e, int id) {
                                     Log.e("TAG", "这是失败的方法1" + e.toString());
                                     ToastUtils.getInstance().showTextToast(getActivity(), "请登陆后继续访问");
-
                                 }
 
                                 @Override
@@ -136,54 +135,36 @@ public class Home_Fragment extends BaseFragment {
                                     Gson gson = new Gson();
                                     AttestBean bean = gson.fromJson(response, AttestBean.class);
                                     if (bean.isCode()) {
-//                                        WebViewCurrencyActivity.start(getActivity(), "个人资料", successBean.getSid());
                                         switch (position) {
                                             case 0:
 //                                                http://192.168.1.199:9999/FHBE/mobile/mobileNews/mobileNews/listnews.ht?pageSize=5&pageIndex=2&sid=06478AC99947E8A1987536338B1BF4B8&itemName=中央精神
                                                 WebViewCurrencyActivity.start(getActivity(), "中央精神", URLS.DYNAMICMODULE + "中央精神");
-
-
                                                 break;
                                             case 1:
                                                 WebViewCurrencyActivity.start(getActivity(), "党组声音", URLS.DYNAMICMODULE + "党组声音");
-
                                                 break;
                                             case 2:
-
-//                                                WebViewCurrencyActivity.start(getActivity(), "党委新闻", URLS.DYNAMICMODULE + "党委新闻");
                                                 DynamicActivity.start(getActivity(), "党委新闻");
-
                                                 break;
                                             case 3:
-
-//                                                WebViewCurrencyActivity.start(getActivity(), "基层交流", URLS.DYNAMICMODULE + "基层交流");
-
                                                 DynamicActivity.start(getActivity(), "基层交流");
-
                                                 break;
                                             case 4:
-//                                                WebViewCurrencyActivity.start(getActivity(), "学习园地", URLS.DYNAMICMODULE + "基层交流");
                                                 DynamicActivity.start(getActivity(), "学习园地");
                                                 break;
                                             case 5:
-//                                                PartyAffairs 知识
                                                 PartyAffairsActivity.start(getActivity(), "党务知识");
-
                                                 break;
                                             case 6:
-//                        http://192.168.1.199:9999/FHBE/exam/course/appcourse.ht?sid=4C2FBBDF20296509EDAD89DD6858F705
-                                                WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + "?sid=" + successBean.getSid());
-                                                ToastUtils.getInstance().showTextToast(getActivity(), position + "");
+                                                WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM  + successBean.getSid()+"&pid="+successBean.getPid());
                                                 break;
                                             case 7://缴纳党费
-
                                                 PayPartyFeesActivity.start(getActivity());
                                                 break;
                                             default:
                                                 ToastUtils.getInstance().showTextToast(getActivity(), "没有对应的选项");
                                                 break;
                                         }
-
                                     } else {
                                         ToastUtils.getInstance().showTextToast(getActivity(), bean.getMsg());
                                     }

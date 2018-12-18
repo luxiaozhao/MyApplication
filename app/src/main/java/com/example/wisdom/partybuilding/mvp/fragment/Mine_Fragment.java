@@ -93,6 +93,7 @@ public class Mine_Fragment extends BaseFragment {
 
     @OnClick({R.id.mine_data, R.id.mine_password, R.id.mine_course, R.id.mine_examination, R.id.mine_about, R.id.mine_cache, R.id.mine_signout})
     public void onViewClicked(View view) {
+        SuccessBean successBean = Hawk.get(Contants.loginInformation);
         switch (view.getId()) {
             case R.id.mine_data://个人资料
 //                MaterialActivity.start(getActivity());
@@ -102,10 +103,10 @@ public class Mine_Fragment extends BaseFragment {
                 ChangePasswordActivity.start(getActivity());
                 break;
             case R.id.mine_course:
-                ToastUtils.getInstance().showTextToast(getActivity(), "我的课程");
+                WebViewCurrencyActivity.start(getActivity(), "我的课程", URLS.ONLINEEXAM  + successBean.getSid()+"&pid="+successBean.getPid());
                 break;
             case R.id.mine_examination://我的考试
-                ToastUtils.getInstance().showTextToast(getActivity(), "我的考试");
+                WebViewCurrencyActivity.start(getActivity(), "我的考试", URLS.ONLINEEXAM  + successBean.getSid()+"&pid="+successBean.getPid());
                 break;
             case R.id.mine_about://关于我们
                 AboutUsActivity.start(getActivity());

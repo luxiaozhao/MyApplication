@@ -2,7 +2,6 @@ package com.example.wisdom.partybuilding.mvp.activity.home;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,10 +13,7 @@ import android.widget.TextView;
 import com.example.wisdom.partybuilding.R;
 import com.example.wisdom.partybuilding.base.BaseActivity;
 import com.example.wisdom.partybuilding.base.BasePresenter;
-import com.example.wisdom.partybuilding.mvp.adapter.DynamicAdapter;
 import com.example.wisdom.partybuilding.mvp.adapter.PartyAffairs_Adapter;
-import com.example.wisdom.partybuilding.mvp.adapter.Partyknowledge_Adapter;
-import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
 import com.example.wisdom.partybuilding.mvp.bean.home.PartyknowledgeBean;
 import com.example.wisdom.partybuilding.net.URLS;
 import com.example.wisdom.partybuilding.utils.ToastUtils;
@@ -79,11 +75,7 @@ public class PartyAffairsActivity extends BaseActivity {
                 ToastUtils.getInstance().showTextToast(PartyAffairsActivity.this,"详情页");
             }
         });
-
-
     }
-
-
 
     @Override
     protected int getLayoutId() {
@@ -120,7 +112,6 @@ public class PartyAffairsActivity extends BaseActivity {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Log.e("TAG", "这是失败的方法1" + e.toString());
-
                     }
 
                     @Override
@@ -128,8 +119,6 @@ public class PartyAffairsActivity extends BaseActivity {
                         Gson gson = new Gson();
                         String responses = "{carouselmap:" + response + "}";
                         PartyknowledgeBean bean = gson.fromJson(responses, PartyknowledgeBean.class);
-
-
                         bwws.addAll( bean.getCarouselmap());
                         dynamicAdapter.notifyDataSetChanged();
                     }
