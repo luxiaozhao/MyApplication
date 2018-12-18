@@ -2,31 +2,24 @@ package com.example.wisdom.partybuilding.mvp.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.example.wisdom.partybuilding.R;
 import com.example.wisdom.partybuilding.base.BaseFragment;
 import com.example.wisdom.partybuilding.base.IPresenter;
-import com.example.wisdom.partybuilding.mvp.activity.adapter.home.FolderAdapter;
 import com.example.wisdom.partybuilding.mvp.activity.upcoming.ApplyActivity;
+import com.example.wisdom.partybuilding.mvp.activity.upcoming.GrowingActivity;
+import com.example.wisdom.partybuilding.mvp.activity.upcoming.MakeReadyActivity;
+import com.example.wisdom.partybuilding.mvp.activity.upcoming.TransferActivity;
+import com.example.wisdom.partybuilding.mvp.activity.upcoming.TransferOutActivity;
+import com.example.wisdom.partybuilding.mvp.activity.upcoming.UrnPositiveActivity;
 import com.example.wisdom.partybuilding.mvp.adapter.UpcomingAdapter;
 import com.example.wisdom.partybuilding.mvp.bean.Bean1;
-import com.example.wisdom.partybuilding.mvp.bean.SuccessBean;
-import com.example.wisdom.partybuilding.mvp.bean.login.AttestBean;
-import com.example.wisdom.partybuilding.net.Contants;
-import com.example.wisdom.partybuilding.net.URLS;
-import com.example.wisdom.partybuilding.utils.ToastUtils;
-import com.google.gson.Gson;
-import com.orhanobut.hawk.Hawk;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import okhttp3.Call;
 
 public class Upcoming_Fragment extends BaseFragment {
 
@@ -62,7 +55,30 @@ public class Upcoming_Fragment extends BaseFragment {
         upcomingAdapter.setOnClickLinstener(new UpcomingAdapter.onClickLinstener() {
             @Override
             public void setOnClick(View view, final int position) {
-                ApplyActivity.start(getActivity());
+
+                switch (position) {
+                    case 1://申请入党
+                        ApplyActivity.start(getActivity());
+                        break;
+                    case 2://预备党员转为正式党员
+                        UrnPositiveActivity.start(getActivity());
+                        break;
+                    case 3://组织关系转出
+                        TransferOutActivity.start(getActivity());
+                        break;
+                    case 4://组织关系转入
+                        TransferActivity.start(getActivity());
+                        break;
+                    case 5://发展对象转为预备党员
+                        MakeReadyActivity.start(getActivity());
+                        break;
+                    case 6://积极分子列为发展对象
+                        GrowingActivity.start(getActivity());
+                        break;
+                }
+
+
+
             }
         });
 

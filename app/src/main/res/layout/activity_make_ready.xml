@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    android:background="#e7e7e7"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f7f7f7"
-    android:orientation="vertical"
-    tools:context="com.example.wisdom.partybuilding.mvp.activity.upcoming.ApplyActivity">
+    tools:context="com.example.wisdom.partybuilding.mvp.activity.upcoming.MakeReadyActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="申请入党"
+            android:text="发展对象转为预备党员"
             android:textColor="#FFF"
             android:textSize="@dimen/font_18" />
 
@@ -207,222 +208,76 @@
             </LinearLayout>
 
             <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
-
-
-            <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_50"
-            android:layout_marginLeft="@dimen/lay_15"
-            android:gravity="center_vertical">
-
-
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="入党志愿书"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
-
-            <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_1"
-            android:layout_weight="1" />
-
-            <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/annex" />
-
-            <ImageView
-            android:layout_width="@dimen/lay_25"
-            android:layout_height="@dimen/lay_25"
-            android:layout_marginRight="@dimen/lay_8"
-            android:src="@mipmap/jinru" />
-
-            </LinearLayout>
-
-            <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
-
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
 
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/lay_15"
-            android:orientation="vertical"
-            >
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:orientation="vertical"
+                >
 
 
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="谈话情况"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
+                <TextView
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="支部委员会审查"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
 
 
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_marginRight="@dimen/lay_15"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:background="@drawable/texr_grayedge"
-            android:layout_marginBottom="@dimen/lay_30"/>
+                <TextView
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:background="@drawable/texr_grayedge"
+                    android:layout_marginBottom="@dimen/lay_30"/>
 
 
             </LinearLayout>
 
             <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
 
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/lay_15"
-            android:orientation="vertical"
-            >
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:orientation="vertical"
+                >
 
 
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="团支部推优情况"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
+                <TextView
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="上级党委预审"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
 
 
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_marginRight="@dimen/lay_15"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:background="@drawable/texr_grayedge"
-            android:layout_marginBottom="@dimen/lay_30"/>
+                <TextView
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:background="@drawable/texr_grayedge"
+                    android:layout_marginBottom="@dimen/lay_30"/>
 
 
             </LinearLayout>
 
 
             <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
-
-
-            <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/lay_15"
-            android:orientation="vertical"
-            >
-
-
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="支部委员会意见"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
-
-
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_marginRight="@dimen/lay_15"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:background="@drawable/texr_grayedge"
-            android:layout_marginBottom="@dimen/lay_30"/>
-
-
-            </LinearLayout>
-
-
-            <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
-
-
-            <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_50"
-            android:layout_marginLeft="@dimen/lay_15"
-            android:gravity="center_vertical">
-
-
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="建议列入积极分子"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
-
-
-            <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/lay_8"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="代老师"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
-
-            <ImageView
-            android:layout_width="@dimen/lay_25"
-            android:layout_height="@dimen/lay_25"
-            android:layout_marginRight="@dimen/lay_8"
-            android:src="@mipmap/jinru" />
-
-            </LinearLayout>
-
-            <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
-
-            <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/lay_15"
-            android:orientation="vertical"
-            >
-
-
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="党委意见"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
-
-
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_marginRight="@dimen/lay_15"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:background="@drawable/texr_grayedge"
-            android:layout_marginBottom="@dimen/lay_30"/>
-
-
-            </LinearLayout>
-
-            <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
 
 
             <LinearLayout
@@ -435,7 +290,145 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="是否列入积极分子"
+                    android:text="入党志愿书"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lay_1"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/annex" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:layout_marginRight="@dimen/lay_8"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:orientation="vertical"
+                >
+
+
+                <TextView
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="支部大会讨论"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+
+                <TextView
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:background="@drawable/texr_grayedge"
+                    android:layout_marginBottom="@dimen/lay_30"/>
+
+
+            </LinearLayout>
+
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/lay_10"-->
+                <!--android:background="#f7f7f7" />-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="@dimen/lay_15"-->
+                <!--android:orientation="vertical"-->
+                <!--&gt;-->
+
+
+                <!--<TextView-->
+                    <!--android:layout_marginTop="@dimen/lay_20"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="上级党委谈话"-->
+                    <!--android:textColor="#0b0b0b"-->
+                    <!--android:textSize="@dimen/font_16" />-->
+
+
+                <!--<TextView-->
+                    <!--android:layout_marginTop="@dimen/lay_20"-->
+                    <!--android:layout_marginRight="@dimen/lay_15"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="110dp"-->
+                    <!--android:background="@drawable/texr_grayedge"-->
+                    <!--android:layout_marginBottom="@dimen/lay_30"/>-->
+
+
+            <!--</LinearLayout>-->
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="上级党委审批"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+
+                <TextView
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:background="@drawable/texr_grayedge"
+                    android:layout_marginBottom="@dimen/lay_30"/>
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_50"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否转为预备党员"
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_16" />
 
@@ -500,7 +493,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="培养人1"
+                    android:text="入党时间"
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_16" />
 
@@ -511,47 +504,7 @@
                     android:layout_marginRight="@dimen/lay_8"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="静姐"
-                    android:textColor="#0b0b0b"
-                    android:textSize="@dimen/font_16" />
-
-                <ImageView
-                    android:layout_width="@dimen/lay_25"
-                    android:layout_height="@dimen/lay_25"
-                    android:layout_marginRight="@dimen/lay_8"
-                    android:src="@mipmap/jinru" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_1"
-                android:layout_marginLeft="@dimen/lay_15"
-                android:background="#e1e4e9" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_50"
-                android:layout_marginLeft="@dimen/lay_15"
-                android:gravity="center_vertical">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="培养人2"
-                    android:textColor="#0b0b0b"
-                    android:textSize="@dimen/font_16" />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/lay_8"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="王工"
+                    android:text="2105-55-55"
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_16" />
 

@@ -37,7 +37,12 @@
         <activity android:name=".mvp.activity.home.DetailActivity" />
         <activity android:name=".mvp.activity.home.DynamicActivity" />
         <activity android:name=".mvp.activity.home.PartyAffairsActivity" />
-        <activity android:name=".mvp.activity.upcoming.ApplyActivity"></activity>
+        <activity android:name=".mvp.activity.upcoming.ApplyActivity" />
+        <activity android:name=".mvp.activity.upcoming.UrnPositiveActivity" />
+        <activity android:name=".mvp.activity.upcoming.TransferOutActivity" />
+        <activity android:name=".mvp.activity.upcoming.TransferActivity" />
+        <activity android:name=".mvp.activity.upcoming.MakeReadyActivity" />
+        <activity android:name=".mvp.activity.upcoming.GrowingActivity"></activity>
     </application>
 
 </manifest>
