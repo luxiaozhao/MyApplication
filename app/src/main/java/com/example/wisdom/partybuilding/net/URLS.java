@@ -49,10 +49,19 @@ public class URLS {
 //    http://192.168.1.199:9999/FHBE/mobile/mobileNews/mobileNews/listnews.ht?pageSize=5&pageIndex=2&itemName=中央精神
 
     /*
-    * 中央精神
-    * */
+     * 中央精神
+     * */
     public static final String DYNAMICMODULE = "mobile/mobileNews/mobileNews/listnews.ht?pageSize=5&pageIndex=2&itemName=";
 
+    /*
+     * 首页——动态(党委新闻,基层交流,学习园地)
+     * */
+    public static final String HOME_DYNAMIC = BASE_URL+"mobile/mobileNews/mobileNews/listnews.ht";
+
+    /*
+     * 首页——动态(党务知识)
+     * */
+    public static final String HOME_PARTYKNOWLEDGE = BASE_URL+"djy/partyWork/partyWork/listapp.ht ";
 
 
 }

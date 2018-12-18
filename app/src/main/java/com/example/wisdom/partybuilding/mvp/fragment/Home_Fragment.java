@@ -25,6 +25,8 @@ import com.example.wisdom.partybuilding.mvp.activity.adapter.home.TidingsActivit
 import com.example.wisdom.partybuilding.mvp.activity.commonactivity.MainActivity;
 import com.example.wisdom.partybuilding.mvp.activity.commonactivity.WebViewCurrencyActivity;
 import com.example.wisdom.partybuilding.mvp.activity.home.BaseWebActivity;
+import com.example.wisdom.partybuilding.mvp.activity.home.DynamicActivity;
+import com.example.wisdom.partybuilding.mvp.activity.home.PartyAffairsActivity;
 import com.example.wisdom.partybuilding.mvp.activity.home.PayPartyFeesActivity;
 import com.example.wisdom.partybuilding.mvp.activity.home.SearchActivity;
 import com.example.wisdom.partybuilding.mvp.activity.login.LoginActivity;
@@ -99,8 +101,8 @@ public class Home_Fragment extends BaseFragment {
 
         folderAdapter = new FolderAdapter(getActivity(), beans);
 //        new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.HORIZONTAL);
-//        mainRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 4));
+        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
+//        mainRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 4));   StaggerredGridLayoutManager
         mainRecycler.setLayoutManager(manager);
 
 
@@ -111,10 +113,10 @@ public class Home_Fragment extends BaseFragment {
 
         folderAdapter.setOnClickLinstener(new FolderAdapter.onClickLinstener() {
             @Override
-            public void setOnClick(View view,final int position) {
+            public void setOnClick(View view, final int position) {
 
-                if (Hawk.contains(Contants.loginInformation)){
-                   final SuccessBean successBean= Hawk.get(Contants.loginInformation);
+                if (Hawk.contains(Contants.loginInformation)) {
+                    final SuccessBean successBean = Hawk.get(Contants.loginInformation);
                     OkHttpUtils
                             .get()
                             .url(URLS.REVERIFICATION)
@@ -125,7 +127,7 @@ public class Home_Fragment extends BaseFragment {
                                 @Override
                                 public void onError(Call call, Exception e, int id) {
                                     Log.e("TAG", "这是失败的方法1" + e.toString());
-                                    ToastUtils.getInstance().showTextToast(getActivity(),"请登陆后继续访问");
+                                    ToastUtils.getInstance().showTextToast(getActivity(), "请登陆后继续访问");
 
                                 }
 
@@ -138,55 +140,58 @@ public class Home_Fragment extends BaseFragment {
                                         switch (position) {
                                             case 0:
 //                                                http://192.168.1.199:9999/FHBE/mobile/mobileNews/mobileNews/listnews.ht?pageSize=5&pageIndex=2&sid=06478AC99947E8A1987536338B1BF4B8&itemName=中央精神
-                                                WebViewCurrencyActivity.start(getActivity(),"中央精神",URLS.DYNAMICMODULE+"中央精神");
+                                                WebViewCurrencyActivity.start(getActivity(), "中央精神", URLS.DYNAMICMODULE + "中央精神");
+
 
                                                 break;
                                             case 1:
-                                                WebViewCurrencyActivity.start(getActivity(),"党组声音",URLS.DYNAMICMODULE+"党组声音");
+                                                WebViewCurrencyActivity.start(getActivity(), "党组声音", URLS.DYNAMICMODULE + "党组声音");
 
                                                 break;
                                             case 2:
 
-                                                WebViewCurrencyActivity.start(getActivity(),"党委新闻",URLS.DYNAMICMODULE+"党委新闻");
+//                                                WebViewCurrencyActivity.start(getActivity(), "党委新闻", URLS.DYNAMICMODULE + "党委新闻");
+                                                DynamicActivity.start(getActivity(), "党委新闻");
+
                                                 break;
                                             case 3:
 
-                                                WebViewCurrencyActivity.start(getActivity(),"基层交流",URLS.DYNAMICMODULE+"基层交流");
+//                                                WebViewCurrencyActivity.start(getActivity(), "基层交流", URLS.DYNAMICMODULE + "基层交流");
+
+                                                DynamicActivity.start(getActivity(), "基层交流");
+
                                                 break;
                                             case 4:
-                                                WebViewCurrencyActivity.start(getActivity(),"学习园地",URLS.DYNAMICMODULE+"基层交流");
-
-//                                                ToastUtils.getInstance().showTextToast(getActivity(),position+"");
-//                                                WebViewCurrencyActivity.start(getActivity(),"党务知识",URLS.ONLINEEXAM+"?sid="+successBean.getSid());
-//                                                ToastUtils.getInstance().showTextToast(getActivity(),position+"");
+//                                                WebViewCurrencyActivity.start(getActivity(), "学习园地", URLS.DYNAMICMODULE + "基层交流");
+                                                DynamicActivity.start(getActivity(), "学习园地");
                                                 break;
                                             case 5:
-                                                ToastUtils.getInstance().showTextToast(getActivity(),position+"");
-                                                WebViewCurrencyActivity.start(getActivity(),"党务知识",URLS.ONLINEEXAM+"?sid="+successBean.getSid());
-                                                ToastUtils.getInstance().showTextToast(getActivity(),position+"");
+//                                                PartyAffairs 知识
+                                                PartyAffairsActivity.start(getActivity(), "党务知识");
+
                                                 break;
                                             case 6:
 //                        http://192.168.1.199:9999/FHBE/exam/course/appcourse.ht?sid=4C2FBBDF20296509EDAD89DD6858F705
-                                                WebViewCurrencyActivity.start(getActivity(),"在线考试",URLS.ONLINEEXAM+"?sid="+successBean.getSid());
-                                                ToastUtils.getInstance().showTextToast(getActivity(),position+"");
+                                                WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + "?sid=" + successBean.getSid());
+                                                ToastUtils.getInstance().showTextToast(getActivity(), position + "");
                                                 break;
                                             case 7://缴纳党费
 
                                                 PayPartyFeesActivity.start(getActivity());
                                                 break;
                                             default:
-                                                ToastUtils.getInstance().showTextToast(getActivity(),"没有对应的选项");
+                                                ToastUtils.getInstance().showTextToast(getActivity(), "没有对应的选项");
                                                 break;
                                         }
 
-                                    }else {
-                                        ToastUtils.getInstance().showTextToast(getActivity(),bean.getMsg());
+                                    } else {
+                                        ToastUtils.getInstance().showTextToast(getActivity(), bean.getMsg());
                                     }
                                 }
                             });
 
-                }else {
-                    ToastUtils.getInstance().showTextToast(getActivity(),"请登陆后继续访问");
+                } else {
+                    ToastUtils.getInstance().showTextToast(getActivity(), "请登陆后继续访问");
                 }
 
 //                BaseWebActivity.start(getActivity(), beans.get(position).getString());
@@ -277,15 +282,15 @@ public class Home_Fragment extends BaseFragment {
         beans.add(bean7);
         beans.add(bean8);
 
-
-        beans.add(bean1);
-        beans.add(bean2);
-        beans.add(bean3);
-        beans.add(bean4);
-        beans.add(bean5);
-        beans.add(bean6);
-        beans.add(bean7);
-        beans.add(bean8);
+//
+//        beans.add(bean1);
+//        beans.add(bean2);
+//        beans.add(bean3);
+//        beans.add(bean4);
+//        beans.add(bean5);
+//        beans.add(bean6);
+//        beans.add(bean7);
+//        beans.add(bean8);
     }
 
 
@@ -320,10 +325,10 @@ public class Home_Fragment extends BaseFragment {
                 break;
             case R.id.home_notice:
 
-                if (homeNoticeDetailImg.getVisibility()==View.VISIBLE){
-                    ToastUtils.getInstance().showTextToast(getActivity(),"进入通知");
-                }else {
-                    ToastUtils.getInstance().showTextToast(getActivity(),"暂无通知");
+                if (homeNoticeDetailImg.getVisibility() == View.VISIBLE) {
+                    ToastUtils.getInstance().showTextToast(getActivity(), "进入通知");
+                } else {
+                    ToastUtils.getInstance().showTextToast(getActivity(), "暂无通知");
                 }
 
                 break;

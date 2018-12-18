@@ -294,4 +294,18 @@ public final class DateUtils {
 
     }
 
+
+    /**
+     * 把字符串转化为时间格式
+     *
+     * @param timestamp
+     * @return
+     */
+    public static String getStandardTime(long timestamp) {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日 HH:mm");
+        Date date = new Date(timestamp * 1000);
+        sdf.format(date);
+        return sdf.format(date);
+    }
+
 }
