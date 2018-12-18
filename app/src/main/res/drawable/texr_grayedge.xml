@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!--<solid android:color="@color/accent_material_light"></solid>-->
+    <size
+        android:width="15dp"
+        android:height="15dp"></size>
+    <!--<padding-->
+    <!--android:bottom="1dp"-->
+    <!--android:left="2dp"-->
+    <!--android:right="2dp"-->
+    <!--android:top="1dp"></padding>-->
+
+
+
+
+
+
+
+    <!--颜色-->
+    <solid android:color="#fff" />
+    <stroke
+    android:width="@dimen/lay_1"
+    android:color="#e1e4e9" />
+    <!--圆角-->
+    <corners
+        android:bottomLeftRadius="@dimen/lay_10"
+        android:bottomRightRadius="@dimen/lay_10"
+        android:topLeftRadius="@dimen/lay_10"
+        android:topRightRadius="@dimen/lay_10" />
+
+
+
+
+</shape>

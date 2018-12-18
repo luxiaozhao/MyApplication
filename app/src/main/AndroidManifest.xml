@@ -36,7 +36,8 @@
         <activity android:name=".mvp.activity.home.ConfirmPaymentActivity" />
         <activity android:name=".mvp.activity.home.DetailActivity" />
         <activity android:name=".mvp.activity.home.DynamicActivity" />
-        <activity android:name=".mvp.activity.home.PartyAffairsActivity"></activity>
+        <activity android:name=".mvp.activity.home.PartyAffairsActivity" />
+        <activity android:name=".mvp.activity.upcoming.ApplyActivity"></activity>
     </application>
 
 </manifest>
