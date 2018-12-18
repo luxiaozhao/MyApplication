@@ -19,6 +19,7 @@
         android:background="#ff0000">
 
         <ImageView
+            android:id="@+id/apply_return"
             android:layout_width="@dimen/lay_25"
             android:layout_height="@dimen/lay_25"
             android:layout_centerVertical="true"
@@ -41,6 +42,7 @@
         android:layout_height="@dimen/lay_10" />
 
     <ScrollView
+        android:id="@+id/apply_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
@@ -68,6 +70,7 @@
 
 
                 <TextView
+                    android:id="@+id/apply_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/lay_8"
@@ -108,6 +111,7 @@
 
 
                 <TextView
+                    android:id="@+id/apply_application_ime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/lay_8"
@@ -146,6 +150,7 @@
                     android:textSize="@dimen/font_16" />
 
                 <TextView
+                    android:id="@+id/apply_party_branch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/lay_20"
@@ -189,6 +194,7 @@
 
 
                 <TextView
+                    android:id="@+id/apply_party_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/lay_8"
@@ -207,222 +213,239 @@
             </LinearLayout>
 
             <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
 
 
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_50"
-            android:layout_marginLeft="@dimen/lay_15"
-            android:gravity="center_vertical">
+                android:id="@+id/apply_volunteer_book"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_50"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:gravity="center_vertical">
 
 
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="入党志愿书"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="入党志愿书"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
 
-            <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_1"
-            android:layout_weight="1" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lay_1"
+                    android:layout_weight="1" />
 
-            <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/annex" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/annex" />
 
-            <ImageView
-            android:layout_width="@dimen/lay_25"
-            android:layout_height="@dimen/lay_25"
-            android:layout_marginRight="@dimen/lay_8"
-            android:src="@mipmap/jinru" />
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:layout_marginRight="@dimen/lay_8"
+                    android:src="@mipmap/jinru" />
 
             </LinearLayout>
 
             <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
 
 
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/lay_15"
-            android:orientation="vertical"
-            >
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:orientation="vertical">
 
 
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="谈话情况"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:text="谈话情况"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <com.example.wisdom.partybuilding.view.MyLinearLayout
+                    android:id="@+id/apply_talk_situation_se"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fadingEdge="none"
+                    android:scrollbars="none"
+                    android:visibility="visible">
 
 
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_marginRight="@dimen/lay_15"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:background="@drawable/texr_grayedge"
-            android:layout_marginBottom="@dimen/lay_30"/>
+                <EditText
+                        android:id="@+id/apply_talk_situation"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_marginTop="@dimen/lay_20"
+                        android:layout_marginRight="@dimen/lay_15"
+                        android:layout_marginBottom="@dimen/lay_30"
+                        android:background="@drawable/texr_grayedge" />
+
+
+                </com.example.wisdom.partybuilding.view.MyLinearLayout>
 
 
             </LinearLayout>
 
             <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
 
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/lay_15"
-            android:orientation="vertical"
-            >
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:orientation="vertical">
 
 
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="团支部推优情况"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:text="团支部推优情况"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
 
 
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_marginRight="@dimen/lay_15"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:background="@drawable/texr_grayedge"
-            android:layout_marginBottom="@dimen/lay_30"/>
-
-
-            </LinearLayout>
-
-
-            <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
-
-
-            <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/lay_15"
-            android:orientation="vertical"
-            >
-
-
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="支部委员会意见"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
-
-
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_marginRight="@dimen/lay_15"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:background="@drawable/texr_grayedge"
-            android:layout_marginBottom="@dimen/lay_30"/>
+                <EditText
+                    android:id="@+id/apply_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_marginBottom="@dimen/lay_30"
+                    android:background="@drawable/texr_grayedge"
+                    android:gravity="top"
+                    android:lines="4"
+                    android:scrollbars="vertical" />
 
 
             </LinearLayout>
 
 
             <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
 
 
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_50"
-            android:layout_marginLeft="@dimen/lay_15"
-            android:gravity="center_vertical">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:orientation="vertical">
 
 
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="建议列入积极分子"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:text="支部委员会意见"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
 
 
-            <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/lay_8"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="代老师"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
-
-            <ImageView
-            android:layout_width="@dimen/lay_25"
-            android:layout_height="@dimen/lay_25"
-            android:layout_marginRight="@dimen/lay_8"
-            android:src="@mipmap/jinru" />
-
-            </LinearLayout>
-
-            <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
-
-            <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/lay_15"
-            android:orientation="vertical"
-            >
-
-
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="党委意见"
-            android:textColor="#0b0b0b"
-            android:textSize="@dimen/font_16" />
-
-
-            <TextView
-            android:layout_marginTop="@dimen/lay_20"
-            android:layout_marginRight="@dimen/lay_15"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:background="@drawable/texr_grayedge"
-            android:layout_marginBottom="@dimen/lay_30"/>
+                <EditText
+                    android:id="@+id/apply_branch"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_marginBottom="@dimen/lay_30"
+                    android:background="@drawable/texr_grayedge" />
 
 
             </LinearLayout>
 
+
             <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_50"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="建议列入积极分子"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+
+                <TextView
+                    android:id="@+id/apply_active"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/lay_8"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="代老师"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_25"
+                    android:layout_height="@dimen/lay_25"
+                    android:layout_marginRight="@dimen/lay_8"
+                    android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:text="党委意见"
+                    android:textColor="#0b0b0b"
+                    android:textSize="@dimen/font_16" />
+
+
+                <EditText
+                    android:id="@+id/apply_party_committee"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_marginBottom="@dimen/lay_30"
+                    android:background="@drawable/texr_grayedge" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
 
 
             <LinearLayout
@@ -441,44 +464,48 @@
 
 
                 <LinearLayout
-                    android:layout_marginLeft="@dimen/lay_25"
+                    android:id="@+id/apply_active_yes"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_25">
 
 
                     <ImageView
+                        android:id="@+id/apply_active_yes_img"
                         android:layout_width="@dimen/lay_25"
                         android:layout_height="@dimen/lay_25"
-                        android:src="@mipmap/rd_xuanzhong"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/rd_xuanzhong" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="是"
                         android:textColor="#0b0b0b"
-                        android:textSize="@dimen/font_16"/>
+                        android:textSize="@dimen/font_16" />
                 </LinearLayout>
 
 
                 <LinearLayout
-                    android:layout_marginLeft="@dimen/lay_25"
+                    android:id="@+id/apply_active_no"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_25">
 
 
                     <ImageView
+                        android:id="@+id/apply_active_no_img"
                         android:layout_width="@dimen/lay_25"
                         android:layout_height="@dimen/lay_25"
-                        android:src="@mipmap/rd_xuanzhong"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/rd_xuanzhong" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="否"
                         android:textColor="#0b0b0b"
-                        android:textSize="@dimen/font_16"/>
+                        android:textSize="@dimen/font_16" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -506,6 +533,7 @@
 
 
                 <TextView
+                    android:id="@+id/apply_culture1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/lay_8"
@@ -546,6 +574,7 @@
 
 
                 <TextView
+                    android:id="@+id/apply_culture2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/lay_8"
@@ -583,6 +612,7 @@
 
 
         <TextView
+            android:id="@+id/apply_withdraw"
             android:layout_width="match_parent"
             android:layout_height="@dimen/lay_40"
             android:layout_marginLeft="@dimen/lay_15"
@@ -595,6 +625,7 @@
             android:textSize="@dimen/font_16" />
 
         <TextView
+            android:id="@+id/apply_transmit"
             android:layout_width="match_parent"
             android:layout_height="@dimen/lay_40"
             android:layout_marginLeft="@dimen/lay_15"
