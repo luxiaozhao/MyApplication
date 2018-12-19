@@ -43,7 +43,11 @@
             <ImageView
                 android:layout_width="@dimen/lay_20"
                 android:layout_height="@dimen/lay_20"
-                android:src="@mipmap/suosou" />
+                android:src="@mipmap/suosou"
+               android:focusable="true"
+                android:focusableInTouchMode="true"/>
+            <!--　android:focusable="true"-->
+            <!--android:focusableInTouchMode="true"-->
 
             <EditText
                 android:id="@+id/search_search"
@@ -55,7 +59,11 @@
                 android:hint="智慧党建平台"
                 android:singleLine="true"
                 android:textColor="#888888"
-                android:textSize="@dimen/font_14" />
+                android:imeOptions="normal"
+                android:textSize="@dimen/font_14"
+                 />
+            <!--而决 android:imeOptions属性。android:imeOptions 的值有 actionGo (前往)  、 actionSend 、actionSearch、actionDone等
+注意:需要和android:singleLine=”true”搭配使用-->
 
         </LinearLayout>
 

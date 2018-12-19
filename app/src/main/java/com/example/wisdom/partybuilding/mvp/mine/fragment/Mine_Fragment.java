@@ -57,6 +57,14 @@ public class Mine_Fragment extends BaseFragment {
     @Override
     protected void initEventAndData() {
 
+
+try {
+    SuccessBean successBean=  Hawk.get(Contants.loginInformation);
+    mineName.setText(successBean.getUsername());
+    minePosition.setText(successBean.getOrg());
+
+}catch (Exception e){}
+
     }
 
     @Override

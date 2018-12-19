@@ -15,7 +15,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.wisdom.partybuilding.Main2Activity;
 import com.example.wisdom.partybuilding.R;
+import com.example.wisdom.partybuilding.WebActivity;
 import com.example.wisdom.partybuilding.base.BaseFragment;
 import com.example.wisdom.partybuilding.base.IPresenter;
 import com.example.wisdom.partybuilding.mvp.home.adapter.FolderAdapter;
@@ -99,9 +101,9 @@ public class Home_Fragment extends BaseFragment {
         getverification();
 
         folderAdapter = new FolderAdapter(getActivity(), beans);
-//        new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+
         StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
-//        mainRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 4));   StaggerredGridLayoutManager
+
         mainRecycler.setLayoutManager(manager);
 
 
@@ -317,12 +319,20 @@ public class Home_Fragment extends BaseFragment {
             case R.id.banner:
                 break;
             case R.id.home_notice:
+                http://view.officeapps.live.com/op/view.aspx?src=http://www.ncac.gov.cn/sitefiles/services/wcm/utils.aspx?type=Download&publishmentSystemID=470&channelID=574&contentID=20880
 
-                if (homeNoticeDetailImg.getVisibility() == View.VISIBLE) {
-                    ToastUtils.getInstance().showTextToast(getActivity(), "进入通知");
-                } else {
-                    ToastUtils.getInstance().showTextToast(getActivity(), "暂无通知");
-                }
+                WebActivity.start(getActivity());//文件阅读
+
+
+//                WebViewCurrencyActivity.start(getActivity(),"视频","https://pic.ibaotu.com/01/03/85/49e888piCpxw.mp4");
+
+//                Main2Activity.start(getActivity());//视频播放
+
+//                if (homeNoticeDetailImg.getVisibility() == View.VISIBLE) {
+//                    ToastUtils.getInstance().showTextToast(getActivity(), "进入通知");
+//                } else {
+//                    ToastUtils.getInstance().showTextToast(getActivity(), "暂无通知");
+//                }
 
                 break;
             case R.id.home_news_more://党政新闻——更多

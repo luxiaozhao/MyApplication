@@ -8,130 +8,154 @@
     android:orientation="vertical"
     tools:context="com.example.wisdom.partybuilding.Main2Activity">
 
-
-    <ScrollView
-        android:id="@+id/ssss"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/lay_20"
+        android:background="#ff0000"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_52"
+        android:background="#ff0000">
+
+        <ImageView
+            android:id="@+id/android_img"
+            android:layout_marginLeft="@dimen/lay_10"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/lay_25"
+            android:layout_height="@dimen/lay_25"
+            android:src="@mipmap/top_back"/>
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="视频播放"
+            android:textSize="@dimen/font_18"
+            android:textColor="#FFF"/>
+
+    </RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#141515">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <cn.jzvd.JZVideoPlayerStandard
+        android:id="@+id/mJC"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></cn.jzvd.JZVideoPlayerStandard>
 
 
-            <ImageView
-                android:layout_width="@dimen/lay_100"
-                android:layout_height="@dimen/lay_100"
-                android:src="@mipmap/ic_launcher_round"/>
 
 
-            <ImageView
-                android:layout_width="@dimen/lay_100"
-                android:layout_height="@dimen/lay_100"
-                android:src="@mipmap/ic_launcher_round"/>
+</RelativeLayout>
 
 
-            <ImageView
-                android:layout_width="@dimen/lay_100"
-                android:layout_height="@dimen/lay_100"
-                android:src="@mipmap/ic_launcher_round"/>
+    <!--<ScrollView-->
+        <!--android:id="@+id/ssss"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
 
-            <ImageView
-                android:layout_width="@dimen/lay_100"
-                android:layout_height="@dimen/lay_100"
-                android:src="@mipmap/ic_launcher_round"/>
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+            <!--<cn.jzvd.JZVideoPlayerStandard-->
+                <!--android:id="@+id/mJC"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:src="@mipmap/ic_launcher_round"></cn.jzvd.JZVideoPlayerStandard>-->
+            <!--&lt;!&ndash;<cn.jzvd.JZVideoPlayerStandard&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/videoplayer"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="200dp"/>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="@dimen/lay_100"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="@dimen/lay_100"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:src="@mipmap/ic_launcher_round"/>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<com.example.wisdom.partybuilding.view.MyLinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/se"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:fadingEdge="none"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:scrollbars="none"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:visibility="visible">&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<EditText&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/et"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="110dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginTop="@dimen/lay_20"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginRight="@dimen/lay_15"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginBottom="@dimen/lay_30"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:gravity="top"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:lines="4"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:scrollbars="vertical"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@drawable/texr_grayedge"/>&ndash;&gt;-->
 
 
-            <ImageView
-                android:layout_width="@dimen/lay_100"
-                android:layout_height="@dimen/lay_100"
-                android:src="@mipmap/ic_launcher_round"/>
+                <!--&lt;!&ndash;&lt;!&ndash;<EditText&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;android:id="@+id/et"&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;android:layout_height="100dp"&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;android:hint="输入内容"&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;android:textColor="#FF0000"&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;android:textSize="20sp"/>&ndash;&gt;&ndash;&gt;-->
 
 
-            <ImageView
-                android:layout_width="@dimen/lay_100"
-                android:layout_height="@dimen/lay_100"
-                android:src="@mipmap/ic_launcher_round"/>
-
-            <com.example.wisdom.partybuilding.view.MyLinearLayout
-                android:id="@+id/se"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fadingEdge="none"
-                android:scrollbars="none"
-                android:visibility="visible">
-
-                <EditText
-                    android:id="@+id/et"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_marginTop="@dimen/lay_20"
-                    android:layout_marginRight="@dimen/lay_15"
-                    android:layout_marginBottom="@dimen/lay_30"
-                    android:gravity="top"
-                    android:lines="4"
-                    android:scrollbars="vertical"
-                    android:background="@drawable/texr_grayedge"/>
+            <!--&lt;!&ndash;</com.example.wisdom.partybuilding.view.MyLinearLayout>&ndash;&gt;-->
 
 
-                <!--<EditText-->
-                    <!--android:id="@+id/et"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="100dp"-->
-                    <!--android:hint="输入内容"-->
-                    <!--android:textColor="#FF0000"-->
-                    <!--android:textSize="20sp"/>-->
+            <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:src="@mipmap/ic_launcher_round"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="@dimen/lay_100"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="@dimen/lay_100" />&ndash;&gt;-->
 
 
-            </com.example.wisdom.partybuilding.view.MyLinearLayout>
+            <!--&lt;!&ndash;<EditText&ndash;&gt;-->
+                <!--&lt;!&ndash;android:visibility="gone"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/apply_group2"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="110dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginTop="@dimen/lay_20"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginRight="@dimen/lay_15"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginBottom="@dimen/lay_30"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:background="@drawable/texr_grayedge"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:gravity="top"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:lines="4"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:scrollbars="vertical" />&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="@dimen/lay_100"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="@dimen/lay_100"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:src="@mipmap/ic_launcher_round"/>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<EditText&ndash;&gt;-->
+                <!--&lt;!&ndash;android:visibility="gone"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/apply_group1"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="110dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginTop="@dimen/lay_20"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginRight="@dimen/lay_15"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginBottom="@dimen/lay_30"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:background="@drawable/texr_grayedge"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:gravity="top"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:lines="4"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:scrollbars="vertical" />&ndash;&gt;-->
 
 
-            <ImageView
-                android:src="@mipmap/ic_launcher_round"
-                android:layout_width="@dimen/lay_100"
-                android:layout_height="@dimen/lay_100" />
+        <!--</LinearLayout>-->
 
 
-            <EditText
-                android:visibility="gone"
-                android:id="@+id/apply_group2"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:layout_marginTop="@dimen/lay_20"
-                android:layout_marginRight="@dimen/lay_15"
-                android:layout_marginBottom="@dimen/lay_30"
-                android:background="@drawable/texr_grayedge"
-                android:gravity="top"
-                android:lines="4"
-                android:scrollbars="vertical" />
-
-            <ImageView
-                android:layout_width="@dimen/lay_100"
-                android:layout_height="@dimen/lay_100"
-                android:src="@mipmap/ic_launcher_round"/>
-
-            <EditText
-                android:visibility="gone"
-                android:id="@+id/apply_group1"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:layout_marginTop="@dimen/lay_20"
-                android:layout_marginRight="@dimen/lay_15"
-                android:layout_marginBottom="@dimen/lay_30"
-                android:background="@drawable/texr_grayedge"
-                android:gravity="top"
-                android:lines="4"
-                android:scrollbars="vertical" />
-
-
-        </LinearLayout>
-
-
-    </ScrollView>
+    <!--</ScrollView>-->
 
 
 </LinearLayout>

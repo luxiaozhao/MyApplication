@@ -2,30 +2,42 @@ package com.example.wisdom.partybuilding;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 
+import com.bumptech.glide.Glide;
 import com.example.wisdom.partybuilding.base.BaseActivity;
 import com.example.wisdom.partybuilding.base.BasePresenter;
 import com.example.wisdom.partybuilding.view.MyLinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.jzvd.JZVideoPlayer;
+import cn.jzvd.JZVideoPlayerStandard;
 
 public class Main2Activity extends BaseActivity {
+    private JZVideoPlayerStandard mJC;
+    private SensorManager sensorManager;
+    private JZVideoPlayer.JZAutoFullscreenListener jzAutoFullscreenListener;
 
 
-    @BindView(R.id.et)
-    EditText et;
-    @BindView(R.id.se)
-    MyLinearLayout se;
-    @BindView(R.id.apply_group2)
-    EditText applyGroup2;
-    @BindView(R.id.apply_group1)
-    EditText applyGroup1;
-    @BindView(R.id.ssss)
-    ScrollView sv;
+//    @BindView(R.id.et)
+//    EditText et;
+//    @BindView(R.id.se)
+//    MyLinearLayout se;
+//    @BindView(R.id.apply_group2)
+//    EditText applyGroup2;
+//    @BindView(R.id.apply_group1)
+//    EditText applyGroup1;
+//    @BindView(R.id.ssss)
+//    ScrollView sv;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, Main2Activity.class);
@@ -35,9 +47,86 @@ public class Main2Activity extends BaseActivity {
     protected void initView() {
 
         ButterKnife.bind(this);
-        se.setParentScrollview(sv);
-        se.setEditeText(et);
+
+//          调用系统自己的播放器，需要用户自己选择
+//        String video = "http://ssb-video.oss-cn-qingdao.aliyuncs.com/Video_1003_20161027140007.mp4";
+//        Intent openVideo = new Intent(Intent.ACTION_VIEW);
+//        openVideo.setDataAndType(Uri.parse(video), "video/*");
+//        startActivity(openVideo);
+
+
+
+//        se.setParentScrollview(sv);
+//        se.setEditeText(et);
+
+
+
+        ImageView android_img = (ImageView) findViewById(R.id.android_img);
+        android_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+            mJC = (JZVideoPlayerStandard) findViewById(R.id.mJC);
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        jzAutoFullscreenListener = new JZVideoPlayer.JZAutoFullscreenListener();
+        mJC.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        JZVideoPlayer.setVideoImageDisplayType(JZVideoPlayer.VIDEO_IMAGE_DISPLAY_TYPE_FILL_PARENT);
+
+
+        mJC.TOOL_BAR_EXIST = false;
+        mJC.setUp("http://ssb-video.oss-cn-qingdao.aliyuncs.com/Video_1003_20161027140007.mp4"
+                , JZVideoPlayerStandard.SCROLL_AXIS_HORIZONTAL, "");
+
+
+
+//        Glide.with(getApplicationContext()).load("http://p0.so.qhmsg.com/bdr/_240_/t01c10808f98a39bd4f.jpg")
+//                .into(mJC.thumbImageView);
+//        7播放比例,可以设置为16:9,4:3
+        mJC.widthRatio = 16;
+        mJC.heightRatio = 9;
+
+//        8设置全屏播放
+        JZVideoPlayer.FULLSCREEN_ORIENTATION = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;  //横向
+        JZVideoPlayer.NORMAL_ORIENTATION = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT;  //纵向
+
+        mJC.startButton.performClick();
+
     }
+    @Override
+    public void onBackPressed() {
+        if (JZVideoPlayer.backPress()) {
+            return;
+        }
+        super.onBackPressed();
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(jzAutoFullscreenListener);
+        JZVideoPlayer.releaseAllVideos();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        播放器重力感应
+        Sensor accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensorManager.registerListener(jzAutoFullscreenListener, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        finish();
+//    }
 
     @Override
     protected int getLayoutId() {

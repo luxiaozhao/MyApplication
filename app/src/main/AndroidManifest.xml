@@ -2,7 +2,36 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wisdom.partybuilding">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- 友盟分享登录需要权限 -->
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
 
     <application
         android:name=".base.MyApplication"
@@ -17,33 +46,75 @@
 
 
         <!-- android:theme="@style/AppTheme"> -->
-        <activity android:name=".mvp.common.MainActivity">
+        <activity
+            android:name=".mvp.common.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.home.activity.BaseWebActivity" />
-        <activity android:name=".mvp.home.activity.LoginActivity" />
-        <activity android:name=".mvp.home.activity.SearchActivity" />
-        <activity android:name=".mvp.mine.activity.AboutUsActivity" />
-        <activity android:name=".mvp.mine.activity.ChangePasswordActivity" />
-        <activity android:name=".mvp.common.WebViewCurrencyActivity" />
+        <activity
+            android:name=".mvp.home.activity.BaseWebActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.home.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.home.activity.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.mine.activity.AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.mine.activity.ChangePasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.common.WebViewCurrencyActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".mvp.mine.activity.MaterialActivity" />
-        <activity android:name=".mvp.home.activity.TidingsActivity" />
-        <activity android:name=".mvp.home.activity.PayPartyFeesActivity" />
-        <activity android:name=".mvp.home.activity.ConfirmPaymentActivity" />
-        <activity android:name=".mvp.home.activity.DetailActivity" />
-        <activity android:name=".mvp.home.activity.DynamicActivity" />
-        <activity android:name=".mvp.home.activity.PartyAffairsActivity" />
-        <activity android:name=".mvp.upcoming.activity.ApplyActivity" />
-        <activity android:name=".mvp.upcoming.activity.UrnPositiveActivity" />
-        <activity android:name=".mvp.upcoming.activity.TransferOutActivity" />
-        <activity android:name=".mvp.upcoming.activity.TransferActivity" />
-        <activity android:name=".mvp.upcoming.activity.MakeReadyActivity" />
-        <activity android:name=".mvp.upcoming.activity.GrowingActivity" />
-        <activity android:name=".Main2Activity"></activity>
+        <activity
+            android:name=".mvp.home.activity.TidingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.home.activity.PayPartyFeesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.home.activity.ConfirmPaymentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.home.activity.DetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.home.activity.DynamicActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.home.activity.PartyAffairsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.upcoming.activity.ApplyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.upcoming.activity.UrnPositiveActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.upcoming.activity.TransferOutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.upcoming.activity.TransferActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.upcoming.activity.MakeReadyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.upcoming.activity.GrowingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Main2Activity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name=".Main3Activity" />
+        <activity android:name=".WebActivity"></activity>
     </application>
 
 </manifest>

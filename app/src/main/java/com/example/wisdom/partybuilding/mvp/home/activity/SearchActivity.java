@@ -63,6 +63,10 @@ public class SearchActivity extends BaseActivity {
         searchSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+//                android:focusable="false"
+
+
                 //先隐藏键盘
                 if (manager.isActive()) {
                     manager.hideSoftInputFromWindow(searchSearch.getApplicationWindowToken(), 0);

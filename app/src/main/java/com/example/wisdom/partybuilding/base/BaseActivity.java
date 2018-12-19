@@ -39,9 +39,6 @@ public abstract class BaseActivity <P extends BasePresenter> extends AppCompatAc
         this.setStatusBarFullTransparent();
         AppManager.getAppManager().addActivity(this);
 
-
-
-
         MyApplication.mContext=this;
         root = LayoutInflater.from(this).inflate(getLayoutId(), null);
         mInflate = LayoutInflater.from(this);
