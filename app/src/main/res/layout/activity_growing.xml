@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    android:background="#f7f7f7"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.wisdom.partybuilding.mvp.activity.upcoming.GrowingActivity">
+    android:background="#f7f7f7"
+    android:orientation="vertical"
+    tools:context="com.example.wisdom.partybuilding.mvp.upcoming.activity.GrowingActivity">
 
 
     <LinearLayout
@@ -209,7 +208,6 @@
             </LinearLayout>
 
 
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/lay_10"
@@ -220,26 +218,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/lay_15"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lay_20"
                     android:text="征求意见情况"
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_16" />
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
-                    android:layout_marginRight="@dimen/lay_15"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
-                    android:background="@drawable/texr_grayedge"
-                    android:layout_marginBottom="@dimen/lay_30"/>
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_marginBottom="@dimen/lay_30"
+                    android:background="@drawable/texr_grayedge" />
 
 
             </LinearLayout>
@@ -253,26 +250,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/lay_15"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lay_20"
                     android:text="支部委员会意见"
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_16" />
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
-                    android:layout_marginRight="@dimen/lay_15"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
-                    android:background="@drawable/texr_grayedge"
-                    android:layout_marginBottom="@dimen/lay_30"/>
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_marginBottom="@dimen/lay_30"
+                    android:background="@drawable/texr_grayedge" />
 
 
             </LinearLayout>
@@ -288,30 +284,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/lay_15"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lay_20"
                     android:text="党小组填写意见"
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_16" />
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
-                    android:layout_marginRight="@dimen/lay_15"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
-                    android:background="@drawable/texr_grayedge"
-                    android:layout_marginBottom="@dimen/lay_30"/>
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_marginBottom="@dimen/lay_30"
+                    android:background="@drawable/texr_grayedge" />
 
 
             </LinearLayout>
-
 
 
             <View
@@ -323,26 +317,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/lay_15"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lay_20"
                     android:text="培养人填写意见"
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_16" />
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
-                    android:layout_marginRight="@dimen/lay_15"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
-                    android:background="@drawable/texr_grayedge"
-                    android:layout_marginBottom="@dimen/lay_30"/>
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_marginBottom="@dimen/lay_30"
+                    android:background="@drawable/texr_grayedge" />
 
 
             </LinearLayout>
@@ -356,26 +349,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/lay_15"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lay_20"
                     android:text="上级党委备案"
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_16" />
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
-                    android:layout_marginRight="@dimen/lay_15"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
-                    android:background="@drawable/texr_grayedge"
-                    android:layout_marginBottom="@dimen/lay_30"/>
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_marginBottom="@dimen/lay_30"
+                    android:background="@drawable/texr_grayedge" />
 
 
             </LinearLayout>
@@ -384,7 +376,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/lay_10"
                 android:background="#f7f7f7" />
-
 
 
             <LinearLayout
@@ -500,37 +491,36 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_1"
-                android:layout_marginLeft="@dimen/lay_15"
-                android:background="#e1e4e9" />
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/lay_15"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lay_20"
                     android:text="党委意见"
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_16" />
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
-                    android:layout_marginRight="@dimen/lay_15"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
-                    android:background="@drawable/texr_grayedge"
-                    android:layout_marginBottom="@dimen/lay_30"/>
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_marginBottom="@dimen/lay_30"
+                    android:background="@drawable/texr_grayedge" />
 
 
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/lay_10"
@@ -540,29 +530,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/lay_15"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lay_20"
                     android:text="政治审查"
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_16" />
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
-                    android:layout_marginRight="@dimen/lay_15"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
-                    android:background="@drawable/texr_grayedge"
-                    android:layout_marginBottom="@dimen/lay_30"/>
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_marginBottom="@dimen/lay_30"
+                    android:background="@drawable/texr_grayedge" />
 
 
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/lay_10"
@@ -572,30 +562,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/lay_15"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lay_20"
                     android:text="集中培训"
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_16" />
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/lay_20"
-                    android:layout_marginRight="@dimen/lay_15"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
-                    android:background="@drawable/texr_grayedge"
-                    android:layout_marginBottom="@dimen/lay_30"/>
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_marginBottom="@dimen/lay_30"
+                    android:background="@drawable/texr_grayedge" />
 
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -613,53 +606,52 @@
 
 
                 <LinearLayout
-                    android:layout_marginLeft="@dimen/lay_25"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_25">
 
 
                     <ImageView
                         android:layout_width="@dimen/lay_25"
                         android:layout_height="@dimen/lay_25"
-                        android:src="@mipmap/rd_xuanzhong"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/rd_xuanzhong" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="是"
                         android:textColor="#0b0b0b"
-                        android:textSize="@dimen/font_16"/>
+                        android:textSize="@dimen/font_16" />
                 </LinearLayout>
 
 
                 <LinearLayout
-                    android:layout_marginLeft="@dimen/lay_25"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_25">
 
 
                     <ImageView
                         android:layout_width="@dimen/lay_25"
                         android:layout_height="@dimen/lay_25"
-                        android:src="@mipmap/rd_xuanzhong"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/rd_xuanzhong" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="否"
                         android:textColor="#0b0b0b"
-                        android:textSize="@dimen/font_16"/>
+                        android:textSize="@dimen/font_16" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_1"
-                android:layout_marginLeft="@dimen/lay_15"
-                android:background="#e1e4e9" />
+                android:layout_height="@dimen/lay_10"
+                android:background="#f7f7f7" />
 
 
         </LinearLayout>
@@ -701,9 +693,6 @@
 
 
     </LinearLayout>
-
-
-
 
 
 </LinearLayout>

@@ -17,32 +17,32 @@
 
 
         <!-- android:theme="@style/AppTheme"> -->
-        <activity android:name=".mvp.activity.commonactivity.MainActivity">
+        <activity android:name=".mvp.common.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.activity.home.BaseWebActivity" />
-        <activity android:name=".mvp.activity.login.LoginActivity" />
-        <activity android:name=".mvp.activity.home.SearchActivity" />
-        <activity android:name=".mvp.activity.mine.AboutUsActivity" />
-        <activity android:name=".mvp.activity.login.ChangePasswordActivity" />
-        <activity android:name=".mvp.activity.commonactivity.WebViewCurrencyActivity" />
-        <activity android:name=".mvp.activity.mine.MaterialActivity" />
-        <activity android:name=".mvp.activity.adapter.home.TidingsActivity" />
-        <activity android:name=".mvp.activity.home.PayPartyFeesActivity" />
-        <activity android:name=".mvp.activity.home.ConfirmPaymentActivity" />
-        <activity android:name=".mvp.activity.home.DetailActivity" />
-        <activity android:name=".mvp.activity.home.DynamicActivity" />
-        <activity android:name=".mvp.activity.home.PartyAffairsActivity" />
-        <activity android:name=".mvp.activity.upcoming.ApplyActivity" />
-        <activity android:name=".mvp.activity.upcoming.UrnPositiveActivity" />
-        <activity android:name=".mvp.activity.upcoming.TransferOutActivity" />
-        <activity android:name=".mvp.activity.upcoming.TransferActivity" />
-        <activity android:name=".mvp.activity.upcoming.MakeReadyActivity" />
-        <activity android:name=".mvp.activity.upcoming.GrowingActivity" />
+        <activity android:name=".mvp.home.activity.BaseWebActivity" />
+        <activity android:name=".mvp.home.activity.LoginActivity" />
+        <activity android:name=".mvp.home.activity.SearchActivity" />
+        <activity android:name=".mvp.mine.activity.AboutUsActivity" />
+        <activity android:name=".mvp.mine.activity.ChangePasswordActivity" />
+        <activity android:name=".mvp.common.WebViewCurrencyActivity" />
+        <activity android:name=".mvp.mine.activity.MaterialActivity" />
+        <activity android:name=".mvp.home.activity.TidingsActivity" />
+        <activity android:name=".mvp.home.activity.PayPartyFeesActivity" />
+        <activity android:name=".mvp.home.activity.ConfirmPaymentActivity" />
+        <activity android:name=".mvp.home.activity.DetailActivity" />
+        <activity android:name=".mvp.home.activity.DynamicActivity" />
+        <activity android:name=".mvp.home.activity.PartyAffairsActivity" />
+        <activity android:name=".mvp.upcoming.activity.ApplyActivity" />
+        <activity android:name=".mvp.upcoming.activity.UrnPositiveActivity" />
+        <activity android:name=".mvp.upcoming.activity.TransferOutActivity" />
+        <activity android:name=".mvp.upcoming.activity.TransferActivity" />
+        <activity android:name=".mvp.upcoming.activity.MakeReadyActivity" />
+        <activity android:name=".mvp.upcoming.activity.GrowingActivity" />
         <activity android:name=".Main2Activity"></activity>
     </application>
 

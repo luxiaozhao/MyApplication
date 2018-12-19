@@ -53,7 +53,7 @@ public class URLS {
     public static final String DYNAMICMODULE = "mobile/mobileNews/mobileNews/listnews.ht?pageSize=5&pageIndex=2&itemName=";
 
     /*
-     * 首页——动态(党委新闻,基层交流,学习园地)
+     * 首页——动态(党委新闻,基层交流,学习园地，通知公告)
      * */
     public static final String HOME_DYNAMIC = BASE_URL + "mobile/mobileNews/mobileNews/listnews.ht";
 

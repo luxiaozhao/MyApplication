@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#f7f7f7"
     android:orientation="vertical"
-    tools:context="com.example.wisdom.partybuilding.mvp.activity.upcoming.ApplyActivity">
+    tools:context="com.example.wisdom.partybuilding.mvp.upcoming.activity.ApplyActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -279,17 +279,21 @@
                     android:layout_gravity="center"
                     android:fadingEdge="none"
                     android:scrollbars="none"
-                    android:visibility="visible">
+                    android:visibility="visible"
+                    android:padding="@dimen/lay_10"
+                    android:background="@drawable/texr_grayedge"
+                    android:layout_marginLeft="@dimen/lay_5"
+                    android:layout_marginTop="@dimen/lay_20"
+                    android:layout_marginRight="@dimen/lay_15"
+                    android:layout_marginBottom="@dimen/lay_30">
 
 
-                <EditText
+                    <EditText
                         android:id="@+id/apply_talk_situation"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
-                        android:layout_marginTop="@dimen/lay_20"
-                        android:layout_marginRight="@dimen/lay_15"
-                        android:layout_marginBottom="@dimen/lay_30"
-                        android:background="@drawable/texr_grayedge" />
+                        android:gravity="top"
+                        android:background="@null"/>
 
 
                 </com.example.wisdom.partybuilding.view.MyLinearLayout>
@@ -466,20 +470,25 @@
                 <LinearLayout
                     android:id="@+id/apply_active_yes"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/lay_25">
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/lay_25"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/lay_10"
+                    android:paddingRight="@dimen/lay_10">
 
 
                     <ImageView
+
                         android:id="@+id/apply_active_yes_img"
                         android:layout_width="@dimen/lay_25"
                         android:layout_height="@dimen/lay_25"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/rd_xuanzhong" />
+                        android:src="@mipmap/rd_wanxuanzhong" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/lay_10"
                         android:text="是"
                         android:textColor="#0b0b0b"
                         android:textSize="@dimen/font_16" />
@@ -489,8 +498,11 @@
                 <LinearLayout
                     android:id="@+id/apply_active_no"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/lay_25">
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/lay_25"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/lay_10"
+                    android:paddingRight="@dimen/lay_10">
 
 
                     <ImageView
@@ -498,11 +510,12 @@
                         android:layout_width="@dimen/lay_25"
                         android:layout_height="@dimen/lay_25"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/rd_xuanzhong" />
+                        android:src="@mipmap/rd_wanxuanzhong" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/lay_10"
                         android:text="否"
                         android:textColor="#0b0b0b"
                         android:textSize="@dimen/font_16" />

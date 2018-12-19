@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.wisdom.partybuilding.mvp.activity.upcoming.TransferActivity">
+    tools:context="com.example.wisdom.partybuilding.mvp.upcoming.activity.TransferActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -208,162 +208,172 @@
 
             </LinearLayout>
 
-            <!--<View-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="@dimen/lay_10"-->
-            <!--android:background="#f7f7f7" />-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
 
 
-            <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="@dimen/lay_50"-->
-            <!--android:layout_marginLeft="@dimen/lay_15"-->
-            <!--android:gravity="center_vertical">-->
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/lay_50"
+            android:layout_marginLeft="@dimen/lay_15"
+            android:gravity="center_vertical">
 
 
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="政治面貌"-->
-            <!--android:textColor="#0b0b0b"-->
-            <!--android:textSize="@dimen/font_16" />-->
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="政治面貌"
+            android:textColor="#0b0b0b"
+            android:textSize="@dimen/font_16" />
 
 
-            <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginRight="@dimen/lay_8"-->
-            <!--android:layout_weight="1"-->
-            <!--android:gravity="right"-->
-            <!--android:text="党员"-->
-            <!--android:textColor="#0b0b0b"-->
-            <!--android:textSize="@dimen/font_16" />-->
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/lay_8"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="党员"
+            android:textColor="#0b0b0b"
+            android:textSize="@dimen/font_16" />
 
-            <!--<ImageView-->
-            <!--android:layout_width="@dimen/lay_25"-->
-            <!--android:layout_height="@dimen/lay_25"-->
-            <!--android:layout_marginRight="@dimen/lay_8"-->
-            <!--android:src="@mipmap/jinru" />-->
+            <ImageView
+            android:layout_width="@dimen/lay_25"
+            android:layout_height="@dimen/lay_25"
+            android:layout_marginRight="@dimen/lay_8"
+            android:src="@mipmap/jinru" />
 
-            <!--</LinearLayout>-->
-
-            <!--<View-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="@dimen/lay_10"-->
-            <!--android:background="#f7f7f7" />-->
-            <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="@dimen/lay_50"-->
-            <!--android:layout_marginLeft="@dimen/lay_15"-->
-            <!--android:gravity="center_vertical">-->
+            </LinearLayout>
 
 
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="身份证号"-->
-            <!--android:textColor="#0b0b0b"-->
-            <!--android:textSize="@dimen/font_16" />-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/lay_50"
+            android:layout_marginLeft="@dimen/lay_15"
+            android:gravity="center_vertical">
 
 
-            <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginRight="@dimen/lay_8"-->
-            <!--android:layout_weight="1"-->
-            <!--android:gravity="right"-->
-            <!--android:text="xxxxxxxxxxxxxxxxxx"-->
-            <!--android:textColor="#0b0b0b"-->
-            <!--android:textSize="@dimen/font_16" />-->
-
-            <!--<ImageView-->
-            <!--android:layout_width="@dimen/lay_25"-->
-            <!--android:layout_height="@dimen/lay_25"-->
-            <!--android:layout_marginRight="@dimen/lay_8"-->
-            <!--android:src="@mipmap/jinru" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<View-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="@dimen/lay_10"-->
-            <!--android:background="#f7f7f7" />-->
-            <!---->
-            <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="@dimen/lay_50"-->
-            <!--android:layout_marginLeft="@dimen/lay_15"-->
-            <!--android:gravity="center_vertical">-->
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="身份证号"
+            android:textColor="#0b0b0b"
+            android:textSize="@dimen/font_16" />
 
 
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="联系电话"-->
-            <!--android:textColor="#0b0b0b"-->
-            <!--android:textSize="@dimen/font_16" />-->
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/lay_8"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="xxxxxxxxxxxxxxxxxx"
+            android:textColor="#0b0b0b"
+            android:textSize="@dimen/font_16" />
+
+            <ImageView
+            android:layout_width="@dimen/lay_25"
+            android:layout_height="@dimen/lay_25"
+            android:layout_marginRight="@dimen/lay_8"
+            android:src="@mipmap/jinru" />
+
+            </LinearLayout>
 
 
-            <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginRight="@dimen/lay_8"-->
-            <!--android:layout_weight="1"-->
-            <!--android:gravity="right"-->
-            <!--android:text="1111111111"-->
-            <!--android:textColor="#0b0b0b"-->
-            <!--android:textSize="@dimen/font_16" />-->
-
-            <!--<ImageView-->
-            <!--android:layout_width="@dimen/lay_25"-->
-            <!--android:layout_height="@dimen/lay_25"-->
-            <!--android:layout_marginRight="@dimen/lay_8"-->
-            <!--android:src="@mipmap/jinru" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<View-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="@dimen/lay_10"-->
-            <!--android:background="#f7f7f7" />-->
-            <!---->
-            <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="@dimen/lay_50"-->
-            <!--android:layout_marginLeft="@dimen/lay_15"-->
-            <!--android:gravity="center_vertical">-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
 
 
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="党费缴纳截至日期"-->
-            <!--android:textColor="#0b0b0b"-->
-            <!--android:textSize="@dimen/font_16" />-->
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/lay_50"
+            android:layout_marginLeft="@dimen/lay_15"
+            android:gravity="center_vertical">
 
 
-            <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginRight="@dimen/lay_8"-->
-            <!--android:layout_weight="1"-->
-            <!--android:gravity="right"-->
-            <!--android:text="2018-18-12"-->
-            <!--android:textColor="#0b0b0b"-->
-            <!--android:textSize="@dimen/font_16" />-->
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="联系电话"
+            android:textColor="#0b0b0b"
+            android:textSize="@dimen/font_16" />
 
-            <!--<ImageView-->
-            <!--android:layout_width="@dimen/lay_25"-->
-            <!--android:layout_height="@dimen/lay_25"-->
-            <!--android:layout_marginRight="@dimen/lay_8"-->
-            <!--android:src="@mipmap/jinru" />-->
 
-            <!--</LinearLayout>-->
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/lay_8"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="1111111111"
+            android:textColor="#0b0b0b"
+            android:textSize="@dimen/font_16" />
+
+            <ImageView
+            android:layout_width="@dimen/lay_25"
+            android:layout_height="@dimen/lay_25"
+            android:layout_marginRight="@dimen/lay_8"
+            android:src="@mipmap/jinru" />
+
+            </LinearLayout>
 
             <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/lay_10"
             android:background="#f7f7f7" />
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/lay_50"
+            android:layout_marginLeft="@dimen/lay_15"
+            android:gravity="center_vertical">
+
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="党费缴纳截至日期"
+            android:textColor="#0b0b0b"
+            android:textSize="@dimen/font_16" />
+
+
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/lay_8"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="2018-18-12"
+            android:textColor="#0b0b0b"
+            android:textSize="@dimen/font_16" />
+
+            <ImageView
+            android:layout_width="@dimen/lay_25"
+            android:layout_height="@dimen/lay_25"
+            android:layout_marginRight="@dimen/lay_8"
+            android:src="@mipmap/jinru" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
 
 
             <LinearLayout
@@ -400,10 +410,10 @@
             </LinearLayout>
 
             <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
-
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
 
             <LinearLayout
             android:layout_width="match_parent"
@@ -438,10 +448,14 @@
 
             </LinearLayout>
 
+
             <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_10"
-            android:background="#f7f7f7" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
+
             <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/lay_50"

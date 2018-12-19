@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvp.activity.mine.AboutUsActivity">
+    tools:context=".mvp.mine.activity.AboutUsActivity">
     <RelativeLayout
         android:layout_marginTop="@dimen/lay_20"
         android:layout_width="match_parent"

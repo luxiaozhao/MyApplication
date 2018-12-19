@@ -7,7 +7,7 @@
     android:background="#f7f7f7"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.example.wisdom.partybuilding.mvp.activity.home.ConfirmPaymentActivity">
+    tools:context="com.example.wisdom.partybuilding.mvp.home.activity.ConfirmPaymentActivity">
 
 
     <LinearLayout

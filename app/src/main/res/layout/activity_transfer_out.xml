@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.wisdom.partybuilding.mvp.activity.upcoming.TransferOutActivity">
+    tools:context="com.example.wisdom.partybuilding.mvp.upcoming.activity.TransferOutActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -208,10 +208,12 @@
 
             </LinearLayout>
 
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_10"
-                android:background="#f7f7f7" />
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
 
 
             <LinearLayout
@@ -247,10 +249,13 @@
 
             </LinearLayout>
 
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_10"
-                android:background="#f7f7f7" />
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/lay_50"
@@ -284,10 +289,13 @@
 
             </LinearLayout>
 
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_10"
-                android:background="#f7f7f7" />
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -360,11 +368,12 @@
 
             </LinearLayout>
 
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_10"
-                android:background="#f7f7f7" />
-
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -399,10 +408,12 @@
 
             </LinearLayout>
 
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_10"
-                android:background="#f7f7f7" />
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
 
 
             <LinearLayout
@@ -438,10 +449,13 @@
 
         </LinearLayout>
 
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_10"
-                android:background="#f7f7f7" />
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
             <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/lay_50"
@@ -475,10 +489,13 @@
 
         </LinearLayout>
 
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_10"
-                android:background="#f7f7f7" />
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
+
             <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/lay_50"
@@ -512,11 +529,12 @@
 
         </LinearLayout>
 
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_10"
-                android:background="#f7f7f7" />
-
+                android:layout_height="@dimen/lay_1"
+                android:layout_marginLeft="@dimen/lay_15"
+                android:background="#e1e4e9" />
 
 
             <LinearLayout
