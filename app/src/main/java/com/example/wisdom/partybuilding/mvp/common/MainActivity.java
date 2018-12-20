@@ -1,13 +1,18 @@
 package com.example.wisdom.partybuilding.mvp.common;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.widget.RadioGroup;
 
 import com.example.wisdom.partybuilding.R;
+import com.example.wisdom.partybuilding.aurora.ExampleUtil;
 import com.example.wisdom.partybuilding.base.BaseActivity;
 import com.example.wisdom.partybuilding.base.BasePresenter;
 import com.example.wisdom.partybuilding.mvp.home.activity.LoginActivity;
@@ -16,7 +21,10 @@ import com.example.wisdom.partybuilding.mvp.mine.fragment.Mine_Fragment;
 import com.example.wisdom.partybuilding.mvp.notice.fragment.Notice_Fragment;
 import com.example.wisdom.partybuilding.mvp.upcoming.fragment.Upcoming_Fragment;
 import com.example.wisdom.partybuilding.net.Contants;
+import com.example.wisdom.partybuilding.utils.ToastUtils;
 import com.orhanobut.hawk.Hawk;
+
+import cn.jpush.android.api.JPushInterface;
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
@@ -36,6 +44,15 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     protected void initView() {
+        registerMessageReceiver();  // used for receive msg
+        //TODO: 设置开启日志,发布时请关闭日志
+        JPushInterface.setDebugMode(false);
+        try {
+            JPushInterface.init(getApplicationContext());
+        }catch (Exception e){}
+
+
+
         home_Fragment = new Home_Fragment();
         upcoming_Fragment = new Upcoming_Fragment();
         notice_Fragment = new Notice_Fragment();
@@ -146,5 +163,68 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 //        }
 
 
+    }
+
+    //for receive customer msg from jpush server
+    private MessageReceiver mMessageReceiver;
+    public static final String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_MESSAGE = "message";
+    public static final String KEY_EXTRAS = "extras";
+    public static boolean isForeground = false;
+
+
+    @Override
+    protected void onResume() {
+        isForeground = true;
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        isForeground = false;
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+        super.onDestroy();
+    }
+
+    public void registerMessageReceiver() {
+        mMessageReceiver = new MessageReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+        filter.addAction(MESSAGE_RECEIVED_ACTION);
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, filter);
+    }
+    public class MessageReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            try {
+                if (MESSAGE_RECEIVED_ACTION.equals(intent.getAction())) {
+                    String messge = intent.getStringExtra(KEY_MESSAGE);
+                    String extras = intent.getStringExtra(KEY_EXTRAS);
+                    StringBuilder showMsg = new StringBuilder();
+                    showMsg.append(KEY_MESSAGE + " : " + messge + "\n");
+                    if (!ExampleUtil.isEmpty(extras)) {
+                        showMsg.append(KEY_EXTRAS + " : " + extras + "\n");
+                    }
+                    setCostomMsg(showMsg.toString());
+                }
+            } catch (Exception e){
+            }
+        }
+    }
+
+    private void setCostomMsg(String msg){
+        ToastUtils.getInstance().showTextToast(this,"这是什么鬼东西，我真想知道"+msg);
+        Log.e("TAG",""+msg);
+//        if (null != msgText) {
+//            msgText.setText(msg);
+//            msgText.setVisibility(android.view.View.VISIBLE);
+//        }
     }
 }

@@ -23,7 +23,7 @@ public class Main2Activity extends BaseActivity {
 
 
 //    @BindView(R.id.et)
-//    EditText et;
+//    EditText et;   start
 //    @BindView(R.id.se)
 //    MyLinearLayout se;
 //    @BindView(R.id.apply_group2)

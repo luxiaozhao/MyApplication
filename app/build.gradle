@@ -3,7 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.w1565.partybuilding"
+//        applicationId "com.example.w1565.partybuilding"
+        applicationId "com.example.wisdom.partybuilding"
         minSdkVersion 18
         targetSdkVersion 28
         versionCode 1
@@ -13,6 +14,13 @@ android {
         ndk { abiFilters "armeabi", "armeabi-v7a", "x86", "mips" }
 
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -110,9 +118,12 @@ dependencies {
 
     //腾讯TBSjar包
     implementation files('libs/tbs_sdk_thirdapp_v3.6.0.1371_43624_sharewithdownload_withoutGame_obfs_20181106_121046.jar')
+
     //xUtils3下载文件的使用
     implementation 'org.xutils:xutils:3.5.0'
 
     //权限
     implementation 'com.davidinchina:easylibrary:1.0.0'
+    implementation files('libs/jcore-android-1.2.6.jar')
+    implementation files('libs/jpush-android-3.1.8.jar')
 }
