@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.wisdom.partybuilding.Main2Activity;
+import com.example.wisdom.partybuilding.Main3Activity;
 import com.example.wisdom.partybuilding.R;
 import com.example.wisdom.partybuilding.WebActivity;
 import com.example.wisdom.partybuilding.base.BaseFragment;
@@ -321,7 +322,13 @@ public class Home_Fragment extends BaseFragment {
             case R.id.home_notice:
                 http://view.officeapps.live.com/op/view.aspx?src=http://www.ncac.gov.cn/sitefiles/services/wcm/utils.aspx?type=Download&publishmentSystemID=470&channelID=574&contentID=20880
 
-                WebActivity.start(getActivity());//文件阅读
+//                WebActivity.start(getActivity());//文件阅读  暂时不能正常使用
+
+                tipDialog.show();
+                Main3Activity.start(getActivity());//文件阅读  暂时不能正常使用
+
+
+
 
 
 //                WebViewCurrencyActivity.start(getActivity(),"视频","https://pic.ibaotu.com/01/03/85/49e888piCpxw.mp4");

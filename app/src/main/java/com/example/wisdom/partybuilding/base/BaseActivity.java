@@ -13,6 +13,7 @@ import android.view.WindowManager;
 
 import com.example.wisdom.partybuilding.utils.AppManager;
 import com.orhanobut.hawk.Hawk;
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -28,6 +29,7 @@ public abstract class BaseActivity <P extends BasePresenter> extends AppCompatAc
     protected P mPresenter;
     protected LayoutInflater mInflate;
     private Unbinder mUnBinder = null;
+    protected QMUITipDialog tipDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +59,9 @@ public abstract class BaseActivity <P extends BasePresenter> extends AppCompatAc
                 return false;
             }
         });
+
+        getdialog();
+
     }
 
     protected abstract void initView();
@@ -80,6 +85,9 @@ public abstract class BaseActivity <P extends BasePresenter> extends AppCompatAc
         super.onDestroy();
         mUnBinder.unbind();
         AppManager.getAppManager().finishActivity(this);
+        if (tipDialog!=null){
+            tipDialog.cancel();
+        }
     }
 
     /**
@@ -99,4 +107,12 @@ public abstract class BaseActivity <P extends BasePresenter> extends AppCompatAc
             //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
     }
+
+    private void  getdialog(){
+        tipDialog = new QMUITipDialog.Builder(this)
+                .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
+                .setTipWord("正在加载")
+                .create();
+    };
+
 }

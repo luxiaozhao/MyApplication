@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
+
 import java.lang.reflect.Field;
 
 import butterknife.ButterKnife;
@@ -24,10 +26,11 @@ public abstract class BaseFragment<P extends IPresenter> extends LazyFragment {
     // 两次点击按钮之间的点击间隔不能少于500毫秒
     protected static final int MIN_CLICK_DELAY_TIME = 500;
     protected static long lastClickTime;
+    protected QMUITipDialog tipDialog;
 
-    public boolean isDoubleClick(){
+    public boolean isDoubleClick() {
         long curClickTime = System.currentTimeMillis();
-        if((curClickTime - lastClickTime) < MIN_CLICK_DELAY_TIME) {
+        if ((curClickTime - lastClickTime) < MIN_CLICK_DELAY_TIME) {
             return true;
         }
         lastClickTime = curClickTime;
@@ -44,6 +47,9 @@ public abstract class BaseFragment<P extends IPresenter> extends LazyFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        getdialog();
+
         if (mPresenter == null) {
             mPresenter = getPresenter();
         }
@@ -86,5 +92,25 @@ public abstract class BaseFragment<P extends IPresenter> extends LazyFragment {
     public void onDestroyView() {
         super.onDestroyView();
         mUnBinder.unbind();
+    }
+
+
+    private void getdialog() {
+        tipDialog = new QMUITipDialog.Builder(getActivity())
+                .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
+                .setTipWord("正在加载")
+                .create();
+    }
+
+    ;
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        if (tipDialog != null) {
+        tipDialog.cancel();
+        }
     }
 }

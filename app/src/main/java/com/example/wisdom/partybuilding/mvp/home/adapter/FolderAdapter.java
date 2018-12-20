@@ -45,9 +45,9 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
 
         Glide.with(context)
                 .load(list.get(position).getImg())
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_background)
-                .crossFade(1000)
+//                .placeholder(R.drawable.ic_launcher_background)
+//                .error(R.drawable.ic_launcher_background)
+//                .crossFade(1000)
                 .into(holder.adapter_img);
         holder.adapter_name.setText(list.get(position).getString());
 

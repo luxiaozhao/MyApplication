@@ -9,7 +9,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.wisdom.partybuilding.R;
 import com.example.wisdom.partybuilding.aurora.ExampleUtil;
@@ -46,6 +48,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     protected void initView() {
         registerMessageReceiver();  // used for receive msg
 
+
+
         JPushInterface.setDebugMode(false);
         try {
             JPushInterface.init(getApplicationContext());
@@ -57,6 +61,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         upcoming_Fragment = new Upcoming_Fragment();
         notice_Fragment = new Notice_Fragment();
         mine_Fragment = new Mine_Fragment();
+
+
         supportFragmentManager = getSupportFragmentManager();
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.conta, home_Fragment, "0")
@@ -66,7 +72,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 .commit();
         radioGroup = (RadioGroup) findViewById(R.id.radio);
         radioGroup.setOnCheckedChangeListener(this);
-        radioGroup.check(R.id.main_home);
+        radioGroup.check(R.id.main_home);//选中状态
     }
 
     @Override
@@ -152,16 +158,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                     }
                     break;
             }
-//        } else {
-//            supportFragmentManager.beginTransaction()
-//                    .hide(mine_Fragment)
-//                    .hide(notice_Fragment)
-//                    .hide(upcoming_Fragment)
-//                    .show(home_Fragment).commit();
-//            radioGroup.check(R.id.main_home);
-//            ToastUtils.getInstance().showTextToast(this, "请登录");
-//        }
-
 
     }
 
@@ -227,4 +223,23 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 //            msgText.setVisibility(android.view.View.VISIBLE);
 //        }
     }
+
+    // 用来计算返回键的点击间隔时间
+    private long exitTime = 0;
+
+    //点击两次返回键退出应用
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }

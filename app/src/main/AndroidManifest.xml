@@ -230,10 +230,10 @@
             </intent-filter>
         </activity>
 
-
         <!-- <activity android:name=".start.GuideActivity"></activity> -->
-        <activity android:name=".mvp.common.MainActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".mvp.common.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".mvp.home.activity.LoginActivity"
             android:screenOrientation="portrait" />
@@ -313,7 +313,7 @@
                 <category android:name="jpush.testCategory" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".Main3Activity"></activity>
     </application>
 
 </manifest>

@@ -145,7 +145,7 @@ public class SearchActivity extends BaseActivity {
     }
     private void getdata(String param) {
 
-
+tipDialog.show();
         OkHttpUtils
                 .get()
                 .url(URLS.HOME_SEARCH)
@@ -157,7 +157,7 @@ public class SearchActivity extends BaseActivity {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Log.e("TAG", "这是失败的方法1" + e.toString());
-
+                        tipDialog.cancel();
                     }
 
                     @Override
@@ -166,6 +166,7 @@ public class SearchActivity extends BaseActivity {
                         DynamicBean bean = gson.fromJson(response, DynamicBean.class);
                         newsBeans.addAll(bean.getNews());
                         searchAdapter.notifyDataSetChanged();
+                        tipDialog.cancel();
                     }
                 });
 
