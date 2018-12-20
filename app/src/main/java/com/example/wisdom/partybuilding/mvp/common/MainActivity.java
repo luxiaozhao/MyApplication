@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     protected void initView() {
         registerMessageReceiver();  // used for receive msg
-        //TODO: 设置开启日志,发布时请关闭日志
+
         JPushInterface.setDebugMode(false);
         try {
             JPushInterface.init(getApplicationContext());
@@ -220,8 +220,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     }
 
     private void setCostomMsg(String msg){
-        ToastUtils.getInstance().showTextToast(this,"这是什么鬼东西，我真想知道"+msg);
-        Log.e("TAG",""+msg);
+//        ToastUtils.getInstance().showTextToast(this,"这是什么鬼东西，我真想知道"+msg);
+        Log.e("TAG","这是什么鬼东西，我真想知道"+msg);
 //        if (null != msgText) {
 //            msgText.setText(msg);
 //            msgText.setVisibility(android.view.View.VISIBLE);

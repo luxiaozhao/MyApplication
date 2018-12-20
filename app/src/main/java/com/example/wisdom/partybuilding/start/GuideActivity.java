@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 
 import com.example.wisdom.partybuilding.Main2Activity;
 import com.example.wisdom.partybuilding.R;
+import com.example.wisdom.partybuilding.base.BaseActivity;
+import com.example.wisdom.partybuilding.base.BasePresenter;
 import com.example.wisdom.partybuilding.mvp.common.MainActivity;
 
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ import java.util.List;
 
 import easypermission.davidinchina.com.easylibrary.EasyPermission;
 
-public class GuideActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
+public class GuideActivity extends BaseActivity implements ViewPager.OnPageChangeListener{
 
     private ViewPager vp;
     private int []imageIdArray;//图片资源的数组
@@ -33,42 +35,6 @@ public class GuideActivity extends AppCompatActivity implements ViewPager.OnPage
     private ImageButton ib_start;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_guide);
-
-        init();
-
-        sharedPreferences = getSharedPreferences("info2", MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        String result = sharedPreferences.getString("ss", null);
-        if (TextUtils.isEmpty(result)) {
-            //使用editor保存数据
-            editor.putString("ss", "1");
-            //注意一定要提交数据，此步骤容易忘记
-            editor.commit();
-        }else {
-            Intent intent = new Intent(this,MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
-        ib_start = (ImageButton) findViewById(R.id.guide_ib_start);
-        ib_start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(GuideActivity.this,MainActivity.class));
-                finish();
-            }
-        });
-
-        //加载ViewPager
-        initViewPager();
-
-    }
 
     /**
      * 加载图片ViewPager
@@ -145,6 +111,54 @@ public class GuideActivity extends AppCompatActivity implements ViewPager.OnPage
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         EasyPermission.handleResult(this, requestCode, permissions, grantResults);//处理权限申请回调结果
+    }
+
+    @Override
+    protected void initView() {
+
+        init();
+
+        sharedPreferences = getSharedPreferences("info2", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        String result = sharedPreferences.getString("ss", null);
+        if (TextUtils.isEmpty(result)) {
+            //使用editor保存数据
+            editor.putString("ss", "1");
+            //注意一定要提交数据，此步骤容易忘记
+            editor.commit();
+        }else {
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+        ib_start = (ImageButton) findViewById(R.id.guide_ib_start);
+        ib_start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GuideActivity.this,MainActivity.class));
+                finish();
+            }
+        });
+
+        //加载ViewPager
+        initViewPager();
+
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_guide;
+    }
+
+    @Override
+    protected BasePresenter getPresenter() {
+        return null;
+    }
+
+    @Override
+    protected void initDataAndEvent() {
+
     }
 }
 

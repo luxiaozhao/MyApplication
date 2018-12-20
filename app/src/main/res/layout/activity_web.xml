@@ -7,7 +7,11 @@
     android:background="#f7f7f7"
     android:orientation="vertical"
     tools:context="com.example.wisdom.partybuilding.WebActivity">
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="文件存储"
+    android:textColor="#000"/>
     <RelativeLayout
         android:id="@+id/tbsView"
         android:layout_width="wrap_content"

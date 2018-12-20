@@ -72,9 +72,9 @@
     <application
         android:name=".base.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
@@ -171,7 +171,7 @@
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
-            android:exported="false"></service>
+            android:exported="false" />
         <!-- Required SDK 核心功能 -->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
 
@@ -221,23 +221,19 @@
 
         <activity
             android:name=".start.GuideActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.Launch">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity android:name=".start.GuideActivity"></activity>-->
-        <activity android:name=".mvp.common.MainActivity"></activity>
 
 
-
-
-
-        <activity
-            android:name=".mvp.home.activity.BaseWebActivity"
-            android:screenOrientation="portrait" />
+        <!-- <activity android:name=".start.GuideActivity"></activity> -->
+        <activity android:name=".mvp.common.MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".mvp.home.activity.LoginActivity"
             android:screenOrientation="portrait" />
@@ -293,7 +289,6 @@
         <activity
             android:name=".Main2Activity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
-        <activity android:name=".Main3Activity" />
         <activity android:name=".WebActivity" />
 
         <!-- Required. For publish channel feature -->

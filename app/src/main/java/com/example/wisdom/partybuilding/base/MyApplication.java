@@ -3,6 +3,7 @@ package com.example.wisdom.partybuilding.base;
 import android.app.Application;
 import android.util.Log;
 
+import com.example.wisdom.partybuilding.R;
 import com.orhanobut.hawk.Hawk;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.TbsListener;

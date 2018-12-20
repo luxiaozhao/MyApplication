@@ -65,6 +65,7 @@ public class WebActivity extends AppCompatActivity implements TbsReaderView.Read
 //        Log.e("TAG", "文件夹：" + BASE_PATH + "----------------" + getfiledirectory);
 //        initDoc();
 
+//        start
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        web_bar = (ProgressBar) findViewById(R.id.web_bar);
