@@ -5,19 +5,13 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 
-import com.bumptech.glide.Glide;
 import com.example.wisdom.partybuilding.base.BaseActivity;
 import com.example.wisdom.partybuilding.base.BasePresenter;
-import com.example.wisdom.partybuilding.view.MyLinearLayout;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.jzvd.JZVideoPlayer;
 import cn.jzvd.JZVideoPlayerStandard;
@@ -37,7 +31,7 @@ public class Main2Activity extends BaseActivity {
 //    @BindView(R.id.apply_group1)
 //    EditText applyGroup1;
 //    @BindView(R.id.ssss)
-//    ScrollView sv;
+//    ScrollView sv;    科工 wisdom  PartyBuilding
 
     public static void start(Context context) {
         Intent intent = new Intent(context, Main2Activity.class);
