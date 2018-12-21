@@ -9,20 +9,9 @@ import com.example.wisdom.partybuilding.R;
 import com.example.wisdom.partybuilding.base.BaseFragment;
 import com.example.wisdom.partybuilding.base.IPresenter;
 import com.example.wisdom.partybuilding.mvp.bean.SuccessBean;
-import com.example.wisdom.partybuilding.mvp.bean.login.AttestBean;
 import com.example.wisdom.partybuilding.mvp.bean.upcoming.UpcomingBean;
 import com.example.wisdom.partybuilding.mvp.common.WebViewCurrencyActivity;
-import com.example.wisdom.partybuilding.mvp.home.activity.DynamicActivity;
-import com.example.wisdom.partybuilding.mvp.home.activity.PartyAffairsActivity;
-import com.example.wisdom.partybuilding.mvp.home.activity.PayPartyFeesActivity;
-import com.example.wisdom.partybuilding.mvp.upcoming.activity.ApplyActivity;
-import com.example.wisdom.partybuilding.mvp.upcoming.activity.GrowingActivity;
-import com.example.wisdom.partybuilding.mvp.upcoming.activity.MakeReadyActivity;
-import com.example.wisdom.partybuilding.mvp.upcoming.activity.TransferActivity;
-import com.example.wisdom.partybuilding.mvp.upcoming.activity.TransferOutActivity;
-import com.example.wisdom.partybuilding.mvp.upcoming.activity.UrnPositiveActivity;
 import com.example.wisdom.partybuilding.mvp.adapter.UpcomingAdapter;
-import com.example.wisdom.partybuilding.mvp.bean.Bean1;
 import com.example.wisdom.partybuilding.net.Contants;
 import com.example.wisdom.partybuilding.net.URLS;
 import com.example.wisdom.partybuilding.utils.ToastUtils;
@@ -47,7 +36,6 @@ public class Upcoming_Fragment extends BaseFragment {
     private UpcomingAdapter upcomingAdapter;
 
     private List<UpcomingBean.ResultsBean> upcomingBeans=new ArrayList<>();
-    private List<Bean1> beans = new ArrayList<>();
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -138,51 +126,6 @@ public class Upcoming_Fragment extends BaseFragment {
                         upcomingBeans.addAll(bean.getResults());
                     }
                 });
-        Bean1 bean1 = new Bean1();
-        bean1.setName1("赵健");
-        bean1.setName2("孟祥超");
-        bean1.setLeixing("积极分子列为发展对象");
-        bean1.setShijian("2018-12-1");
-        beans.add(bean1);
-
-
-        Bean1 bean2 = new Bean1();
-        bean2.setName1("赵健");
-        bean2.setName2("孟祥超");
-        bean2.setLeixing("申请入党");
-        bean2.setShijian("2018-12-1");
-        beans.add(bean2);
-
-
-        Bean1 bean3 = new Bean1();
-        bean3.setName1("赵健");
-        bean3.setName2("孟祥超");
-        bean3.setLeixing("预备党员转为正式党员");
-        bean3.setShijian("2018-12-1");
-        beans.add(bean3);
-
-        Bean1 bean4 = new Bean1();
-        bean4.setName1("赵健");
-        bean4.setName2("孟祥超");
-        bean4.setLeixing("组织关系转出");
-        bean4.setShijian("2018-12-1");
-        beans.add(bean4);
-
-
-        Bean1 bean5 = new Bean1();
-        bean5.setName1("赵健");
-        bean5.setName2("孟祥超");
-        bean5.setLeixing("组织关系转入");
-        bean5.setShijian("2018-12-1");
-        beans.add(bean5);
-
-        Bean1 bean6 = new Bean1();
-        bean6.setName1("赵健");
-        bean6.setName2("孟祥超");
-        bean6.setLeixing("发展对象转为预备党员");
-        bean6.setShijian("2018-12-1");
-        beans.add(bean6);
-
 
     }
 }

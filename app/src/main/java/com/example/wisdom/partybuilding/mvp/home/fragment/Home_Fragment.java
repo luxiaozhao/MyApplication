@@ -15,10 +15,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.wisdom.partybuilding.Main2Activity;
 import com.example.wisdom.partybuilding.Main3Activity;
 import com.example.wisdom.partybuilding.R;
-import com.example.wisdom.partybuilding.WebActivity;
 import com.example.wisdom.partybuilding.base.BaseFragment;
 import com.example.wisdom.partybuilding.base.IPresenter;
 import com.example.wisdom.partybuilding.mvp.home.adapter.FolderAdapter;
