@@ -9,6 +9,8 @@
     android:background="#FFF">
 
 <LinearLayout
+    android:paddingTop="@dimen/lay_15"
+    android:paddingBottom="@dimen/lay_15"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center_vertical">
@@ -17,6 +19,7 @@
 
 
     <TextView
+
         android:id="@+id/upcoming_adapter_name"
         android:layout_marginLeft="@dimen/lay_15"
         android:layout_width="@dimen/lay_48"
@@ -30,57 +33,17 @@
 
 
     <TextView
+
         android:id="@+id/upcoming_adapter_type"
         android:layout_marginLeft="@dimen/lay_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="发展对象转为预备党员"
+        android:text="发展对象转为预备党员xxxxxxxxxxxxxxxxxxxxxxxxxxx"
         android:textColor="#0b0b0b"
         android:textSize="@dimen/font_15"/>
 
 
 
-    <View
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/lay_1" />
-
-
-    <LinearLayout
-        android:paddingTop="@dimen/lay_16"
-        android:paddingBottom="@dimen/lay_16"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginRight="@dimen/lay_15">
-
-
-        <TextView
-            android:id="@+id/upcoming_adapter_name1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="孟祥超"
-            android:textColor="#aaa"
-            android:textSize="@dimen/font_14"/>
-
-        <View
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/lay_14" />
-
-        <TextView
-            android:id="@+id/upcoming_adapter_while"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2018-12-12"
-            android:textColor="#aaa"
-            android:textSize="@dimen/font_14"/>
-
-
-
-
-    </LinearLayout>
 
 
 </LinearLayout>

@@ -5,8 +5,9 @@ public class URLS {
      * 服务器地址
      */
 //    public static final String BASE_URL = "http://119.80.161.8:9999/FHBE/";
-    public static final String BASE_URL = "http://192.168.1.199:9999/FHBE/";
-
+//    public static final String BASE_URL = "http://192.168.1.199:9999/FHBE/";
+    public static final String BASE_URL = "http://192.168.1.199:8080/FHBE/";
+//  http://192.168.1.199:8080/FHBE/login.ht?username=djys&password=1
     /**
      * 轮播图
      */
@@ -24,7 +25,7 @@ public class URLS {
     /**
      * 登陆
      */
-
+//  http://127.0.0.1:8080/FHBE/login.ht?username=djys&password=1
     public static final String SEND_MESSAGE = BASE_URL + "login.ht";
     /*
      * 个人资料
@@ -67,6 +68,15 @@ public class URLS {
      * */
     public static final String HOME_SEARCH  = BASE_URL + "mobile/mobileNews/mobileNews/search.ht";
 //  //  http://192.168.1.199:9999/FHBE/mobile/mobileNews/mobileNews/search.ht?param=学习&pageSize=20&pageIndex=1
+
+
+
+    /*
+    * 代办
+    * */
+
+    public static final String UPCOMING_LIST  = BASE_URL + "mobile/bpm/bpmMobileTask/pendingMatters.ht";
+//    http://192.168.1.199:8080/FHBE/mobile/bpm/bpmMobileTask/pendingMatters.ht?sid=AC9363F950D03AF78E5798A25D5D6F8E
 
 
 }

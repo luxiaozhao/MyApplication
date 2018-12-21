@@ -39,8 +39,10 @@ public class Notice_Fragment extends BaseFragment {
     private List<DynamicBean.NewsBean> bwws = new ArrayList<>();
     private NoticeAdapter folderAdapter1;
 
+
     @Override
     protected void initEventAndData() {
+
 
         getdata(1,20);
 
@@ -111,6 +113,5 @@ public class Notice_Fragment extends BaseFragment {
                 });
 
     }
-
 
 }

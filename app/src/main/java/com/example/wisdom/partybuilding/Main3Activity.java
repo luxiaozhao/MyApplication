@@ -67,9 +67,12 @@ public class Main3Activity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.butoon1:
                 try {
-                    if (tipDialog!=null){
-                        tipDialog.cancel();
-                    }
+
+                    tipDialog.show();
+                    tipDialog.show();
+                    tipDialog.show();
+
+
 
 
                 } catch (Exception e) {

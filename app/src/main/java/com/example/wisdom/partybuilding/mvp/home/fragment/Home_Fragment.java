@@ -93,7 +93,16 @@ public class Home_Fragment extends BaseFragment {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
     }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser){
+            Log.e("TAG","通知1："+isVisibleToUser+"");
+        }else {
+            Log.e("TAG","通知2："+isVisibleToUser+"");
+        }
 
+    }
     @Override
     protected void initEventAndData() {
         getdata();
@@ -158,7 +167,7 @@ public class Home_Fragment extends BaseFragment {
                                                 PartyAffairsActivity.start(getActivity(), "党务知识");
                                                 break;
                                             case 6:
-                                                WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM  + successBean.getSid()+"&pid="+successBean.getPid());
+                                                WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid());
                                                 break;
                                             case 7://缴纳党费
                                                 PayPartyFeesActivity.start(getActivity());
@@ -214,24 +223,28 @@ public class Home_Fragment extends BaseFragment {
     }
 
     private void getdata() {
+        tipDialog.show();
         OkHttpUtils
                 .get()
                 .url(URLS.HOME_DYNAMIC)
-                .addParams("itemName","党委新闻")
-                .addParams("pageIndex","1")
-                .addParams("pageSize","4")
+                .addParams("itemName", "党委新闻")
+                .addParams("pageIndex", "1")
+                .addParams("pageSize", "4")
                 .build()
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Log.e("TAG", "这是失败的方法1" + e.toString());
+                        tipDialog.cancel();
                     }
+
                     @Override
                     public void onResponse(String response, int id) {
                         Gson gson = new Gson();
                         DynamicBean bean = gson.fromJson(response, DynamicBean.class);
                         bwws.addAll(bean.getNews());
                         folderAdapter1.notifyDataSetChanged();
+                        tipDialog.cancel();
                     }
                 });
 
@@ -320,15 +333,13 @@ public class Home_Fragment extends BaseFragment {
             case R.id.banner:
                 break;
             case R.id.home_notice:
-                http://view.officeapps.live.com/op/view.aspx?src=http://www.ncac.gov.cn/sitefiles/services/wcm/utils.aspx?type=Download&publishmentSystemID=470&channelID=574&contentID=20880
+                http:
+//view.officeapps.live.com/op/view.aspx?src=http://www.ncac.gov.cn/sitefiles/services/wcm/utils.aspx?type=Download&publishmentSystemID=470&channelID=574&contentID=20880
 
 //                WebActivity.start(getActivity());//文件阅读  暂时不能正常使用
 
                 tipDialog.show();
                 Main3Activity.start(getActivity());//文件阅读  暂时不能正常使用
-
-
-
 
 
 //                WebViewCurrencyActivity.start(getActivity(),"视频","https://pic.ibaotu.com/01/03/85/49e888piCpxw.mp4");
@@ -379,7 +390,7 @@ public class Home_Fragment extends BaseFragment {
 //                Log.e("TAG", "11111111111111msg:" + msg);
 //            }
 //        });
-
+        tipDialog.show();
         OkHttpUtils
                 .get()
                 .url(URLS.HOME_CAROUSELMAP)
@@ -406,7 +417,7 @@ public class Home_Fragment extends BaseFragment {
                         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
                         banner.start();
 
-
+                        tipDialog.cancel();
                     }
 
                     @Override
@@ -431,7 +442,7 @@ public class Home_Fragment extends BaseFragment {
                         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
                         banner.start();
 
-
+                        tipDialog.cancel();
                     }
                 });
     }
@@ -440,6 +451,7 @@ public class Home_Fragment extends BaseFragment {
      *   验证 通知
      * */
     private void getverification() {
+        tipDialog.show();
         if (Hawk.contains(Contants.loginInformation)) {
             successBean = Hawk.get(Contants.loginInformation);
             OkHttpUtils
@@ -468,6 +480,7 @@ public class Home_Fragment extends BaseFragment {
         } else {
             homeNoticeDetail.setText("暂无通知");
         }
+        tipDialog.cancel();
     }
 
     /*
