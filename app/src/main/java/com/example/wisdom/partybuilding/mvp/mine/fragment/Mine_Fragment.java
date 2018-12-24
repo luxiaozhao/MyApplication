@@ -58,12 +58,13 @@ public class Mine_Fragment extends BaseFragment {
     protected void initEventAndData() {
 
 
-try {
-    SuccessBean successBean=  Hawk.get(Contants.loginInformation);
-    mineName.setText(successBean.getUsername());
-    minePosition.setText(successBean.getOrg());
+        try {
+            SuccessBean successBean = Hawk.get(Contants.loginInformation);
+            mineName.setText(successBean.getUsername());
+            minePosition.setText(successBean.getOrg());
 
-}catch (Exception e){}
+        } catch (Exception e) {
+        }
 
     }
 
@@ -103,10 +104,10 @@ try {
                 ChangePasswordActivity.start(getActivity());
                 break;
             case R.id.mine_course:
-                WebViewCurrencyActivity.start(getActivity(), "我的课程", URLS.ONLINEEXAM  + successBean.getSid()+"&pid="+successBean.getPid());
+                WebViewCurrencyActivity.start(getActivity(), "我的课程", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid());
                 break;
             case R.id.mine_examination://我的考试
-                WebViewCurrencyActivity.start(getActivity(), "我的考试", URLS.ONLINEEXAM  + successBean.getSid()+"&pid="+successBean.getPid());
+                WebViewCurrencyActivity.start(getActivity(), "我的考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid());
                 break;
             case R.id.mine_about://关于我们
                 AboutUsActivity.start(getActivity());
@@ -143,7 +144,7 @@ try {
 
     private void getmaterialur() {
         if (Hawk.contains(Contants.loginInformation)) {
-          final   SuccessBean successBean = Hawk.get(Contants.loginInformation);
+            final SuccessBean successBean = Hawk.get(Contants.loginInformation);
             OkHttpUtils
                     .get()
                     .url(URLS.REVERIFICATION)
@@ -162,7 +163,7 @@ try {
                             AttestBean bean = gson.fromJson(response, AttestBean.class);
                             if (bean.isCode()) {
 //                                http://192.168.1.199:9999/FHBE/personinfo.jsp?sid=FBFBEF8C665116A47DAE032AC6567D86&pid=14272319760723301X
-                                String weburl="http://192.168.1.199:9999/FHBE/personinfo.jsp?sid="+successBean.getSid()+"&pid="+successBean.getPid();
+                                String weburl = "http://192.168.1.199:9999/FHBE/personinfo.jsp?sid=" + successBean.getSid() + "&pid=" + successBean.getPid();
                                 WebViewCurrencyActivity.start(getActivity(), "个人资料", weburl);
                             }
                         }

@@ -4,14 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.wisdom.partybuilding.mvp.home.activity.TidingsActivity;
 import com.example.wisdom.partybuilding.utils.BitmapUtils;
 import com.tencent.smtt.sdk.TbsReaderView;
 
@@ -25,26 +28,32 @@ import org.xutils.x;
 
 
 public class WebActivity extends AppCompatActivity implements TbsReaderView.ReaderCallback {
-    //    ProgressBar web_bar;
+
+
+    ProgressBar web_bar;
     TbsReaderView mTbsReaderView;
     RelativeLayout mRelativeLayout;
 
-    private static final String BASE_URL = "http://www.ncac.gov.cn/sitefiles/services/wcm/utils.aspx?type=Download&publishmentSystemID=470&channelID=574&contentID=20880";
-    private String BASE_PATH = Environment.getExternalStorageDirectory().toString() + "/00文件存储/";
-    private String docName;
-
-
-    public static void start(Context context) {
+    public static void start(Context context, String fileurl) {
         Intent intent = new Intent(context, WebActivity.class);
-
+        intent.putExtra("fileurl", fileurl);
         context.startActivity(intent);
     }
+
+    // 文件的下载路径
+    private static final String BASE_URL = "http://www.ncac.gov.cn/sitefiles/services/wcm/utils.aspx?type=Download&publishmentSystemID=470&channelID=574&contentID=20880";
+    //    private static final String BASE_URL = "http://192.168.200.15:8088/xmgl//userfiles/upload/files/20180803143620366.doc";
+//    private static final String BASE_URL = "http://192.168.200.15:8088/xmgl//userfiles/upload/files/201808061834294755.pdf";
+
+    // 文件的存储路径
+    private String BASE_PATH = Environment.getExternalStorageDirectory().toString();
+    private String docName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
-
 
         // 在代码中添加布局，这个我也不知道什么原因，网上很多人都说在布局文件中加载会出错
 
@@ -55,30 +64,26 @@ public class WebActivity extends AppCompatActivity implements TbsReaderView.Read
         // 日期
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(new java.util.Date());
-        Log.d("success", "===" + date);
+//        Log.d("success", "===" + date);
 
         // 给存储的文件添加后缀名，
         String fileType = getFileType(BASE_URL);
         BASE_PATH = BASE_PATH + date + "." + fileType;
 
-//        String getfiledirectory = BitmapUtils.getfiledirectory();
-//        Log.e("TAG", "文件夹：" + BASE_PATH + "----------------" + getfiledirectory);
-//        initDoc();
+        initDoc();
 
-//        start
-
+        try {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (Exception e) {
+        }
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        web_bar = (ProgressBar) findViewById(R.id.web_bar);
-//        web_bar.getProgressDrawable().setColorFilter(Color.RED,
-//                android.graphics.PorterDuff.Mode.SRC_IN);
+        web_bar = (ProgressBar) findViewById(R.id.web_bar);
 
-
-        File file = BitmapUtils.compressImages();
-
-        String s = file.toURI().toString();
-
-        Log.e("TAG","ssssssssssssss"+s);
-
+        try {
+            web_bar.getProgressDrawable().setColorFilter(Color.RED,
+                    android.graphics.PorterDuff.Mode.SRC_IN);
+        } catch (Exception e) {
+        }
 
     }
 
@@ -104,22 +109,8 @@ public class WebActivity extends AppCompatActivity implements TbsReaderView.Read
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
                 Log.d("success", "下载失败" + ex.getMessage().toString());
+                Log.d("success", "下载失败" + BASE_PATH+"-------"+docName);
                 Toast.makeText(WebActivity.this, "文件下载失败", Toast.LENGTH_SHORT).show();
-
-//
-//                String   path = Environment.getExternalStorageDirectory().toString();
-//
-//                String neam = "711431309.doc";
-//                Log.e("TAG", "path" + path + "-------------------" + neam);//path         /storage/emulated/0neam711431309.doc
-////      /storage/emulated/0neam711431309.doc
-//                displayFile(path, neam);
-//                displayFile("/storage/emulated/","");
-//
-
-
-
-
-
             }
 
             @Override
@@ -144,15 +135,10 @@ public class WebActivity extends AppCompatActivity implements TbsReaderView.Read
         int i = BASE_URL.lastIndexOf("/");
         docName = BASE_URL.substring(i, BASE_URL.length());
         Log.d("print", "---substring---" + docName);
-
-///storage/emulated/0/00文件存储/2018-12-19.aspx?type=Download&publishmentSystemID=470&channelID=574&contentID=20880----------------file:/storage/emulated/0/luxiaozhao/luxiaozhao
-
         // 下载文件
         downloadFile(BASE_URL, BASE_PATH);
 
 
-
-//        path/storage/emulated/0neam711431309.doc
     }
 
 
@@ -165,9 +151,6 @@ public class WebActivity extends AppCompatActivity implements TbsReaderView.Read
 
         //增加下面一句解决没有TbsReaderTemp文件夹存在导致加载文件失败
         String bsReaderTemp = BASE_PATH;
-
-//        String bsReaderTemp = path;
-
         File bsReaderTempFile = new File(bsReaderTemp);
         if (!bsReaderTempFile.exists()) {
             Log.d("print", "准备创建/TbsReaderTemp！！");
@@ -179,7 +162,6 @@ public class WebActivity extends AppCompatActivity implements TbsReaderView.Read
         Bundle bundle = new Bundle();
         bundle.putString("filePath", filePath);
         bundle.putString("tempPath", BASE_PATH);
-//        bundle.putString("tempPath", path);
         boolean result = mTbsReaderView.preOpen(getFileType(fileName), false);
         Log.d("print", "查看文档---" + result);
         if (result) {
@@ -213,5 +195,6 @@ public class WebActivity extends AppCompatActivity implements TbsReaderView.Read
         Log.d("print", "paramString.substring(i + 1)------>" + str);
         return str;
     }
+
 
 }

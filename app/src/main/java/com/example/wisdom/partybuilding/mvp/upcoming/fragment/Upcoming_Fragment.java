@@ -35,22 +35,12 @@ public class Upcoming_Fragment extends BaseFragment {
     RecyclerView upcoming_recycler;
     private UpcomingAdapter upcomingAdapter;
 
-    private List<UpcomingBean.ResultsBean> upcomingBeans=new ArrayList<>();
+    private List<UpcomingBean.ResultsBean> upcomingBeans = new ArrayList<>();
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser){
-            Log.e("TAG","通知1："+isVisibleToUser+"");
-        }else {
-            Log.e("TAG","通知2："+isVisibleToUser+"");
-        }
-
-    }
     @Override
     protected void initEventAndData() {
 
-        getdata();
+//        getdata();
 
         upcomingAdapter = new UpcomingAdapter(getActivity(), upcomingBeans);
         upcoming_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -62,10 +52,10 @@ public class Upcoming_Fragment extends BaseFragment {
             public void setOnClick(View view, final int position) {
 
 
-                SuccessBean successBean=  Hawk.get(Contants.loginInformation);
+                SuccessBean successBean = Hawk.get(Contants.loginInformation);
 //                http://192.168.1.199:8080/FHBE/platform/bpm/task/tostartapp.ht?taskId=10000011990238&sid=47CA6FD0E05FB652904C1E52B8F8E9DB&pid=430111197811111111
-                WebViewCurrencyActivity.start(getActivity(),upcomingBeans.get(position).getName(),
-                        "http://192.168.1.199:8080/FHBE/platform/bpm/task/tostartapp.ht?taskId="+upcomingBeans.get(position).getId()+"&sid="+successBean.getSid()+"&pid="+successBean.getPid());
+                WebViewCurrencyActivity.start(getActivity(), upcomingBeans.get(position).getName(),
+                        "http://192.168.1.199:8080/FHBE/platform/bpm/task/tostartapp.ht?taskId=" + upcomingBeans.get(position).getId() + "&sid=" + successBean.getSid() + "&pid=" + successBean.getPid());
 
 //                switch (position) {
 //                    case 0://积极分子列为发展对象
@@ -104,28 +94,39 @@ public class Upcoming_Fragment extends BaseFragment {
     }
 
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            getdata();
+        }
+    }
+
     private void getdata() {
+        SuccessBean successBean = Hawk.get(Contants.loginInformation);
+        if (successBean != null) {
+            OkHttpUtils
+                    .get()
+                    .url(URLS.UPCOMING_LIST)
+                    .addParams("sid", successBean.getSid())
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            Log.e("TAG", "这是失败的方法1" + e.toString());
+                            ToastUtils.getInstance().showTextToast(getActivity(), "请登陆后继续访问");
+                        }
 
-        SuccessBean successBean=Hawk.get(Contants.loginInformation);
-        OkHttpUtils
-                .get()
-                .url(URLS.UPCOMING_LIST)
-                .addParams("sid", successBean.getSid())
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        Log.e("TAG", "这是失败的方法1" + e.toString());
-                        ToastUtils.getInstance().showTextToast(getActivity(), "请登陆后继续访问");
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        Gson gson = new Gson();
-                        UpcomingBean bean = gson.fromJson(response, UpcomingBean.class);
-                        upcomingBeans.addAll(bean.getResults());
-                    }
-                });
+                        @Override
+                        public void onResponse(String response, int id) {
+                            Gson gson = new Gson();
+                            UpcomingBean bean = gson.fromJson(response, UpcomingBean.class);
+                            upcomingBeans.addAll(bean.getResults());
+                            upcomingAdapter.notifyDataSetChanged();
+                        }
+                    });
+        }
 
     }
+
 }

@@ -2,7 +2,9 @@ package com.example.wisdom.partybuilding.mvp.home.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,8 +17,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.wisdom.partybuilding.Main3Activity;
 import com.example.wisdom.partybuilding.R;
+import com.example.wisdom.partybuilding.WebActivity;
 import com.example.wisdom.partybuilding.base.BaseFragment;
 import com.example.wisdom.partybuilding.base.IPresenter;
 import com.example.wisdom.partybuilding.mvp.home.adapter.FolderAdapter;
@@ -44,8 +46,10 @@ import com.orhanobut.hawk.Hawk;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.FileCallBack;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +60,7 @@ import butterknife.Unbinder;
 import okhttp3.Call;
 
 public class Home_Fragment extends BaseFragment {
+    private static Context activity;
     @BindView(R.id.denglu)
     LinearLayout denglu;
     @BindView(R.id.home_search)
@@ -79,6 +84,7 @@ public class Home_Fragment extends BaseFragment {
     @BindView(R.id.home_notice_detail_img)
     ImageView homeNoticeDetailImg;
 
+
     Unbinder unbinder;
     private List<Bean> beans;
     private List<DynamicBean.NewsBean> bwws = new ArrayList<>();
@@ -86,6 +92,7 @@ public class Home_Fragment extends BaseFragment {
     private FolderAdapter folderAdapter;
     private NoticeAdapter folderAdapter1;
     private SuccessBean successBean = new SuccessBean();
+
 
     public static void start(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -104,7 +111,7 @@ public class Home_Fragment extends BaseFragment {
     @Override
     protected void initEventAndData() {
         getdata();
-
+        activity = getActivity();
         getcarouselmapurl();
         getverification();
 
@@ -315,6 +322,8 @@ public class Home_Fragment extends BaseFragment {
         unbinder.unbind();
     }
 
+
+
     @OnClick({R.id.denglu, R.id.home_search, R.id.home_scanit, R.id.banner, R.id.home_notice, R.id.home_news_more})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -331,13 +340,13 @@ public class Home_Fragment extends BaseFragment {
             case R.id.banner:
                 break;
             case R.id.home_notice:
-                http:
+
 //view.officeapps.live.com/op/view.aspx?src=http://www.ncac.gov.cn/sitefiles/services/wcm/utils.aspx?type=Download&publishmentSystemID=470&channelID=574&contentID=20880
 
 //                WebActivity.start(getActivity());//文件阅读  暂时不能正常使用
 
-                tipDialog.show();
-                Main3Activity.start(getActivity());//文件阅读  暂时不能正常使用
+//                tipDialog.show();
+//                Main3Activity.start(getActivity());//文件阅读  暂时不能正常使用
 
 
 //                WebViewCurrencyActivity.start(getActivity(),"视频","https://pic.ibaotu.com/01/03/85/49e888piCpxw.mp4");
@@ -349,7 +358,7 @@ public class Home_Fragment extends BaseFragment {
 //                } else {
 //                    ToastUtils.getInstance().showTextToast(getActivity(), "暂无通知");
 //                }
-
+                downloadFile();
                 break;
             case R.id.home_news_more://党政新闻——更多
                 TidingsActivity.start(getActivity());
@@ -357,6 +366,115 @@ public class Home_Fragment extends BaseFragment {
         }
     }
 
+
+    public void downloadFile(){
+
+//        String url="http://vf2.mtime.cn/Video/2017/03/15/mp4/170315222409670447.mp4";
+        String url="http://www.ncac.gov.cn/sitefiles/services/wcm/utils.aspx?type=Download&publishmentSystemID=470&channelID=574&contentID=20880";
+
+        OkHttpUtils.get()
+                .url(url)
+                .build()
+                .execute(new FileCallBack(Environment.getExternalStorageDirectory().getAbsolutePath(),
+                        "okHttpests.doc") {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e("TAG", "onError :" + e.getMessage());
+                    }
+
+                    @Override
+                    public void inProgress(float progress, long total, int id) {
+                        //super.inProgress(progress, total, id);
+
+                        Log.e("TAG","inProgress"+(int)(100*progress));
+                    }
+
+                    @Override
+                    public void onResponse(File file, int id) {
+                        Log.e("TAG", "onResponse :" + file.getAbsolutePath());
+
+
+                        String finalUrl = "http://view.officeapps.live.com/op/view.aspx?src=" + file.getAbsolutePath() + "";
+                        Log.e("tag_finalUrl", finalUrl + "");
+//                        mWebView.loadUrl(finalUrl);
+
+                        WebActivity.start(getActivity(),finalUrl);
+
+                    }
+                });
+    }
+
+    public void downloadFile(String url,String houZuiName){
+
+
+        OkHttpUtils
+                .get()
+                .url(url)
+                .build()
+//                .execute(new FileCallBack(Environment.getExternalStorageDirectory().getAbsolutePath(), Conts.NEW_APP_NAME) {
+                          .execute(new FileCallBack(Environment.getExternalStorageDirectory().getAbsolutePath(), houZuiName) {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+//                        enterLoginActivity();
+                        System.out.println("SplashActivity.onError=哈哈哈");
+//                        ToastUtils.showToast("下载更新包失败");
+
+                        Log.e("TAG","下载更新包失败");
+                    }
+
+                    @Override
+                    public void inProgress(float progress, long total, int id) {
+                        super.inProgress(progress, total, id);
+//                        dialog.setProgress((int) (100 * progress));
+                    }
+
+                    @Override
+                    public void onResponse(File response, int id) {
+
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_VIEW);
+                        intent.addCategory(Intent.CATEGORY_DEFAULT);
+                        intent.setDataAndType(Uri.fromFile(response),
+                                "application/vnd.android.package-archive");
+                        startActivityForResult(intent, 0);
+                    }
+                });
+
+
+      ///////////////////////////////////
+//        OkHttpUtils.get()
+//                .url(url)
+//                .build()
+//                .execute(new FileCallBack(SDCardUtils.) {
+//                    @Override
+//                    public void onError(Call call, Exception e, int id) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onResponse(File response, int id) {
+//
+//                    }
+//                });
+        /*new FileCallBack(SDCardUtils.getInstance().getDownLoadFileDir(),"downloadFile"+houZuiName) {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e("info: ", "onError :" + e.getMessage());
+                    }
+
+                    @Override
+                    public void inProgress(float progress, long total, int id) {
+                        super.inProgress(progress, total, id);
+                        Log.e("info: ","inProgress"+(int)(100*progress));
+                    }
+
+                    @Override
+                    public void onResponse(File downloadFile, int id) {
+                        OpenFileTipDialog.openFiles(downloadFile.getAbsolutePath(),getActivity());
+                        Log.e("info: ", "onResponse :" + downloadFile.getAbsolutePath());
+                    }
+                }*/
+    }
 
     @Override
     public void onResume() {

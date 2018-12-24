@@ -7,24 +7,24 @@
     android:background="#f7f7f7"
     android:orientation="vertical"
     tools:context="com.example.wisdom.partybuilding.WebActivity">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="文件存储"
-    android:textColor="#000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文件存储"
+        android:textColor="#000" />
+
     <RelativeLayout
         android:id="@+id/tbsView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-
-
-        <!--web_bar = (ProgressBar) findViewById(R.id.web_bar);-->
+<ProgressBar
+    android:id="@+id/web_bar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 
     </RelativeLayout>
 
-    <!--<ProgressBar-->
-        <!--android:id="@+id/web_bar"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content" />-->
+
 </RelativeLayout>

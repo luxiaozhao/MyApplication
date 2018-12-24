@@ -126,4 +126,5 @@ dependencies {
     implementation 'com.davidinchina:easylibrary:1.0.0'
     implementation files('libs/jcore-android-1.2.6.jar')
     implementation files('libs/jpush-android-3.1.8.jar')
+    implementation files('libs/tbs_sdk_thirdapp_v3.6.0.1310_43612_sharewithdownload_withoutGame_obfs_20180706_163319.jar')
 }
