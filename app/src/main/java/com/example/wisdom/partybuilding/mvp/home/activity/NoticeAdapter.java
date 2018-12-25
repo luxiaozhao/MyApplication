@@ -19,7 +19,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
     private Context context;
     private List<DynamicBean.NewsBean> list;
 
-    //接口监听     通知 FolderAdapter
+    //接口监听     待办 FolderAdapter
     NoticeAdapter.onClickLinstener onClickLinstener;
 
 

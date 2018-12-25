@@ -61,11 +61,6 @@ public class PayPartyFeesActivity extends BaseActivity {
         Intent intent = new Intent(context, PayPartyFeesActivity.class);
         context.startActivity(intent);
     }
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_pay_party_fees);
-//    }
 
     @Override
     protected void initView() {

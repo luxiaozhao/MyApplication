@@ -17,7 +17,7 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHo
     private Context context;
     private List<UpcomingBean.ResultsBean> list;
 
-    //接口监听     通知 FolderAdapter
+    //接口监听     待办 FolderAdapter
     UpcomingAdapter.onClickLinstener onClickLinstener;
 
     public void setOnClickLinstener(UpcomingAdapter.onClickLinstener onClickLinstener) {

@@ -17,7 +17,7 @@ public class PartyAffairs_Adapter extends RecyclerView.Adapter<PartyAffairs_Adap
     private Context context;
     private List<PartyknowledgeBean.CarouselmapBean> list;
 
-    //接口监听     通知 FolderAdapter
+    //接口监听     待办 FolderAdapter
     PartyAffairs_Adapter.onClickLinstener onClickLinstener;
 
 

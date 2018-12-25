@@ -18,7 +18,7 @@ public class Partyknowledge_Adapter extends RecyclerView.Adapter<Partyknowledge_
     private Context context;
     private List<DynamicBean.NewsBean> list;
 
-    //接口监听     通知 FolderAdapter
+    //接口监听     待办 FolderAdapter
     Partyknowledge_Adapter.onClickLinstener onClickLinstener;
 
 

@@ -13,6 +13,7 @@ import com.example.wisdom.partybuilding.R;
 import com.example.wisdom.partybuilding.base.BaseActivity;
 import com.example.wisdom.partybuilding.base.BasePresenter;
 import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
+import com.example.wisdom.partybuilding.mvp.common.WebViewCurrencyActivity;
 import com.example.wisdom.partybuilding.net.URLS;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -55,7 +56,7 @@ public class TidingsActivity extends BaseActivity {
         folderAdapter1.setOnClickLinstener(new NoticeAdapter.onClickLinstener() {
             @Override
             public void setOnClick(View view, int position) {
-
+                WebViewCurrencyActivity.start(TidingsActivity.this, "党委新闻", URLS.HOME_NEWS_DETAIL+bwws.get(position).getId());
 //                TidingsActivity.start(getActivity());
             }
         });

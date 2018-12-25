@@ -1,10 +1,13 @@
 package com.example.wisdom.partybuilding.mvp.common;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.support.annotation.IdRes;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
@@ -48,13 +51,13 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     protected void initView() {
         registerMessageReceiver();  // used for receive msg
 
-
+        getCompetence();
 
         JPushInterface.setDebugMode(false);
         try {
             JPushInterface.init(getApplicationContext());
-        }catch (Exception e){}
-
+        } catch (Exception e) {
+        }
 
 
         home_Fragment = new Home_Fragment();
@@ -74,6 +77,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         radioGroup.setOnCheckedChangeListener(this);
         radioGroup.check(R.id.main_home);//选中状态
     }
+
 
     @Override
     protected int getLayoutId() {
@@ -111,53 +115,53 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
 
 //        if (Hawk.contains(Contants.loginInformation)) {
-            switch (checkedId) {
-                case R.id.main_home:
+        switch (checkedId) {
+            case R.id.main_home:
+                supportFragmentManager.beginTransaction()
+                        .hide(mine_Fragment)
+                        .hide(notice_Fragment)
+                        .hide(upcoming_Fragment)
+                        .show(home_Fragment).commit();
+
+                break;
+            case R.id.main_upcoming:
+
+                if (Hawk.contains(Contants.loginInformation)) {
                     supportFragmentManager.beginTransaction()
-                            .hide(mine_Fragment)
+                            .hide(home_Fragment)
                             .hide(notice_Fragment)
+                            .hide(mine_Fragment)
+                            .show(upcoming_Fragment).commit();
+                } else {
+                    LoginActivity.start(this);
+                }
+
+
+                break;
+            case R.id.main_notice:
+                if (Hawk.contains(Contants.loginInformation)) {
+                    supportFragmentManager.beginTransaction()
                             .hide(upcoming_Fragment)
-                            .show(home_Fragment).commit();
 
-                    break;
-                case R.id.main_upcoming:
-
-                    if (Hawk.contains(Contants.loginInformation)) {
-                        supportFragmentManager.beginTransaction()
-                                .hide(home_Fragment)
-                                .hide(notice_Fragment)
-                                .hide(mine_Fragment)
-                                .show(upcoming_Fragment).commit();
-                    } else {
-                        LoginActivity.start(this);
-                    }
-
-
-                    break;
-                case R.id.main_notice:
-                    if (Hawk.contains(Contants.loginInformation)) {
-                        supportFragmentManager.beginTransaction()
-                                .hide(upcoming_Fragment)
-
-                                .hide(mine_Fragment)
-                                .hide(home_Fragment)
-                                .show(notice_Fragment).commit();
-                    } else {
-                        LoginActivity.start(this);
-                    }
-                    break;
-                case R.id.main_mine:
-                    if (Hawk.contains(Contants.loginInformation)) {
-                        supportFragmentManager.beginTransaction()
-                                .hide(upcoming_Fragment)
-                                .hide(notice_Fragment)
-                                .hide(home_Fragment)
-                                .show(mine_Fragment).commit();
-                    } else {
-                        LoginActivity.start(this);
-                    }
-                    break;
-            }
+                            .hide(mine_Fragment)
+                            .hide(home_Fragment)
+                            .show(notice_Fragment).commit();
+                } else {
+                    LoginActivity.start(this);
+                }
+                break;
+            case R.id.main_mine:
+                if (Hawk.contains(Contants.loginInformation)) {
+                    supportFragmentManager.beginTransaction()
+                            .hide(upcoming_Fragment)
+                            .hide(notice_Fragment)
+                            .hide(home_Fragment)
+                            .show(mine_Fragment).commit();
+                } else {
+                    LoginActivity.start(this);
+                }
+                break;
+        }
 
     }
 
@@ -195,6 +199,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         filter.addAction(MESSAGE_RECEIVED_ACTION);
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, filter);
     }
+
     public class MessageReceiver extends BroadcastReceiver {
 
         @Override
@@ -210,14 +215,14 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                     }
                     setCostomMsg(showMsg.toString());
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
             }
         }
     }
 
-    private void setCostomMsg(String msg){
+    private void setCostomMsg(String msg) {
 //        ToastUtils.getInstance().showTextToast(this,"这是什么鬼东西，我真想知道"+msg);
-        Log.e("TAG","这是什么鬼东西，我真想知道"+msg);
+        Log.e("TAG", "这是什么鬼东西，我真想知道" + msg);
 //        if (null != msgText) {
 //            msgText.setText(msg);
 //            msgText.setVisibility(android.view.View.VISIBLE);
@@ -242,4 +247,16 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         return super.onKeyDown(keyCode, event);
     }
 
+    private void getCompetence() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CALL_PHONE, Manifest.permission.READ_LOGS, Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.SET_DEBUG_APP, Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_APN_SETTINGS};
+            ActivityCompat.requestPermissions(this, mPermissionList, 123);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+
+    }
 }

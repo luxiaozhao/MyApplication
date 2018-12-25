@@ -15,6 +15,7 @@ import com.example.wisdom.partybuilding.base.BaseActivity;
 import com.example.wisdom.partybuilding.base.BasePresenter;
 import com.example.wisdom.partybuilding.mvp.adapter.DynamicAdapter;
 import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
+import com.example.wisdom.partybuilding.mvp.common.WebViewCurrencyActivity;
 import com.example.wisdom.partybuilding.net.URLS;
 import com.example.wisdom.partybuilding.utils.ToastUtils;
 import com.google.gson.Gson;
@@ -37,13 +38,10 @@ public class DynamicActivity extends BaseActivity {
     TextView dynamicTitle;
     @BindView(R.id.dynamic_recycler)
     RecyclerView dynamicRecycler;
+
     private DynamicAdapter dynamicAdapter;
     private List<DynamicBean.NewsBean> bwws = new ArrayList<>();
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_dynamic);
-//    }
+
     String title;
 
     public static void start(Context context, String position) {
@@ -52,81 +50,44 @@ public class DynamicActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-
     @Override
     protected void initView() {
-        Log.e("TAG","222222");
         ButterKnife.bind(this);
-
         title = getIntent().getStringExtra("position");
         dynamicTitle.setText(title);
-
-//
-//
-//            if (position==0){
-//                ToastUtils.getInstance().showTextToast(this,"000000000");
-//            }else  if (position==0){
-//                ToastUtils.getInstance().showTextToast(this,"111111111");
-//            }else if (position==1){
-//                ToastUtils.getInstance().showTextToast(this,"2222222222");
-//            }else if (position==2){
-//
-//                title="党委新闻";
-//
-//
-//            }else if (position==3){
-//                ToastUtils.getInstance().showTextToast(this,"444444444");
-//            }else if (position==4){
-//                ToastUtils.getInstance().showTextToast(this,"555555555555");
-//            }else if (position==5){
-//                ToastUtils.getInstance().showTextToast(this,"666666666");
-//            }else if (position==6){
-//                ToastUtils.getInstance().showTextToast(this,"77777777");
-//            }else if (position==7){
-//                ToastUtils.getInstance().showTextToast(this,"888888888");
-//            }else if (position==8){
-//                ToastUtils.getInstance().showTextToast(this,"9999999");
-//            } else {
-//                ToastUtils.getInstance().showTextToast(this,"没有数据");
-//            }
-
-
-
-        getdata(title,1,20);
-
-
-        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);  //     reverse  layout
-//        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        getdata(title, 1, 20);
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         dynamicAdapter = new DynamicAdapter(this, bwws);
         dynamicRecycler.setLayoutManager(linearLayoutManager1);
-//        homeNewsRecycler.setNestedScrollingEnabled(true);//是否滚动
         dynamicRecycler.setNestedScrollingEnabled(false);
-
         dynamicRecycler.setLayoutManager(new GridLayoutManager(this, 1));
         dynamicRecycler.setAdapter(dynamicAdapter);
         dynamicAdapter.setOnClickLinstener(new DynamicAdapter.onClickLinstener() {
             @Override
             public void setOnClick(View view, int position) {
-                ToastUtils.getInstance().showTextToast(DynamicActivity.this,"详情页");
+                if (bwws.get(position).getType().equals("党委新闻")) {
+                    WebViewCurrencyActivity.start(activity, bwws.get(position).getType(), URLS.HOME_NEWS_DETAIL + bwws.get(position).getId());
+                } else if (bwws.get(position).getType().equals("基层交流")) {
+                    WebViewCurrencyActivity.start(activity, bwws.get(position).getType(), URLS.HOME_BASICLEVEL_DETAIL + bwws.get(position).getId());
+                } else if (bwws.get(position).getType().equals("学习园地")) {
+                    WebViewCurrencyActivity.start(activity, bwws.get(position).getType(), URLS.HOME_LEARNING_DETAIL + bwws.get(position).getId());
+                }
             }
         });
-
-
     }
 
-    private void getdata(String str,int pageIndex,int pageSize) {
+    private void getdata(String str, int pageIndex, int pageSize) {
         OkHttpUtils
                 .get()
                 .url(URLS.HOME_DYNAMIC)
-                .addParams("itemName",str)
-                .addParams("pageIndex",pageIndex+"")
-                .addParams("pageSize",pageSize+"")
+                .addParams("itemName", str)
+                .addParams("pageIndex", pageIndex + "")
+                .addParams("pageSize", pageSize + "")
                 .build()
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Log.e("TAG", "这是失败的方法1" + e.toString());
-
                     }
 
                     @Override
@@ -137,8 +98,6 @@ public class DynamicActivity extends BaseActivity {
                         dynamicAdapter.notifyDataSetChanged();
                     }
                 });
-
-
     }
 
     @Override
@@ -156,13 +115,13 @@ public class DynamicActivity extends BaseActivity {
 
     }
 
-
     @OnClick({R.id.dynamic_return})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.dynamic_return:
                 finish();
                 break;
+
         }
     }
 }

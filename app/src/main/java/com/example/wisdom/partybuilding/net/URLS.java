@@ -9,9 +9,15 @@ public class URLS {
     public static final String BASE_URL = "http://192.168.1.199:8080/FHBE/";
 //  http://192.168.1.199:8080/FHBE/login.ht?username=djys&password=1
     /**
-     * 轮播图
+     *  首页——轮播图
      */
     public static final String HOME_CAROUSELMAP = BASE_URL + "mobile/carousel/carousel/carousel.ht";
+
+    /**
+     *  首页——动态
+     */
+    public static final String HOME_DYNAMIC_LIST = BASE_URL + "mobile/mobillefunctions/mobilleFunctions/getFunctions.ht";
+
     /*
      * 修改密码
      * */
@@ -66,17 +72,37 @@ public class URLS {
     /*
      *  首页—— 搜索
      * */
-    public static final String HOME_SEARCH  = BASE_URL + "mobile/mobileNews/mobileNews/search.ht";
+    public static final String HOME_SEARCH = BASE_URL + "mobile/mobileNews/mobileNews/search.ht";
 //  //  http://192.168.1.199:9999/FHBE/mobile/mobileNews/mobileNews/search.ht?param=学习&pageSize=20&pageIndex=1
 
 
+    /*
+     * 党委新闻详情
+     *   http://192.168.1.199:8080/FHBE/djy/partyNews/partyNews/news.ht?infoId=10000011990139
+     * */
+    public static final String HOME_NEWS_DETAIL = BASE_URL + "djy/partyNews/partyNews/news.ht?infoId=";
+//
 
     /*
-    * 代办
-    * */
+     * 基层交流详情
+     *     FHBE/djy/study/study/news.ht？infoId=
+     * */
+    public static final String HOME_BASICLEVEL_DETAIL = BASE_URL + "djy/study/study/news.ht?infoId=";
 
-    public static final String UPCOMING_LIST  = BASE_URL + "mobile/bpm/bpmMobileTask/pendingMatters.ht";
-//    http://192.168.1.199:8080/FHBE/mobile/bpm/bpmMobileTask/pendingMatters.ht?sid=AC9363F950D03AF78E5798A25D5D6F8E
+
+    /*
+     * 学习园地详情
+     *    FHBE/djy/basicSpirit/basicSpirit/news.ht？infoId=
+     * */
+    public static final String HOME_LEARNING_DETAIL = BASE_URL + "djy/basicSpirit/basicSpirit/news.ht?infoId=";
+
+
+    /*
+     * 代办
+     * //    http://192.168.1.199:8080/FHBE/mobile/bpm/bpmMobileTask/pendingMatters.ht?sid=AC9363F950D03AF78E5798A25D5D6F8E
+     * */
+
+    public static final String UPCOMING_LIST = BASE_URL + "mobile/bpm/bpmMobileTask/pendingMatters.ht";
 
 
 }

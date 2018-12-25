@@ -18,7 +18,7 @@ public class DynamicAdapter extends RecyclerView.Adapter<DynamicAdapter.ViewHold
     private Context context;
     private List<DynamicBean.NewsBean> list;
 
-    //接口监听     通知 FolderAdapter
+    //接口监听     待办 FolderAdapter
     DynamicAdapter.onClickLinstener onClickLinstener;
 
 

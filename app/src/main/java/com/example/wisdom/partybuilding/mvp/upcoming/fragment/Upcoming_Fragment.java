@@ -98,11 +98,13 @@ public class Upcoming_Fragment extends BaseFragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
+            upcomingBeans.clear();
             getdata();
         }
     }
 
     private void getdata() {
+        tipDialog.show();
         SuccessBean successBean = Hawk.get(Contants.loginInformation);
         if (successBean != null) {
             OkHttpUtils
@@ -115,10 +117,12 @@ public class Upcoming_Fragment extends BaseFragment {
                         public void onError(Call call, Exception e, int id) {
                             Log.e("TAG", "这是失败的方法1" + e.toString());
                             ToastUtils.getInstance().showTextToast(getActivity(), "请登陆后继续访问");
+                            tipDialog.cancel();
                         }
 
                         @Override
                         public void onResponse(String response, int id) {
+                            tipDialog.cancel();
                             Gson gson = new Gson();
                             UpcomingBean bean = gson.fromJson(response, UpcomingBean.class);
                             upcomingBeans.addAll(bean.getResults());
