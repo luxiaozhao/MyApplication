@@ -96,6 +96,22 @@ public class URLS {
      * */
     public static final String HOME_LEARNING_DETAIL = BASE_URL + "djy/basicSpirit/basicSpirit/news.ht?infoId=";
 
+    /*
+     * 党务知识详情页
+     *   FHBE/djy/partyWork/partyWork/news.ht?infoId=
+     * */
+    public static final String HOME_PARTYWORK_DETAIL = BASE_URL + "djy/partyWork/partyWork/news.ht?infoId=";
+
+    /*
+     * 通知公告详情页
+     *  FHBE/djy/promulgate/promulgate/news.ht?infoId=
+     * */
+    public static final String HOME_NOTICE_DETAIL = BASE_URL + "djy/promulgate/promulgate/news.ht?infoId=";
+
+
+
+
+
 
     /*
      * 代办

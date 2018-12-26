@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,7 @@ import com.example.wisdom.partybuilding.R;
 import com.example.wisdom.partybuilding.WebActivity;
 import com.example.wisdom.partybuilding.base.BaseFragment;
 import com.example.wisdom.partybuilding.base.IPresenter;
+import com.example.wisdom.partybuilding.mvp.bean.MessageBean;
 import com.example.wisdom.partybuilding.mvp.bean.home.HomeDynamicBean;
 import com.example.wisdom.partybuilding.mvp.home.adapter.FolderAdapter;
 import com.example.wisdom.partybuilding.mvp.home.adapter.GlideImageLoader;
@@ -85,16 +87,21 @@ public class Home_Fragment extends BaseFragment {
     @BindView(R.id.home_notice_detail_img)
     ImageView homeNoticeDetailImg;
 
+    @BindView(R.id.home_swiperefreshlayout)
+    SwipeRefreshLayout homeSwiperefreshlayout;
 
     Unbinder unbinder;
     private List<HomeDynamicBean.CarouselmapBean> beans = new ArrayList<>();
     private List<DynamicBean.NewsBean> bwws = new ArrayList<>();
     private List<Home_CarouselmapBean.CarouselmapBean> carousel_urllist = new ArrayList<>();
-        private FolderAdapter folderAdapter;
+    private FolderAdapter folderAdapter;
     private LandscapeAdapter landscapeAdapter;
     private NoticeAdapter folderAdapter1;
     private SuccessBean successBean = new SuccessBean();
 
+    private Home_noticeBean bean;
+    private MessageBean messageBean;
+    private List<MessageBean.NewsBean> news;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -117,8 +124,30 @@ public class Home_Fragment extends BaseFragment {
             }
         });
 
-    }
+        homeSwiperefreshlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getdata();
 
+                if (homeSwiperefreshlayout.isRefreshing()) {//如果正在刷新
+                    homeSwiperefreshlayout.setRefreshing(false);//取消刷新
+                }
+            }
+        });
+
+
+        homeSwiperefreshlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getdata();
+                ToastUtils.getInstance().showTextToast(getActivity(), "下啦刷新");
+                if (homeSwiperefreshlayout.isRefreshing()) {//如果正在刷新
+                    homeSwiperefreshlayout.setRefreshing(false);//取消刷新
+                }
+            }
+        });
+
+    }
 
     @Override
     protected int getLayoutId() {
@@ -172,6 +201,13 @@ public class Home_Fragment extends BaseFragment {
                 break;
             case R.id.home_notice:
 
+                WebViewCurrencyActivity.start(getActivity(), "通知公告", URLS.HOME_NEWS_DETAIL + news.get(0).getId());
+
+
+
+
+
+
 //view.officeapps.live.com/op/view.aspx?src=http://www.ncac.gov.cn/sitefiles/services/wcm/utils.aspx?type=Download&publishmentSystemID=470&channelID=574&contentID=20880
 
 //                WebActivity.start(getActivity());//文件阅读  暂时不能正常使用
@@ -189,7 +225,10 @@ public class Home_Fragment extends BaseFragment {
 //                } else {
 //                    ToastUtils.getInstance().showTextToast(getActivity(), "暂无通知");
 //                }
-                downloadFile();
+
+
+
+//                downloadFile();
                 break;
             case R.id.home_news_more://党政新闻——更多
                 TidingsActivity.start(getActivity());
@@ -312,6 +351,9 @@ public class Home_Fragment extends BaseFragment {
                 .addParams("sid", successBean.getSid())
                 .build()
                 .execute(new StringCallback() {
+
+
+
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         homeNoticeDetail.setText("暂无通知");
@@ -321,8 +363,11 @@ public class Home_Fragment extends BaseFragment {
                     public void onResponse(String response, int id) {
                         try {
                             Gson gson = new Gson();
-                            Home_noticeBean bean = gson.fromJson(response, Home_noticeBean.class);
-                            homeNoticeDetail.setText(bean.getTitle());
+//                            bean = gson.fromJson(response, Home_noticeBean.class);
+                            MessageBean   messageBean=gson.fromJson(response, MessageBean.class);
+
+                            news = messageBean.getNews();
+                            homeNoticeDetail.setText(news.get(0).getTitile());
                             homeNoticeDetailImg.setVisibility(View.VISIBLE);
                         } catch (Exception e) {
                             homeNoticeDetail.setText("暂无通知");
@@ -418,11 +463,20 @@ public class Home_Fragment extends BaseFragment {
 //                        landscapeAdapter.notifyDataSetChanged();
 
 
-                        if (beans.size()<5){
+                        if (beans.size() < 5) {
+                            List<HomeDynamicBean.CarouselmapBean> carouselmap = bean.getCarouselmap();
+                            String functionname = carouselmap.get(0).getFunctionname();
+                            if (functionname.length() == 0) {
+                                mainRecycler.setVisibility(View.GONE);
+                            } else {
+                                mainRecycler.setVisibility(View.VISIBLE);
+                            }
+
+
                             GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1);
                             gridLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
                             mainRecycler.setLayoutManager(gridLayoutManager);
-                        }else {
+                        } else {
                             GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
                             gridLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
                             mainRecycler.setLayoutManager(gridLayoutManager);
@@ -435,6 +489,7 @@ public class Home_Fragment extends BaseFragment {
                                 new FolderAdapter.onClickLinstener() {
                                     @Override
                                     public void setOnClick(View view, int position) {
+                                        Log.e("TTT", beans.get(position).getFunctionname() + "");
 
                                         if (beans.get(position).getFunctionname().equals("中央精神")) {
                                             WebViewCurrencyActivity.start(getActivity(), "中央精神", URLS.DYNAMICMODULE + "中央精神");
@@ -447,10 +502,11 @@ public class Home_Fragment extends BaseFragment {
                                         } else if (beans.get(position).getFunctionname().equals("学习园地")) {
                                             DynamicActivity.start(getActivity(), "学习园地");
                                         } else if (beans.get(position).getFunctionname().equals("党务知识")) {
+//                                            DynamicActivity.start(getActivity(), "党务知识");
                                             PartyAffairsActivity.start(getActivity(), "党务知识");
                                         } else if (beans.get(position).getFunctionname().equals("在线考试")) {
                                             WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid());
-                                        } else if (beans.get(position).getFunctionname().equals("缴纳党费")) {
+                                        } else if (beans.get(position).getFunctionname().equals("党费缴纳")) {
                                             PayPartyFeesActivity.start(getActivity());
                                         } else if (beans.get(position).getFunctionname().equals("三会一课")) {
                                             ToastUtils.getInstance().showTextToast(getActivity(), "暂无内容");

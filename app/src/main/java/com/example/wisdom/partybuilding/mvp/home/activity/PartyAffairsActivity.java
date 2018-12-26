@@ -15,6 +15,7 @@ import com.example.wisdom.partybuilding.base.BaseActivity;
 import com.example.wisdom.partybuilding.base.BasePresenter;
 import com.example.wisdom.partybuilding.mvp.adapter.PartyAffairs_Adapter;
 import com.example.wisdom.partybuilding.mvp.bean.home.PartyknowledgeBean;
+import com.example.wisdom.partybuilding.mvp.common.WebViewCurrencyActivity;
 import com.example.wisdom.partybuilding.net.URLS;
 import com.example.wisdom.partybuilding.utils.ToastUtils;
 import com.google.gson.Gson;
@@ -72,7 +73,8 @@ public class PartyAffairsActivity extends BaseActivity {
         dynamicAdapter.setOnClickLinstener(new PartyAffairs_Adapter.onClickLinstener() {
             @Override
             public void setOnClick(View view, int position) {
-                ToastUtils.getInstance().showTextToast(PartyAffairsActivity.this,"详情页");
+//                ToastUtils.getInstance().showTextToast(PartyAffairsActivity.this,"详情页");
+                    WebViewCurrencyActivity.start(activity, "党务知识", URLS.HOME_PARTYWORK_DETAIL + bwws.get(position).getInfoId());
             }
         });
     }

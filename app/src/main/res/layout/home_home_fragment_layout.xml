@@ -81,165 +81,174 @@
     </RelativeLayout>
 
 
-    <ScrollView
+
+
+    <!--<android.support.v4.widget.SwipeRefreshLayout-->
+        <!--android:id="@+id/home_swiperefreshlayout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/home_swiperefreshlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.youth.banner.Banner xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/banner"
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp" />
-
-                <android.support.v7.widget.RecyclerView
-                android:id="@+id/main_recycler"
-                android:layout_width="match_parent"
-                android:layout_height="210dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="@dimen/lay_10"
-                android:layout_marginTop="146dp"
-                android:layout_marginRight="@dimen/lay_10"
-                android:background="@mipmap/background2"
-                android:paddingLeft="@dimen/lay_15"
-                android:paddingTop="@dimen/lay_5"
-                android:paddingRight="@dimen/lay_15"
-                android:paddingBottom="@dimen/lay_20" />
-
-
-            </RelativeLayout>
-
-
-            <LinearLayout
-                android:id="@+id/home_notice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/lay_12"
-                android:layout_marginTop="@dimen/lay_24"
-                android:layout_marginRight="@dimen/lay_14"
-                android:layout_marginBottom="@dimen/lay_24"
-                android:gravity="center_vertical">
-
-
-                <ImageView
-
-                    android:layout_width="@dimen/lay_40"
-                    android:layout_height="@dimen/lay_20"
-                    android:layout_marginRight="@dimen/lay_5"
-                    android:src="@mipmap/notice" />
-
-
-                <View
-                    android:layout_width="@dimen/lay_1"
-                    android:layout_height="match_parent"
-                    android:background="#c7c6cb" />
-
-                <TextView
-                    android:id="@+id/home_notice_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/lay_8"
-                    android:layout_marginRight="@dimen/lay_16"
-                    android:layout_weight="1"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/lay_14" />
-
-                <ImageView
-                    android:id="@+id/home_notice_detail_img"
-                    android:layout_width="@dimen/lay_20"
-                    android:layout_height="@dimen/lay_20"
-                    android:src="@mipmap/home_tognzhi"
-                    android:visibility="gone" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_10"
-                android:background="#f7f7f7" />
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/lay_12"
-                android:layout_marginTop="@dimen/lay_22"
-                android:layout_marginRight="@dimen/lay_8"
-                android:layout_marginBottom="@dimen/lay_22"
-                android:gravity="center_vertical">
-                <!--more-->
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <ImageView
-
-                    android:layout_width="@dimen/lay_20"
-                    android:layout_height="@dimen/lay_20"
-                    android:src="@mipmap/parent" />
-
-                <TextView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/lay_10"
-                    android:layout_weight="1"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:text="党政新闻"
-                    android:textColor="#0b0b0b"
-                    android:textSize="@dimen/font_16"
-                    android:textStyle="bold" />
+                    android:layout_height="match_parent">
+
+                    <com.youth.banner.Banner xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/main_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="210dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="@dimen/lay_10"
+                        android:layout_marginTop="146dp"
+                        android:layout_marginRight="@dimen/lay_10"
+                        android:background="@mipmap/background2"
+                        android:paddingLeft="@dimen/lay_15"
+                        android:paddingTop="@dimen/lay_5"
+                        android:paddingRight="@dimen/lay_15"
+                        android:paddingBottom="@dimen/lay_20" />
+
+
+                </RelativeLayout>
+
 
                 <LinearLayout
-                    android:id="@+id/home_news_more"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:id="@+id/home_notice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_12"
+                    android:layout_marginTop="@dimen/lay_24"
+                    android:layout_marginRight="@dimen/lay_14"
+                    android:layout_marginBottom="@dimen/lay_24"
+                    android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/lay_3"
-                        android:text="更多"
-                        android:textColor="#888888"
-                        android:textSize="@dimen/font_15" />
 
                     <ImageView
+
+                        android:layout_width="@dimen/lay_40"
+                        android:layout_height="@dimen/lay_20"
+                        android:layout_marginRight="@dimen/lay_5"
+                        android:src="@mipmap/notice" />
+
+
+                    <View
+                        android:layout_width="@dimen/lay_1"
+                        android:layout_height="match_parent"
+                        android:background="#c7c6cb" />
+
+                    <TextView
+                        android:id="@+id/home_notice_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/lay_8"
+                        android:layout_marginRight="@dimen/lay_16"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/lay_14" />
+
+                    <ImageView
+                        android:id="@+id/home_notice_detail_img"
                         android:layout_width="@dimen/lay_20"
                         android:layout_height="@dimen/lay_20"
-                        android:src="@mipmap/more" />
+                        android:src="@mipmap/home_tognzhi"
+                        android:visibility="gone" />
+
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lay_10"
+                    android:background="#f7f7f7" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lay_12"
+                    android:layout_marginTop="@dimen/lay_22"
+                    android:layout_marginRight="@dimen/lay_8"
+                    android:layout_marginBottom="@dimen/lay_22"
+                    android:gravity="center_vertical">
+                    <!--more-->
+
+                    <ImageView
+
+                        android:layout_width="@dimen/lay_20"
+                        android:layout_height="@dimen/lay_20"
+                        android:src="@mipmap/parent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/lay_10"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="党政新闻"
+                        android:textColor="#0b0b0b"
+                        android:textSize="@dimen/font_16"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/home_news_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/lay_3"
+                            android:text="更多"
+                            android:textColor="#888888"
+                            android:textSize="@dimen/font_15" />
+
+                        <ImageView
+                            android:layout_width="@dimen/lay_20"
+                            android:layout_height="@dimen/lay_20"
+                            android:src="@mipmap/more" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lay_1"
+                    android:background="#c7c6cb" />
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/home_news_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_1"
-                android:background="#c7c6cb" />
+
+        </ScrollView>
 
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/home_news_recycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-
-        </LinearLayout>
-
-
-    </ScrollView>
-
-
-    <!--<View-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="1dp"-->
-    <!--android:background="#EEE" />-->
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 
     <View
