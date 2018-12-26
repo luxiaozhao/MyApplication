@@ -39,6 +39,7 @@ import com.example.wisdom.partybuilding.mvp.bean.SuccessBean;
 import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
 import com.example.wisdom.partybuilding.mvp.bean.home.Home_noticeBean;
 import com.example.wisdom.partybuilding.mvp.bean.login.AttestBean;
+import com.example.wisdom.partybuilding.mvp.home.adapter.LandscapeAdapter;
 import com.example.wisdom.partybuilding.net.Contants;
 import com.example.wisdom.partybuilding.net.URLS;
 import com.example.wisdom.partybuilding.utils.ToastUtils;
@@ -86,10 +87,11 @@ public class Home_Fragment extends BaseFragment {
 
 
     Unbinder unbinder;
-    private List<HomeDynamicBean.CarouselmapBean> beans=new ArrayList<>();
+    private List<HomeDynamicBean.CarouselmapBean> beans = new ArrayList<>();
     private List<DynamicBean.NewsBean> bwws = new ArrayList<>();
     private List<Home_CarouselmapBean.CarouselmapBean> carousel_urllist = new ArrayList<>();
-    private FolderAdapter folderAdapter;
+        private FolderAdapter folderAdapter;
+    private LandscapeAdapter landscapeAdapter;
     private NoticeAdapter folderAdapter1;
     private SuccessBean successBean = new SuccessBean();
 
@@ -102,100 +104,6 @@ public class Home_Fragment extends BaseFragment {
     @Override
     protected void initEventAndData() {
         getdata();
-
-        folderAdapter = new FolderAdapter(getActivity(), beans);
-        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
-        mainRecycler.setLayoutManager(manager);
-        mainRecycler.setNestedScrollingEnabled(false);
-        mainRecycler.setAdapter(folderAdapter);
-        folderAdapter.setOnClickLinstener(new FolderAdapter.onClickLinstener() {
-            @Override
-            public void setOnClick(View view, final int position) {
-
-//                if (Hawk.contains(Contants.loginInformation)) {
-//                    final SuccessBean successBean = Hawk.get(Contants.loginInformation);
-//                    OkHttpUtils
-//                            .get()
-//                            .url(URLS.REVERIFICATION)
-//                            .addParams("sid", successBean.getSid())
-//                            .addParams("pid", successBean.getPid())
-//                            .build()
-//                            .execute(new StringCallback() {
-//                                @Override
-//                                public void onError(Call call, Exception e, int id) {
-//                                    Log.e("TAG", "首页动态失败" + e.toString());
-//                                    ToastUtils.getInstance().showTextToast(getActivity(), "请登陆后继续访问");
-//                                }
-//
-//                                @Override
-//                                public void onResponse(String response, int id) {
-//                                    Gson gson = new Gson();
-//                                    AttestBean bean = gson.fromJson(response, AttestBean.class);
-//                                    if (bean.isCode()) {
-//                                        switch (position) {
-//                                            case 0:
-//                                                WebViewCurrencyActivity.start(getActivity(), "中央精神", URLS.DYNAMICMODULE + "中央精神");
-//                                                break;
-//                                            case 1:
-//                                                WebViewCurrencyActivity.start(getActivity(), "党组声音", URLS.DYNAMICMODULE + "党组声音");
-//                                                break;
-//                                            case 2:
-//                                                DynamicActivity.start(getActivity(), "党委新闻");
-//                                                break;
-//                                            case 3:
-//                                                DynamicActivity.start(getActivity(), "基层交流");
-//                                                break;
-//                                            case 4:
-//                                                DynamicActivity.start(getActivity(), "学习园地");
-//                                                break;
-//                                            case 5:
-//                                                PartyAffairsActivity.start(getActivity(), "党务知识");
-//                                                break;
-//                                            case 6:
-//                                                WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid());
-//                                                break;
-//                                            case 7://缴纳党费
-//                                                PayPartyFeesActivity.start(getActivity());
-//                                                break;
-//                                            default:
-//                                                ToastUtils.getInstance().showTextToast(getActivity(), "没有对应的选项");
-//                                                break;
-//                                        }
-//                                    } else {
-//                                        ToastUtils.getInstance().showTextToast(getActivity(), bean.getMsg());
-//                                    }
-
-//                                }
-//                            });
-//
-//                } else {
-//                    ToastUtils.getInstance().showTextToast(getActivity(), "请登陆后继续访问");
-//                }
-
-
-
-                if (beans.get(position).getFunctionname().equals("中央精神")){
-                    WebViewCurrencyActivity.start(getActivity(), "中央精神", URLS.DYNAMICMODULE + "中央精神");
-                }else   if (beans.get(position).getFunctionname().equals("党组声音")){
-                    WebViewCurrencyActivity.start(getActivity(), "党组声音", URLS.DYNAMICMODULE + "党组声音");
-                }else  if (beans.get(position).getFunctionname().equals("党委新闻")){
-                    DynamicActivity.start(getActivity(), "党委新闻");
-                }else  if (beans.get(position).getFunctionname().equals("基层交流")){
-                    DynamicActivity.start(getActivity(), "基层交流");
-                }else  if (beans.get(position).getFunctionname().equals("学习园地")){
-                    DynamicActivity.start(getActivity(), "学习园地");
-                }else  if (beans.get(position).getFunctionname().equals("党务知识")){
-                    PartyAffairsActivity.start(getActivity(), "党务知识");
-                }else  if (beans.get(position).getFunctionname().equals("在线考试")){
-                    WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid());
-                }else  if (beans.get(position).getFunctionname().equals("缴纳党费")){
-                    PayPartyFeesActivity.start(getActivity());
-                }else  if (beans.get(position).getFunctionname().equals("三会一课")){
-                 ToastUtils.getInstance().showTextToast(getActivity(),"暂无内容");
-                }
-            }
-        });
-
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         folderAdapter1 = new NoticeAdapter(getActivity(), bwws);
         homeNewsRecycler.setLayoutManager(linearLayoutManager1);
@@ -205,7 +113,7 @@ public class Home_Fragment extends BaseFragment {
         folderAdapter1.setOnClickLinstener(new NoticeAdapter.onClickLinstener() {
             @Override
             public void setOnClick(View view, int position) {
-                WebViewCurrencyActivity.start(getActivity(), "党委新闻", URLS.HOME_NEWS_DETAIL+bwws.get(position).getId());
+                WebViewCurrencyActivity.start(getActivity(), "党委新闻", URLS.HOME_NEWS_DETAIL + bwws.get(position).getId());
             }
         });
 
@@ -252,7 +160,7 @@ public class Home_Fragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.denglu://登陆
                 LoginActivity.start(getActivity());
-                getActivity().finish();
+//                getActivity().finish();
                 break;
             case R.id.home_search://搜索框
                 SearchActivity.start(getActivity());
@@ -506,7 +414,51 @@ public class Home_Fragment extends BaseFragment {
                         String responses = "{carouselmap:" + response + "}";
                         HomeDynamicBean bean = gson.fromJson(responses, HomeDynamicBean.class);
                         beans.addAll(bean.getCarouselmap());
-                        folderAdapter.notifyDataSetChanged();
+//                        folderAdapter.notifyDataSetChanged();
+//                        landscapeAdapter.notifyDataSetChanged();
+
+
+                        if (beans.size()<5){
+                            GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1);
+                            gridLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
+                            mainRecycler.setLayoutManager(gridLayoutManager);
+                        }else {
+                            GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+                            gridLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
+                            mainRecycler.setLayoutManager(gridLayoutManager);
+                        }
+
+                        //设置适配器
+                        landscapeAdapter = new LandscapeAdapter(getActivity(), beans);
+                        mainRecycler.setAdapter(landscapeAdapter);
+                        landscapeAdapter.setOnClickLinstener(
+                                new FolderAdapter.onClickLinstener() {
+                                    @Override
+                                    public void setOnClick(View view, int position) {
+
+                                        if (beans.get(position).getFunctionname().equals("中央精神")) {
+                                            WebViewCurrencyActivity.start(getActivity(), "中央精神", URLS.DYNAMICMODULE + "中央精神");
+                                        } else if (beans.get(position).getFunctionname().equals("党组声音")) {
+                                            WebViewCurrencyActivity.start(getActivity(), "党组声音", URLS.DYNAMICMODULE + "党组声音");
+                                        } else if (beans.get(position).getFunctionname().equals("党委新闻")) {
+                                            DynamicActivity.start(getActivity(), "党委新闻");
+                                        } else if (beans.get(position).getFunctionname().equals("基层交流")) {
+                                            DynamicActivity.start(getActivity(), "基层交流");
+                                        } else if (beans.get(position).getFunctionname().equals("学习园地")) {
+                                            DynamicActivity.start(getActivity(), "学习园地");
+                                        } else if (beans.get(position).getFunctionname().equals("党务知识")) {
+                                            PartyAffairsActivity.start(getActivity(), "党务知识");
+                                        } else if (beans.get(position).getFunctionname().equals("在线考试")) {
+                                            WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid());
+                                        } else if (beans.get(position).getFunctionname().equals("缴纳党费")) {
+                                            PayPartyFeesActivity.start(getActivity());
+                                        } else if (beans.get(position).getFunctionname().equals("三会一课")) {
+                                            ToastUtils.getInstance().showTextToast(getActivity(), "暂无内容");
+                                        }
+                                    }
+                                }
+                        );
+
                     }
                 });
 

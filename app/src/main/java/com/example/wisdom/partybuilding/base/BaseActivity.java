@@ -36,15 +36,16 @@ public abstract class BaseActivity <P extends BasePresenter> extends AppCompatAc
         super.onCreate(savedInstanceState);
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        Hawk.init(this).build();
         this.setStatusBarFullTransparent();
         AppManager.getAppManager().addActivity(this);
 
         MyApplication.mContext=this;
         root = LayoutInflater.from(this).inflate(getLayoutId(), null);
         mInflate = LayoutInflater.from(this);
+
+
         this.setContentView(root);
+
         mUnBinder = ButterKnife.bind(this);
         activity = this;
         initView();

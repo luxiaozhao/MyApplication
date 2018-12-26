@@ -118,7 +118,7 @@ public class WebViewCurrencyActivity extends BaseActivity {
         final int TAG_SHARE_WECHAT_FRIEND = 0;
         final int TAG_SHARE_WECHAT_MOMENT = 1;
         final int TAG_SHARE_WEIBO = 2;
-        final int TAG_SHARE_CHAT = 3;
+//        final int TAG_SHARE_CHAT = 3;
         QMUIBottomSheet.BottomGridSheetBuilder builder = new QMUIBottomSheet.BottomGridSheetBuilder(this);
         builder
                 .setButtonText("取消分享")

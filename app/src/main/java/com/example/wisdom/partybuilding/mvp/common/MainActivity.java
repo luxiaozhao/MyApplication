@@ -30,6 +30,7 @@ import com.example.wisdom.partybuilding.utils.ToastUtils;
 import com.orhanobut.hawk.Hawk;
 
 import cn.jpush.android.api.JPushInterface;
+import easypermission.davidinchina.com.easylibrary.EasyPermission;
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
@@ -59,7 +60,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         } catch (Exception e) {
         }
 
-
         home_Fragment = new Home_Fragment();
         upcoming_Fragment = new Upcoming_Fragment();
         notice_Fragment = new Notice_Fragment();
@@ -74,6 +74,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 .add(R.id.conta, mine_Fragment, "4")
                 .commit();
         radioGroup = (RadioGroup) findViewById(R.id.radio);
+
         radioGroup.setOnCheckedChangeListener(this);
         radioGroup.check(R.id.main_home);//选中状态
     }
@@ -110,6 +111,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     }
 
 
+    private boolean aBoolean=true;
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
 
@@ -133,9 +135,19 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                             .hide(mine_Fragment)
                             .show(upcoming_Fragment).commit();
                 } else {
-                    LoginActivity.start(this);
-                }
 
+                    if (aBoolean){
+                        LoginActivity.start(this);
+                        aBoolean=false;
+                    }else {
+                        aBoolean=true;
+                    }
+                    Log.e("TAH","1111111111111111"+aBoolean);
+                }
+/*
+12-26 11:30:12.883 901-1261/? E/InputReader: QEEXO fs_classify_touch NULL, not calling FingerSense
+12-26 11:30:19.727 901-1261/? E/InputReader: QEEXO fs_classify_touch NULL, not calling FingerSense
+*/
 
                 break;
             case R.id.main_notice:
@@ -147,7 +159,14 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                             .hide(home_Fragment)
                             .show(notice_Fragment).commit();
                 } else {
-                    LoginActivity.start(this);
+
+                    if (aBoolean){
+                        LoginActivity.start(this);
+                        aBoolean=false;
+                    }else {
+                        aBoolean=true;
+                    }
+
                 }
                 break;
             case R.id.main_mine:
@@ -158,9 +177,27 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                             .hide(home_Fragment)
                             .show(mine_Fragment).commit();
                 } else {
-                    LoginActivity.start(this);
+
+                    if (aBoolean){
+                        LoginActivity.start(this);
+                        aBoolean=false;
+                    }else {
+                        aBoolean=true;
+                    }
                 }
                 break;
+        }
+
+    }
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        if (!Hawk.contains(Contants.loginInformation)) {
+            radioGroup.check(R.id.main_home);//选中状态
+            aBoolean=true;
         }
 
     }
@@ -213,21 +250,19 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                     if (!ExampleUtil.isEmpty(extras)) {
                         showMsg.append(KEY_EXTRAS + " : " + extras + "\n");
                     }
-                    setCostomMsg(showMsg.toString());
+//                    setCostomMsg(showMsg.toString());
                 }
             } catch (Exception e) {
             }
         }
     }
 
-    private void setCostomMsg(String msg) {
-//        ToastUtils.getInstance().showTextToast(this,"这是什么鬼东西，我真想知道"+msg);
-        Log.e("TAG", "这是什么鬼东西，我真想知道" + msg);
-//        if (null != msgText) {
-//            msgText.setText(msg);
-//            msgText.setVisibility(android.view.View.VISIBLE);
-//        }
-    }
+//    private void setCostomMsg(String msg) {
+////        if (null != msgText) {
+////            msgText.setText(msg);
+////            msgText.setVisibility(android.view.View.VISIBLE);
+////        }
+//    }
 
     // 用来计算返回键的点击间隔时间
     private long exitTime = 0;
@@ -257,6 +292,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
+        EasyPermission.handleResult(this, requestCode, permissions, grantResults);//处理权限申请回调结果
 
     }
+
 }

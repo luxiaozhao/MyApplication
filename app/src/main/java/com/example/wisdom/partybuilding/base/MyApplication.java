@@ -1,9 +1,7 @@
 package com.example.wisdom.partybuilding.base;
 
 import android.app.Application;
-import android.util.Log;
 
-import com.example.wisdom.partybuilding.R;
 import com.orhanobut.hawk.Hawk;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
@@ -12,14 +10,14 @@ import org.xutils.x;
 
 
 public class MyApplication extends Application {
-    public static BaseActivity mContext;
 
+    public static BaseActivity mContext=null;
     @Override
     public void onCreate() {
         super.onCreate();
         initHawk();
 
-        UMConfigure.setLogEnabled(true);
+//        UMConfigure.setLogEnabled(true);
 //        分享
         UMConfigure.init(this, "5c19ad27f1f5563dda00003b"//  5c19ad27f1f5563dda00003b
                 , "umeng", UMConfigure.DEVICE_TYPE_PHONE, "");//58edcfeb310c93091c000be2 5965ee00734be40b580001a0

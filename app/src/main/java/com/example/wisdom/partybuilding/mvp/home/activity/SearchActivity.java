@@ -18,6 +18,7 @@ import com.example.wisdom.partybuilding.base.BaseActivity;
 import com.example.wisdom.partybuilding.base.BasePresenter;
 import com.example.wisdom.partybuilding.mvp.adapter.SearchAdapter;
 import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
+import com.example.wisdom.partybuilding.mvp.common.WebViewCurrencyActivity;
 import com.example.wisdom.partybuilding.net.URLS;
 import com.example.wisdom.partybuilding.utils.ToastUtils;
 import com.google.gson.Gson;
@@ -46,7 +47,8 @@ public class SearchActivity extends BaseActivity {
     RecyclerView searchRecycler;
     private InputMethodManager manager;//输入法管理器
     private SearchAdapter searchAdapter;
-    private List<DynamicBean.NewsBean> newsBeans=new ArrayList<>();
+    private List<DynamicBean.NewsBean> newsBeans = new ArrayList<>();
+
     public static void start(Context context) {
         Intent intent = new Intent(context, SearchActivity.class);
         context.startActivity(intent);
@@ -80,7 +82,7 @@ public class SearchActivity extends BaseActivity {
 
                     hideSoftKeyboard(SearchActivity.this);
                 } else {
-                    ToastUtils.getInstance().showTextToast(SearchActivity.this,"没有数据");
+                    ToastUtils.getInstance().showTextToast(SearchActivity.this, "没有数据");
                 }
                 return false;
             }
@@ -95,8 +97,15 @@ public class SearchActivity extends BaseActivity {
         searchAdapter.setOnClickLinstener(new SearchAdapter.onClickLinstener() {
             @Override
             public void setOnClick(View view, int position) {
-
-//                TidingsActivity.start(getActivity());
+                if (newsBeans.get(position).getTypename().equals("党委新闻")) {
+                    WebViewCurrencyActivity.start(activity, newsBeans.get(position).getTypename(), URLS.HOME_NEWS_DETAIL + newsBeans.get(position).getId());
+                } else if (newsBeans.get(position).getTypename().equals("基层交流")) {
+                    WebViewCurrencyActivity.start(activity, newsBeans.get(position).getTypename(), URLS.HOME_BASICLEVEL_DETAIL + newsBeans.get(position).getId());
+                } else if (newsBeans.get(position).getTypename().equals("学习园地")) {
+                    WebViewCurrencyActivity.start(activity, newsBeans.get(position).getTypename(), URLS.HOME_LEARNING_DETAIL + newsBeans.get(position).getId());
+                } else {
+                    ToastUtils.getInstance().showTextToast(activity, "暂无详情页");
+                }
             }
         });
     }
@@ -127,13 +136,6 @@ public class SearchActivity extends BaseActivity {
 
     }
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        // TODO: add setContentView(...) invocation
-//        ButterKnife.bind(this);
-//    }
-
     @OnClick({R.id.search_return})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -143,15 +145,16 @@ public class SearchActivity extends BaseActivity {
 
         }
     }
+
     private void getdata(String param) {
 
-tipDialog.show();
+        tipDialog.show();
         OkHttpUtils
                 .get()
                 .url(URLS.HOME_SEARCH)
-                .addParams("param",param)
-                .addParams("pageIndex","1")
-                .addParams("pageSize","20")
+                .addParams("param", param)
+                .addParams("pageIndex", "1")
+                .addParams("pageSize", "20")
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -169,9 +172,6 @@ tipDialog.show();
                         tipDialog.cancel();
                     }
                 });
-
-
-
     }
 
 }

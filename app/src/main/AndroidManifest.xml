@@ -77,6 +77,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity
+            android:name=".start.GuideActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.Launch">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mvp.common.MainActivity"
+            android:screenOrientation="portrait"
+        >
+
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+
+        </activity>
+
         <!-- Required SDK 核心功能 -->
         <!-- 可配置 android:process 参数将 PushService 放在其他进程中 -->
         <service
@@ -218,21 +242,20 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".start.GuideActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/App.Theme.Launch">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <!--<activity-->
+            <!--android:name=".start.GuideActivity"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@style/App.Theme.Launch">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
 
-        <!-- <activity android:name=".start.GuideActivity"></activity> -->
-        <activity
-            android:name=".mvp.common.MainActivity"
-            android:screenOrientation="portrait" />
+        <!--<activity-->
+            <!--android:name=".mvp.common.MainActivity"-->
+            <!--android:screenOrientation="portrait" />-->
         <activity
             android:name=".mvp.home.activity.LoginActivity"
             android:screenOrientation="portrait" />
@@ -330,7 +353,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="tencent100424468" />
+                <data android:scheme="wx5da20be46a1af30b" />
             </intent-filter>
         </activity>
         <activity
@@ -348,7 +371,9 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="tencent100424468" />
+                <data android:scheme="wx5da20be46a1af30b" />
+                <!--wx5da20be46a1af30b-->
+                <!--tencent100424468-->
             </intent-filter>
 
         </activity>

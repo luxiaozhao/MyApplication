@@ -8,6 +8,11 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="@dimen/lay_100"
+    android:layout_height="@dimen/lay_100">
+
 
 
 
@@ -16,7 +21,7 @@
             android:id="@+id/adapter_img"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            />
+          android:src="@mipmap/ic_launcher_round"  />
 
         <TextView
             android:layout_marginTop="@dimen/lay_10"
@@ -24,10 +29,11 @@
             android:id="@+id/adapter_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="ssssssssssss"
             android:textColor="#000"/>
 
 
+</LinearLayout>
 
 
 </LinearLayout>

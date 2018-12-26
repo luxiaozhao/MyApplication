@@ -41,6 +41,14 @@
             android:textColor="#FE0000"
             android:textSize="@dimen/font_14" />
 
+        <!--<EditText-->
+            <!--android:id="@+id/login_accountNumber"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/lay_10"-->
+            <!--android:layout_marginRight="@dimen/lay_20"-->
+            <!--android:background="@null"-->
+            <!--android:textColor="#000" />-->
         <EditText
             android:id="@+id/login_accountNumber"
             android:layout_width="match_parent"
@@ -48,7 +56,8 @@
             android:layout_marginLeft="@dimen/lay_10"
             android:layout_marginRight="@dimen/lay_20"
             android:background="@null"
-            android:textColor="#000" />
+            android:textColor="#000"
+       />
 
     </LinearLayout>
 
@@ -94,7 +103,7 @@
             android:id="@+id/login_remember_img"
             android:layout_width="@dimen/lay_20"
             android:layout_height="@dimen/lay_20"
-            android:src="@mipmap/remember" />
+            android:src="@mipmap/remember2" />
 
         <TextView
             android:layout_width="wrap_content"

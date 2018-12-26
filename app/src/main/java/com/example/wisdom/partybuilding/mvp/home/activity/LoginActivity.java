@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -43,7 +44,7 @@ public class LoginActivity extends BaseActivity {
     ImageView loginRememberImg;
     @BindView(R.id.login_landed)
     TextView loginLanded;
-     @BindView(R.id.login_backtrack)
+    @BindView(R.id.login_backtrack)
     TextView loginBacktrack;
     @BindView(R.id.login_remember_password)
     LinearLayout login_remember_password;
@@ -58,6 +59,10 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void initView() {
         ButterKnife.bind(this);
+
+        Glide.with(LoginActivity.this).load(R.mipmap.remember2).into(loginRememberImg);
+        aBoolean = false;
+
         if (Hawk.contains(Contants.rememberAccountAndPassword)) {
             Map<String, String> stringStringMap = Hawk.get(Contants.rememberAccountAndPassword);
             loginAccountNumber.setText(stringStringMap.get("accountNumber"));
@@ -82,7 +87,7 @@ public class LoginActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.login_landed, R.id.login_backtrack,R.id.login_remember_password})
+    @OnClick({R.id.login_landed, R.id.login_backtrack, R.id.login_remember_password})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login_landed:
@@ -92,7 +97,7 @@ public class LoginActivity extends BaseActivity {
                         Hawk.delete(Contants.rememberAccountAndPassword);
                     }
                     Map<String, String> stringStringMap = new HashMap<>();
-                    stringStringMap.put("accountNumber",getloginAccountNumber());
+                    stringStringMap.put("accountNumber", getloginAccountNumber());
                     stringStringMap.put("password", getloginPassword());
                     Hawk.put(Contants.rememberAccountAndPassword, stringStringMap);
                 } else {
@@ -101,7 +106,8 @@ public class LoginActivity extends BaseActivity {
                 geturl();
                 break;
             case R.id.login_backtrack:
-                Home_Fragment.start(LoginActivity.this);
+//                Home_Fragment.start(LoginActivity.this);
+
                 finish();
                 break;
             case R.id.login_remember_password:
@@ -120,8 +126,8 @@ public class LoginActivity extends BaseActivity {
 
     private void geturl() {
 
-  Log.e("TAG","登陆网址:"+URLS.SEND_MESSAGE+"username:"+ getloginAccountNumber()+"---password:"+ getloginPassword());
-       OkHttpUtils
+        Log.e("TAG", "登陆网址:" + URLS.SEND_MESSAGE + "username:" + getloginAccountNumber() + "---password:" + getloginPassword());
+        OkHttpUtils
                 .get()
                 .url(URLS.SEND_MESSAGE)//    http://119.80.161.8:9999/FHBE/login.ht?username=djys&password=2
                 .addParams("username", getloginAccountNumber())
@@ -130,7 +136,7 @@ public class LoginActivity extends BaseActivity {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        Log.e("TAG", "登陆失败："+e.toString());
+                        Log.e("TAG", "登陆失败：" + e.toString());
                     }
 
                     @Override
@@ -170,14 +176,14 @@ public class LoginActivity extends BaseActivity {
 
     }
 
-       //账号
+    //账号
     private String getloginAccountNumber() {
         return loginAccountNumber.getText().toString().trim();
     }
+
     //密码
     private String getloginPassword() {
         return loginPassword.getText().toString().trim();
     }
-
 
 }
