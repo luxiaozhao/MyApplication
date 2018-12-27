@@ -31,7 +31,24 @@ public class URLS {
     /*
      * 中央精神
      * */
-    public static final String DYNAMICMODULE = "mobile/mobileNews/mobileNews/listnews.ht?pageSize=5&pageIndex=2&itemName=";
+    public static final String DYNAMICMODULE = BASE_URL + "mobile/mobileNews/mobileNews/listnews.ht?pageSize=5&pageIndex=2&itemName=";
+
+//http://127.0.0.1:8080/FHBE/djy/threeMeeting/threeMeeting/listapp.ht?pid=430111197811111111&meettype=1&deptid=6666611
+
+    /*
+    * 三会一课
+    * */
+    //支部党员大会
+    public static final String THREE_SESSIONS_AND_ONE_LESSON_BRANCH_PARTY_ASSEMBLY = BASE_URL + "djy/threeMeeting/threeMeeting/listapp.ht";
+    //支部委员会
+    public static final String THREE_SESSIONS_AND_ONE_LESSON_BRANCH_COMMITTEE = BASE_URL + "mobile/mobileNews/mobileNews/listnews.ht?pageSize=5&pageIndex=2&itemName=";
+    //党小组会
+    public static final String THREE_SESSIONS_AND_ONE_LESSON_PARTY_GROUP_MEETING =BASE_URL +  "mobile/mobileNews/mobileNews/listnews.ht?pageSize=5&pageIndex=2&itemName=";
+    //党课
+    public static final String THREE_SESSIONS_AND_ONE_LESSON_PARTYCLASS = BASE_URL + "mobile/mobileNews/mobileNews/listnews.ht?pageSize=5&pageIndex=2&itemName=";
+
+
+
 
 
     /*

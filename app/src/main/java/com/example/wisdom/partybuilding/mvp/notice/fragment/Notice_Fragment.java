@@ -14,11 +14,12 @@ import android.view.ViewGroup;
 import com.example.wisdom.partybuilding.R;
 import com.example.wisdom.partybuilding.base.BaseFragment;
 import com.example.wisdom.partybuilding.base.IPresenter;
+import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
 import com.example.wisdom.partybuilding.mvp.common.MainActivity;
 import com.example.wisdom.partybuilding.mvp.common.WebViewCurrencyActivity;
 import com.example.wisdom.partybuilding.mvp.home.activity.NoticeAdapter;
-import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
 import com.example.wisdom.partybuilding.net.URLS;
+import com.example.wisdom.partybuilding.utils.GsonUtil;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -55,8 +56,6 @@ public class Notice_Fragment extends BaseFragment {
         getdata(1,20);
 
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-
-
         folderAdapter1 = new NoticeAdapter(getActivity(), bwws);
         noticeRecycler.setLayoutManager(linearLayoutManager1);
         noticeRecycler.setNestedScrollingEnabled(false);
@@ -121,6 +120,7 @@ public class Notice_Fragment extends BaseFragment {
                         Gson gson = new Gson();
                         DynamicBean bean = gson.fromJson(response, DynamicBean.class);
                         bwws.addAll(bean.getNews());
+                        Log.e("TAGG", "response-----111----------" + GsonUtil.GsonString(bwws));
                         folderAdapter1.notifyDataSetChanged();
                     }
                 });

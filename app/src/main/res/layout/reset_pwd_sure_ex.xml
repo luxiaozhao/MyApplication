@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/lay_25"
+        android:layout_marginRight="@dimen/lay_25"
+        android:background="@drawable/popupwindow_beijing"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+
+            <ImageView
+                android:id="@+id/popw2_closed"
+                android:layout_width="@dimen/lay_25"
+                android:layout_height="@dimen/lay_25"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/lay_15"
+                android:layout_marginRight="@dimen/lay_15"
+                android:src="@mipmap/closed" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/popw2_img"
+                android:layout_width="@dimen/lay_100"
+                android:layout_height="@dimen/lay_100"
+                android:layout_marginTop="@dimen/lay_10"
+                android:src="@mipmap/sign_fail" />
+
+            <TextView
+                android:id="@+id/popw2_img_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/lay_18"
+                android:text="签到失败"
+                android:textColor="#0b0b0b"
+                android:textSize="@dimen/font_18" />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/lay_30"
+            android:layout_marginTop="@dimen/lay_35"
+            android:layout_marginRight="@dimen/lay_30"
+            android:orientation="vertical"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/popw2_place"
+                android:layout_marginTop="@dimen/lay_10"
+                android:layout_marginBottom="@dimen/lay_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="网络似乎有问题，请尝试重新签到"
+                android:textColor="#0b0b0b"
+                android:textSize="@dimen/font_15" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/lay_85"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/popw2_verify"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_40"
+                android:layout_marginLeft="@dimen/lay_80"
+                android:layout_marginRight="@dimen/lay_80"
+                android:background="@drawable/button_border_red"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="#fff"
+                android:textSize="@dimen/font_16" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/lay_10"
                     android:layout_marginBottom="@dimen/lay_10"
-                    android:text="使劲擦水水水水水水水水水水水水水水撒"
+                    android:text=""
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_15" />
 
@@ -122,7 +122,7 @@
                     android:layout_marginBottom="@dimen/lay_10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="使劲擦水水水水水水水水水水水水水水水撒"
+                    android:text=""
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_15" />
 
@@ -155,7 +155,7 @@
                     android:layout_marginBottom="@dimen/lay_10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="使水水水水水水水水水水水水水水水水水撒"
+                    android:text=""
                     android:textColor="#0b0b0b"
                     android:textSize="@dimen/font_15" />
 

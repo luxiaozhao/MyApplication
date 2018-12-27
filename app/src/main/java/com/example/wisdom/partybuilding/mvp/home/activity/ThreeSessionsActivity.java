@@ -2,7 +2,6 @@ package com.example.wisdom.partybuilding.mvp.home.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -31,7 +30,7 @@ public class ThreeSessionsActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        ButterKnife.bind(this);
     }
 
     @Override
@@ -49,31 +48,25 @@ public class ThreeSessionsActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
     @OnClick({R.id.three_sessions_branch_party_assembly, R.id.three_sessions_branch_committee, R.id.three_sessions_party_group_meeting, R.id.three_sessions_party_class})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.three_sessions_branch_party_assembly:
-
-                SessionsItemActivity.start(activity);
-
+                SessionsItemActivity.start(activity,"支部党员大会");
+                finish();
                 break;
             case R.id.three_sessions_branch_committee:
-                SessionsItemActivity.start(activity);
-
+                SessionsItemActivity.start(activity,"支部委员会");
+                finish();
                 break;
             case R.id.three_sessions_party_group_meeting:
-
-                SessionsItemActivity.start(activity);
+                SessionsItemActivity.start(activity,"党小组会");
+                finish();
                 break;
             case R.id.three_sessions_party_class:
-                SessionsItemActivity.start(activity);
+                SessionsItemActivity.start(activity,"党课");
+                finish();
                 break;
         }
     }

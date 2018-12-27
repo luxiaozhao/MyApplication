@@ -634,15 +634,18 @@ public class Home_Fragment extends BaseFragment {
                         try {
                             Gson gson = new Gson();
                             SignInBean bean = gson.fromJson(response, SignInBean.class);
-                            String meetingname = bean.getMeetingname();
-                            String meetingaddress = bean.getMeetingaddress();
-                            long meetingtime = bean.getMeetingtime();
-                            long meingtime = meetingtime / 1000;
-                            showPopwindowMenu(getActivity(), meetingname, meetingaddress, meingtime + "", 1);
 
-
+                            if (bean.getStatus().equals("fail")) {
+                                showPopwindowMenuException(getActivity(), bean.getMsg());
+                            } else {
+                                String meetingname = bean.getMeetingname();
+                                String meetingaddress = bean.getMeetingaddress();
+                                long meetingtime = bean.getMeetingtime();
+                                long meingtime = meetingtime / 1000;
+                                showPopwindowMenu(getActivity(), meetingname, meetingaddress, meingtime + "");
+                            }
                         } catch (Exception e) {
-                            showPopwindowMenu(getActivity(), null, null, null, 2);
+                            showPopwindowMenuException(getActivity(), null);
 
                         }
 
@@ -650,7 +653,7 @@ public class Home_Fragment extends BaseFragment {
                 });
     }
 
-    private void showPopwindowMenu(Activity activity, String name, String site, String time, int judge) {
+    private void showPopwindowMenu(Activity activity, String name, String site, String time) {
 
         View popView = View.inflate(getActivity(), R.layout.reset_pwd_sure, null);
         ImageView popwImg = (ImageView) popView.findViewById(R.id.popw_img);
@@ -660,25 +663,14 @@ public class Home_Fragment extends BaseFragment {
         TextView popwTime = (TextView) popView.findViewById(R.id.popw_time);
         TextView popwPlace = (TextView) popView.findViewById(R.id.popw_place);
         TextView popwVerify = (TextView) popView.findViewById(R.id.popw_verify);
+        try {
+            popwName.setText(name);
+            popwPlace.setText(site);
 
-
-        if (judge == 1) {
-            try {
-                popwName.setText(name);
-                popwPlace.setText(site);
-
-                String releasetimes = DateUtils.timesTwo(time);
-                popwTime.setText(releasetimes);
-            } catch (Exception e) {
-            }
-
-        } else {
-            popwImg.setImageResource(R.mipmap.sign_fail);
-            popwImgName.setText("签到失败");
+            String releasetimes = DateUtils.timesTwo(time);
+            popwTime.setText(releasetimes);
+        } catch (Exception e) {
         }
-
-
-
 
         int width = getResources().getDisplayMetrics().widthPixels;
         int height = getResources().getDisplayMetrics().heightPixels;
@@ -723,5 +715,40 @@ public class Home_Fragment extends BaseFragment {
         popWindow.showAtLocation(activity.getWindow().getDecorView(), Gravity.CENTER, 0, 0);
     }
 
+    private void showPopwindowMenuException(Activity activity, String msg) {
+
+        View popView = View.inflate(getActivity(), R.layout.reset_pwd_sure_ex, null);
+        ImageView popwImg = (ImageView) popView.findViewById(R.id.popw2_img);
+        TextView popwImgName = (TextView) popView.findViewById(R.id.popw2_img_name);
+        ImageView popwClosed = (ImageView) popView.findViewById(R.id.popw2_closed);
+        TextView popwPlace = (TextView) popView.findViewById(R.id.popw2_place);
+        TextView popwVerify = (TextView) popView.findViewById(R.id.popw_verify);
+        if (msg != null && msg.length() != 0) {
+            popwPlace.setText(msg);
+        }
+
+        int width = getResources().getDisplayMetrics().widthPixels;
+        int height = getResources().getDisplayMetrics().heightPixels;
+        final PopupWindow popWindow = new PopupWindow(popView, width, height);
+        popWindow.setContentView(popView);
+        popWindow.setFocusable(true);
+        popWindow.setOutsideTouchable(false);// 设置允许在外点击消失
+
+        popwClosed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popWindow.dismiss();
+            }
+        });
+
+        popwVerify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popWindow.dismiss();
+            }
+        });
+        // 设置好参数之后再show
+        popWindow.showAtLocation(activity.getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+    }
 
 }
