@@ -18,12 +18,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.wisdom.partybuilding.R;
-import com.example.wisdom.partybuilding.WebActivity;
 import com.example.wisdom.partybuilding.base.BaseFragment;
 import com.example.wisdom.partybuilding.base.IPresenter;
-import com.example.wisdom.partybuilding.mvp.bean.MessageBean;
+import com.example.wisdom.partybuilding.mvp.bean.NoticeBeanno1;
 import com.example.wisdom.partybuilding.mvp.bean.home.HomeDynamicBean;
 import com.example.wisdom.partybuilding.mvp.home.adapter.FolderAdapter;
 import com.example.wisdom.partybuilding.mvp.home.adapter.GlideImageLoader;
@@ -39,7 +37,6 @@ import com.example.wisdom.partybuilding.mvp.home.activity.LoginActivity;
 import com.example.wisdom.partybuilding.mvp.bean.Home_CarouselmapBean;
 import com.example.wisdom.partybuilding.mvp.bean.SuccessBean;
 import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
-import com.example.wisdom.partybuilding.mvp.bean.home.Home_noticeBean;
 import com.example.wisdom.partybuilding.mvp.bean.login.AttestBean;
 import com.example.wisdom.partybuilding.mvp.home.adapter.LandscapeAdapter;
 import com.example.wisdom.partybuilding.net.Contants;
@@ -94,14 +91,9 @@ public class Home_Fragment extends BaseFragment {
     private List<HomeDynamicBean.CarouselmapBean> beans = new ArrayList<>();
     private List<DynamicBean.NewsBean> bwws = new ArrayList<>();
     private List<Home_CarouselmapBean.CarouselmapBean> carousel_urllist = new ArrayList<>();
-    private FolderAdapter folderAdapter;
     private LandscapeAdapter landscapeAdapter;
     private NoticeAdapter folderAdapter1;
     private SuccessBean successBean = new SuccessBean();
-
-    private Home_noticeBean bean;
-    private MessageBean messageBean;
-    private List<MessageBean.NewsBean> news;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -120,7 +112,7 @@ public class Home_Fragment extends BaseFragment {
         folderAdapter1.setOnClickLinstener(new NoticeAdapter.onClickLinstener() {
             @Override
             public void setOnClick(View view, int position) {
-                WebViewCurrencyActivity.start(getActivity(), "党委新闻", URLS.HOME_NEWS_DETAIL + bwws.get(position).getId());
+                WebViewCurrencyActivity.start(getActivity(), "党委新闻", URLS.HOME_NEWS_DETAIL + bwws.get(position).getId(),bwws.get(position).getTitile());
             }
         });
 
@@ -200,8 +192,6 @@ public class Home_Fragment extends BaseFragment {
             case R.id.banner:
                 break;
             case R.id.home_notice:
-
-                WebViewCurrencyActivity.start(getActivity(), "通知公告", URLS.HOME_NEWS_DETAIL + news.get(0).getId());
 
 
 
@@ -342,7 +332,7 @@ public class Home_Fragment extends BaseFragment {
 
 
     /*
-     * 待办
+     * 首页——通知
      * */
     private void getnotification() {
         OkHttpUtils
@@ -351,9 +341,6 @@ public class Home_Fragment extends BaseFragment {
                 .addParams("sid", successBean.getSid())
                 .build()
                 .execute(new StringCallback() {
-
-
-
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         homeNoticeDetail.setText("暂无通知");
@@ -363,11 +350,9 @@ public class Home_Fragment extends BaseFragment {
                     public void onResponse(String response, int id) {
                         try {
                             Gson gson = new Gson();
-//                            bean = gson.fromJson(response, Home_noticeBean.class);
-                            MessageBean   messageBean=gson.fromJson(response, MessageBean.class);
-
-                            news = messageBean.getNews();
-                            homeNoticeDetail.setText(news.get(0).getTitile());
+                            NoticeBeanno1 noticeBeanno1=gson.fromJson(response, NoticeBeanno1.class);
+                            String title = noticeBeanno1.getTitle();
+                            homeNoticeDetail.setText(title);
                             homeNoticeDetailImg.setVisibility(View.VISIBLE);
                         } catch (Exception e) {
                             homeNoticeDetail.setText("暂无通知");
@@ -489,12 +474,11 @@ public class Home_Fragment extends BaseFragment {
                                 new FolderAdapter.onClickLinstener() {
                                     @Override
                                     public void setOnClick(View view, int position) {
-                                        Log.e("TTT", beans.get(position).getFunctionname() + "");
 
                                         if (beans.get(position).getFunctionname().equals("中央精神")) {
-                                            WebViewCurrencyActivity.start(getActivity(), "中央精神", URLS.DYNAMICMODULE + "中央精神");
+                                            WebViewCurrencyActivity.start(getActivity(), "中央精神", URLS.DYNAMICMODULE + "中央精神","hide");
                                         } else if (beans.get(position).getFunctionname().equals("党组声音")) {
-                                            WebViewCurrencyActivity.start(getActivity(), "党组声音", URLS.DYNAMICMODULE + "党组声音");
+                                            WebViewCurrencyActivity.start(getActivity(), "党组声音", URLS.DYNAMICMODULE + "党组声音","hide");
                                         } else if (beans.get(position).getFunctionname().equals("党委新闻")) {
                                             DynamicActivity.start(getActivity(), "党委新闻");
                                         } else if (beans.get(position).getFunctionname().equals("基层交流")) {
@@ -505,7 +489,7 @@ public class Home_Fragment extends BaseFragment {
 //                                            DynamicActivity.start(getActivity(), "党务知识");
                                             PartyAffairsActivity.start(getActivity(), "党务知识");
                                         } else if (beans.get(position).getFunctionname().equals("在线考试")) {
-                                            WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid());
+                                            WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid(),"hide");
                                         } else if (beans.get(position).getFunctionname().equals("党费缴纳")) {
                                             PayPartyFeesActivity.start(getActivity());
                                         } else if (beans.get(position).getFunctionname().equals("三会一课")) {

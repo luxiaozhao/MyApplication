@@ -22,9 +22,9 @@ public class ShareUtils {
     public static void shareWeb(final Activity activity, String WebUrl, String title, String description, SHARE_MEDIA platform) {
 
         UMWeb web = new UMWeb(WebUrl);//连接地址
-//        web.setTitle(title);//标题
+        web.setTitle(title);//标题
         web.setDescription(description);//描述
-//        web.setThumb(new UMImage(activity, R.mipmap.ic_launcher));  //本地缩略图
+        web.setThumb(new UMImage(activity, R.mipmap.fenxiang));  //本地缩略图
         new ShareAction(activity)
                 .setPlatform(platform)
                 .withMedia(web)

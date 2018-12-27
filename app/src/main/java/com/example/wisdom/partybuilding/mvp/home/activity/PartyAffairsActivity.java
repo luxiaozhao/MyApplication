@@ -74,7 +74,7 @@ public class PartyAffairsActivity extends BaseActivity {
             @Override
             public void setOnClick(View view, int position) {
 //                ToastUtils.getInstance().showTextToast(PartyAffairsActivity.this,"详情页");
-                    WebViewCurrencyActivity.start(activity, "党务知识", URLS.HOME_PARTYWORK_DETAIL + bwws.get(position).getInfoId());
+                    WebViewCurrencyActivity.start(activity, "党务知识", URLS.HOME_PARTYWORK_DETAIL + bwws.get(position).getInfoId(),"titile");
             }
         });
     }

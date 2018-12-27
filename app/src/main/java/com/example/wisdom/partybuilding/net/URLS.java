@@ -4,29 +4,41 @@ public class URLS {
     /**
      * 服务器地址
      */
-//    public static final String BASE_URL = "http://119.80.161.8:9999/FHBE/";
-//    public static final String BASE_URL = "http://192.168.1.199:9999/FHBE/";
+
     public static final String BASE_URL = "http://192.168.1.199:8080/FHBE/";
-//  http://192.168.1.199:8080/FHBE/login.ht?username=djys&password=1
+
+
+    /*
+     *  需要用到sid和pid的时候都需要验证一遍，防止过期（git请求）
+     * */
+    public static final String REVERIFICATION = BASE_URL + "valsession.ht";
+
+
     /**
      *  首页——轮播图
      */
     public static final String HOME_CAROUSELMAP = BASE_URL + "mobile/carousel/carousel/carousel.ht";
 
     /**
+     * 首页通知
+     */
+    public static final String HOMENOTIFICATION = BASE_URL + "mobile/mobileNews/mobileNews/promulgate.ht";
+
+    /**
      *  首页——动态
      */
     public static final String HOME_DYNAMIC_LIST = BASE_URL + "mobile/mobillefunctions/mobilleFunctions/getFunctions.ht";
+    /*
+     * 中央精神
+     * */
+    public static final String DYNAMICMODULE = "mobile/mobileNews/mobileNews/listnews.ht?pageSize=5&pageIndex=2&itemName=";
+
 
     /*
      * 修改密码
      * */
     public static final String CHANGEPASSWORD = BASE_URL + "platform/system/sysUser/uppwd.ht";
 
-    /*
-     *  需要用到sid和pid的时候都需要验证一遍，防止过期（git请求）
-     * */
-    public static final String REVERIFICATION = BASE_URL + "valsession.ht";
 
     /**
      * 登陆
@@ -41,12 +53,6 @@ public class URLS {
     public static final String PERSONALINFORMATION = BASE_URL + "personinfo.jsp";
 
 
-    /**
-     * 首页通知
-     */
-
-    public static final String HOMENOTIFICATION = BASE_URL + "mobile/mobileNews/mobileNews/promulgate.ht";
-//  http://119.80.161.8:9999/FHBE/mobile/mobileNews/mobileNews/promulgate.ht?sid=9014816C7A3BFDBACE793C975142EFDC
 
 
     /*
@@ -54,10 +60,6 @@ public class URLS {
      * */
     public static final String ONLINEEXAM = BASE_URL + "exam/exam/appplan.ht?sid=";
 
-    /*
-     * 中央精神
-     * */
-    public static final String DYNAMICMODULE = "mobile/mobileNews/mobileNews/listnews.ht?pageSize=5&pageIndex=2&itemName=";
 
     /*
      * 首页——动态(党委新闻,基层交流,学习园地，通知公告)
@@ -104,7 +106,7 @@ public class URLS {
 
     /*
      * 通知公告详情页
-     *  FHBE/djy/promulgate/promulgate/news.ht?infoId=
+     *   FHBE/djy/promulgate/promulgate/news.ht?infoId=
      * */
     public static final String HOME_NOTICE_DETAIL = BASE_URL + "djy/promulgate/promulgate/news.ht?infoId=";
 

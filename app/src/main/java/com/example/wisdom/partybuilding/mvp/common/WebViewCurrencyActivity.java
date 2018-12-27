@@ -37,12 +37,15 @@ public class WebViewCurrencyActivity extends BaseActivity {
 
     private String url;
     private String title;
+    private String titlename;
 
 
-    public static void start(Context context, String title, String url) {
+    public static void start(Context context, String title, String url,String titlename) {
         Intent intent = new Intent(context, WebViewCurrencyActivity.class);
         intent.putExtra("title", title);
         intent.putExtra("url", url);
+        intent.putExtra("titlename", titlename);
+
         context.startActivity(intent);
     }
 
@@ -69,6 +72,14 @@ public class WebViewCurrencyActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        titlename = getIntent().getStringExtra("titlename");
+
+        if (titlename.equals("titile")){
+            userShare.setVisibility(View.GONE);
+        }else {
+            userShare.setVisibility(View.VISIBLE);
+        }
 
         url = getIntent().getStringExtra("url");
         title = getIntent().getStringExtra("title");
@@ -118,7 +129,6 @@ public class WebViewCurrencyActivity extends BaseActivity {
         final int TAG_SHARE_WECHAT_FRIEND = 0;
         final int TAG_SHARE_WECHAT_MOMENT = 1;
         final int TAG_SHARE_WEIBO = 2;
-//        final int TAG_SHARE_CHAT = 3;
         QMUIBottomSheet.BottomGridSheetBuilder builder = new QMUIBottomSheet.BottomGridSheetBuilder(this);
         builder
                 .setButtonText("取消分享")
@@ -133,17 +143,14 @@ public class WebViewCurrencyActivity extends BaseActivity {
                         int tag = (int) itemView.getTag();
                         switch (tag) {
                             case TAG_SHARE_WECHAT_FRIEND:
-                                sharedToFriends(urls);
+                                sharedToFriends(urls,titlename);
                                 break;
                             case TAG_SHARE_WECHAT_MOMENT:
-                                sharedToMoment(urls);
+                                sharedToMoment(urls,titlename);
                                 break;
                             case TAG_SHARE_WEIBO:
-                                sharedToQQ(urls);
+                                sharedToQQ(urls,titlename);
                                 break;
-//                            case TAG_SHARE_CHAT:
-////                                sharedToWeibo(id, biaoti, name);
-//                                break;
                         }
                     }
 
@@ -154,22 +161,22 @@ public class WebViewCurrencyActivity extends BaseActivity {
     /**
      * 分享到微信
      */
-    private void sharedToFriends(String biaoti) {
-        ShareUtils.shareWeb(activity, biaoti, biaoti + "pdf", "分享了他的材料，请点击查看", SHARE_MEDIA.WEIXIN);
+    private void sharedToFriends(String biaoti,String content) {
+        ShareUtils.shareWeb(activity, biaoti,  tvTitle.getText().toString(), content, SHARE_MEDIA.WEIXIN);
     }
 
     /**
      * 分享到朋友圈
      */
-    private void sharedToMoment(String biaoti) {
-        ShareUtils.shareWeb(activity, biaoti, biaoti + ".pdf", "分享了他的材料，请点击查看", SHARE_MEDIA.WEIXIN_CIRCLE);
+    private void sharedToMoment(String biaoti,String content) {
+        ShareUtils.shareWeb(activity, biaoti,   tvTitle.getText().toString(), content, SHARE_MEDIA.WEIXIN_CIRCLE);
     }
 
     /**
      * 分享到QQ
      */
-    private void sharedToQQ(String biaoti) {
-        ShareUtils.shareWeb(activity, biaoti, biaoti + ".pdf", "分享了他的材料，请点击查看", SHARE_MEDIA.QQ);
+    private void sharedToQQ(String biaoti,String content) {
+        ShareUtils.shareWeb(activity, biaoti,  tvTitle.getText().toString(), "分享了他的材料，请点击查看", SHARE_MEDIA.QQ);
     }
 
 }

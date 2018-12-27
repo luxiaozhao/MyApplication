@@ -56,7 +56,7 @@ public class TidingsActivity extends BaseActivity {
         folderAdapter1.setOnClickLinstener(new NoticeAdapter.onClickLinstener() {
             @Override
             public void setOnClick(View view, int position) {
-                WebViewCurrencyActivity.start(TidingsActivity.this, "党委新闻", URLS.HOME_NEWS_DETAIL+bwws.get(position).getId());
+                WebViewCurrencyActivity.start(TidingsActivity.this, "党委新闻", URLS.HOME_NEWS_DETAIL+bwws.get(position).getId(),bwws.get(position).getTitile());
 //                TidingsActivity.start(getActivity());
             }
         });

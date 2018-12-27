@@ -66,11 +66,11 @@ public class DynamicActivity extends BaseActivity {
             @Override
             public void setOnClick(View view, int position) {
                 if (bwws.get(position).getType().equals("党委新闻")) {
-                    WebViewCurrencyActivity.start(activity, bwws.get(position).getType(), URLS.HOME_NEWS_DETAIL + bwws.get(position).getId());
+                    WebViewCurrencyActivity.start(activity, bwws.get(position).getType(), URLS.HOME_NEWS_DETAIL + bwws.get(position).getId(),bwws.get(position).getTitile());
                 } else if (bwws.get(position).getType().equals("基层交流")) {
-                    WebViewCurrencyActivity.start(activity, bwws.get(position).getType(), URLS.HOME_BASICLEVEL_DETAIL + bwws.get(position).getId());
+                    WebViewCurrencyActivity.start(activity, bwws.get(position).getType(), URLS.HOME_BASICLEVEL_DETAIL + bwws.get(position).getId(),bwws.get(position).getTitile());
                 } else if (bwws.get(position).getType().equals("学习园地")) {
-                    WebViewCurrencyActivity.start(activity, bwws.get(position).getType(), URLS.HOME_LEARNING_DETAIL + bwws.get(position).getId());
+                    WebViewCurrencyActivity.start(activity, bwws.get(position).getType(), URLS.HOME_LEARNING_DETAIL + bwws.get(position).getId(),bwws.get(position).getTitile());
                 }
             }
         });

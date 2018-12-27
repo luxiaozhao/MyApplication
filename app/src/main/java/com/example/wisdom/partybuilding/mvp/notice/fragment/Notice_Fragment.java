@@ -1,5 +1,7 @@
 package com.example.wisdom.partybuilding.mvp.notice.fragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +14,8 @@ import android.view.ViewGroup;
 import com.example.wisdom.partybuilding.R;
 import com.example.wisdom.partybuilding.base.BaseFragment;
 import com.example.wisdom.partybuilding.base.IPresenter;
+import com.example.wisdom.partybuilding.mvp.common.MainActivity;
+import com.example.wisdom.partybuilding.mvp.common.WebViewCurrencyActivity;
 import com.example.wisdom.partybuilding.mvp.home.activity.NoticeAdapter;
 import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
 import com.example.wisdom.partybuilding.net.URLS;
@@ -29,7 +33,7 @@ import okhttp3.Call;
 
 
 /*
- *  待办
+ *  通知
  * */
 
 public class Notice_Fragment extends BaseFragment {
@@ -39,6 +43,10 @@ public class Notice_Fragment extends BaseFragment {
     private List<DynamicBean.NewsBean> bwws = new ArrayList<>();
     private NoticeAdapter folderAdapter1;
 
+    public static void start(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void initEventAndData() {
@@ -58,6 +66,11 @@ public class Notice_Fragment extends BaseFragment {
         folderAdapter1.setOnClickLinstener(new NoticeAdapter.onClickLinstener() {
             @Override
             public void setOnClick(View view, int position) {
+
+                WebViewCurrencyActivity.start(getActivity(), "通知公告", URLS.HOME_NOTICE_DETAIL + bwws.get(position).getId(),"titile");
+
+
+
 //                TidingsActivity.start(getActivity());
             }
         });

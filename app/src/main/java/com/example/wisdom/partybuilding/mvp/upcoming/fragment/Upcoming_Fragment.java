@@ -55,7 +55,8 @@ public class Upcoming_Fragment extends BaseFragment {
                 SuccessBean successBean = Hawk.get(Contants.loginInformation);
 //                http://192.168.1.199:8080/FHBE/platform/bpm/task/tostartapp.ht?taskId=10000011990238&sid=47CA6FD0E05FB652904C1E52B8F8E9DB&pid=430111197811111111
                 WebViewCurrencyActivity.start(getActivity(), upcomingBeans.get(position).getName(),
-                        "http://192.168.1.199:8080/FHBE/platform/bpm/task/tostartapp.ht?taskId=" + upcomingBeans.get(position).getId() + "&sid=" + successBean.getSid() + "&pid=" + successBean.getPid());
+                        "http://192.168.1.199:8080/FHBE/platform/bpm/task/tostartapp.ht?taskId=" + upcomingBeans.get(position).getId() + "&sid=" + successBean.getSid() + "&pid=" + successBean.getPid()
+                ,"hide");
 
 //                switch (position) {
 //                    case 0://积极分子列为发展对象

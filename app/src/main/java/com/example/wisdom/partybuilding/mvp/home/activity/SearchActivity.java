@@ -98,11 +98,11 @@ public class SearchActivity extends BaseActivity {
             @Override
             public void setOnClick(View view, int position) {
                 if (newsBeans.get(position).getTypename().equals("党委新闻")) {
-                    WebViewCurrencyActivity.start(activity, newsBeans.get(position).getTypename(), URLS.HOME_NEWS_DETAIL + newsBeans.get(position).getId());
+                    WebViewCurrencyActivity.start(activity, newsBeans.get(position).getTypename(), URLS.HOME_NEWS_DETAIL + newsBeans.get(position).getId(),newsBeans.get(position).getTitile());
                 } else if (newsBeans.get(position).getTypename().equals("基层交流")) {
-                    WebViewCurrencyActivity.start(activity, newsBeans.get(position).getTypename(), URLS.HOME_BASICLEVEL_DETAIL + newsBeans.get(position).getId());
+                    WebViewCurrencyActivity.start(activity, newsBeans.get(position).getTypename(), URLS.HOME_BASICLEVEL_DETAIL + newsBeans.get(position).getId(),newsBeans.get(position).getTitile());
                 } else if (newsBeans.get(position).getTypename().equals("学习园地")) {
-                    WebViewCurrencyActivity.start(activity, newsBeans.get(position).getTypename(), URLS.HOME_LEARNING_DETAIL + newsBeans.get(position).getId());
+                    WebViewCurrencyActivity.start(activity, newsBeans.get(position).getTypename(), URLS.HOME_LEARNING_DETAIL + newsBeans.get(position).getId(),newsBeans.get(position).getTitile());
                 } else {
                     ToastUtils.getInstance().showTextToast(activity, "暂无详情页");
                 }

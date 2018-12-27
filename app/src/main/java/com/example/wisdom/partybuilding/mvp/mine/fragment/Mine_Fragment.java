@@ -104,10 +104,10 @@ public class Mine_Fragment extends BaseFragment {
                 ChangePasswordActivity.start(getActivity());
                 break;
             case R.id.mine_course:
-                WebViewCurrencyActivity.start(getActivity(), "我的课程", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid());
+                WebViewCurrencyActivity.start(getActivity(), "我的课程", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid(),"hide");
                 break;
             case R.id.mine_examination://我的考试
-                WebViewCurrencyActivity.start(getActivity(), "我的考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid());
+                WebViewCurrencyActivity.start(getActivity(), "我的考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid(),"hide");
                 break;
             case R.id.mine_about://关于我们
                 AboutUsActivity.start(getActivity());
@@ -164,7 +164,7 @@ public class Mine_Fragment extends BaseFragment {
                             if (bean.isCode()) {
 //                                http://192.168.1.199:9999/FHBE/personinfo.jsp?sid=FBFBEF8C665116A47DAE032AC6567D86&pid=14272319760723301X
                                 String weburl = "http://192.168.1.199:9999/FHBE/personinfo.jsp?sid=" + successBean.getSid() + "&pid=" + successBean.getPid();
-                                WebViewCurrencyActivity.start(getActivity(), "个人资料", weburl);
+                                WebViewCurrencyActivity.start(getActivity(), "个人资料", weburl,"titile");
                             }
                         }
                     });
