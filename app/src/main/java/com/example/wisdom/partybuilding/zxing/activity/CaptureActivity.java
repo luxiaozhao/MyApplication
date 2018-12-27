@@ -14,8 +14,8 @@ import android.os.Message;
 import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SurfaceHolder;
@@ -25,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.wisdom.partybuilding.R;
+import com.example.wisdom.partybuilding.utils.ToastUtils;
 import com.example.wisdom.partybuilding.zxing.camera.CameraManager;
 import com.example.wisdom.partybuilding.zxing.decoding.CaptureActivityHandler;
 import com.example.wisdom.partybuilding.zxing.decoding.InactivityTimer;
@@ -61,12 +62,9 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
     private ProgressDialog mProgress;
     private String photo_path;
     private Bitmap scanBitmap;
-    //	private Button cancelScanButton;
     public static final int RESULT_CODE_QR_SCAN = 0xA1;
     public static final String INTENT_EXTRA_KEY_QR_SCAN = "qr_scan_result";
-    /**
-     * Called when the activity is first created.
-     */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +79,6 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
                 finish();
             }
         });
-//		cancelScanButton = (Button) this.findViewById(R.id.btn_cancel_scan);
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);
 
@@ -89,18 +86,18 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
 //        addToolbar();
     }
 
-    private void addToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        ImageView more = (ImageView) findViewById(R.id.scanner_toolbar_more);
-//        assert more != null;
-//        more.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-        setSupportActionBar(toolbar);
-    }
+//    private void addToolbar() {
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+////        ImageView more = (ImageView) findViewById(R.id.scanner_toolbar_more);
+////        assert more != null;
+////        more.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////
+////            }
+////        });
+//        setSupportActionBar(toolbar);
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -151,8 +148,8 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
                                 Intent resultIntent = new Intent();
                                 Bundle bundle = new Bundle();
                                 bundle.putString(INTENT_EXTRA_KEY_QR_SCAN ,result.getText());
-//                                Logger.d("saomiao",result.getText());
-//                                bundle.putParcelable("bitmap",result.get);
+
+                                Log.e("TAGG","resultString:result.getText():"+result.getText());
                                 resultIntent.putExtras(bundle);
                                 CaptureActivity.this.setResult(RESULT_CODE_QR_SCAN, resultIntent);
 
@@ -262,16 +259,28 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
         String resultString = result.getText();
         //FIXME
         if (TextUtils.isEmpty(resultString)) {
-            Toast.makeText(CaptureActivity.this, "Scan failed!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CaptureActivity.this, "扫描失败！", Toast.LENGTH_SHORT).show();
         } else {
-            Intent resultIntent = new Intent();
-            Bundle bundle = new Bundle();
-            bundle.putString(INTENT_EXTRA_KEY_QR_SCAN, resultString);
-            System.out.println("sssssssssssssssss scan 0 = " + resultString);
-            resultIntent.putExtras(bundle);
-            this.setResult(RESULT_CODE_QR_SCAN, resultIntent);
+            if (resultString.contains("threeMeeting/threeMeeting/sign.ht")){
+                Intent resultIntent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString(INTENT_EXTRA_KEY_QR_SCAN, resultString);
+                Log.e("TAGG","resultString:"+resultString);
+                resultIntent.putExtras(bundle);
+                this.setResult(RESULT_CODE_QR_SCAN, resultIntent);
+
+                CaptureActivity.this.finish();
+            }else {
+                ToastUtils.getInstance().showTextToast(this,"扫描的内容不符");
+
+                CameraManager.init(getApplication());
+            }
+
+
+
         }
-        CaptureActivity.this.finish();
+
+
     }
 
     private void initCamera(SurfaceHolder surfaceHolder) {

@@ -1,5 +1,6 @@
 package com.example.wisdom.partybuilding.mvp.home.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -10,11 +11,13 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.wisdom.partybuilding.R;
@@ -25,6 +28,7 @@ import com.example.wisdom.partybuilding.mvp.bean.NoticeBeanno1;
 import com.example.wisdom.partybuilding.mvp.bean.SuccessBean;
 import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
 import com.example.wisdom.partybuilding.mvp.bean.home.HomeDynamicBean;
+import com.example.wisdom.partybuilding.mvp.bean.home.SignInBean;
 import com.example.wisdom.partybuilding.mvp.bean.login.AttestBean;
 import com.example.wisdom.partybuilding.mvp.common.MainActivity;
 import com.example.wisdom.partybuilding.mvp.common.WebViewCurrencyActivity;
@@ -34,6 +38,7 @@ import com.example.wisdom.partybuilding.mvp.home.activity.NoticeAdapter;
 import com.example.wisdom.partybuilding.mvp.home.activity.PartyAffairsActivity;
 import com.example.wisdom.partybuilding.mvp.home.activity.PayPartyFeesActivity;
 import com.example.wisdom.partybuilding.mvp.home.activity.SearchActivity;
+import com.example.wisdom.partybuilding.mvp.home.activity.ThreeSessionsActivity;
 import com.example.wisdom.partybuilding.mvp.home.activity.TidingsActivity;
 import com.example.wisdom.partybuilding.mvp.home.adapter.FolderAdapter;
 import com.example.wisdom.partybuilding.mvp.home.adapter.GlideImageLoader;
@@ -41,6 +46,7 @@ import com.example.wisdom.partybuilding.mvp.home.adapter.LandscapeAdapter;
 import com.example.wisdom.partybuilding.net.Contants;
 import com.example.wisdom.partybuilding.net.URLS;
 import com.example.wisdom.partybuilding.utils.CommonUtil;
+import com.example.wisdom.partybuilding.utils.DateUtils;
 import com.example.wisdom.partybuilding.utils.ToastUtils;
 import com.example.wisdom.partybuilding.zxing.activity.CaptureActivity;
 import com.google.gson.Gson;
@@ -52,6 +58,7 @@ import com.zhy.http.okhttp.callback.FileCallBack;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.io.File;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -120,7 +127,7 @@ public class Home_Fragment extends BaseFragment {
         folderAdapter1.setOnClickLinstener(new NoticeAdapter.onClickLinstener() {
             @Override
             public void setOnClick(View view, int position) {
-                WebViewCurrencyActivity.start(getActivity(), "党委新闻", URLS.HOME_NEWS_DETAIL + bwws.get(position).getId(),bwws.get(position).getTitile());
+                WebViewCurrencyActivity.start(getActivity(), "党委新闻", URLS.HOME_NEWS_DETAIL + bwws.get(position).getId(), bwws.get(position).getTitile());
             }
         });
 
@@ -203,7 +210,7 @@ public class Home_Fragment extends BaseFragment {
                     Intent intent = new Intent(getActivity(), CaptureActivity.class);
                     startActivityForResult(intent, REQUEST_CODE);
                 } else {
-                    ToastUtils.getInstance().showTextToast(getActivity(),"请打开此应用的摄像头权限！");
+                    ToastUtils.getInstance().showTextToast(getActivity(), "请打开此应用的摄像头权限！");
                 }
 
 
@@ -211,10 +218,6 @@ public class Home_Fragment extends BaseFragment {
             case R.id.banner:
                 break;
             case R.id.home_notice:
-
-
-
-
 
 
 //view.officeapps.live.com/op/view.aspx?src=http://www.ncac.gov.cn/sitefiles/services/wcm/utils.aspx?type=Download&publishmentSystemID=470&channelID=574&contentID=20880
@@ -234,7 +237,6 @@ public class Home_Fragment extends BaseFragment {
 //                } else {
 //                    ToastUtils.getInstance().showTextToast(getActivity(), "暂无通知");
 //                }
-
 
 
 //                downloadFile();
@@ -369,7 +371,7 @@ public class Home_Fragment extends BaseFragment {
                     public void onResponse(String response, int id) {
                         try {
                             Gson gson = new Gson();
-                            NoticeBeanno1 noticeBeanno1=gson.fromJson(response, NoticeBeanno1.class);
+                            NoticeBeanno1 noticeBeanno1 = gson.fromJson(response, NoticeBeanno1.class);
                             String title = noticeBeanno1.getTitle();
                             homeNoticeDetail.setText(title);
                             homeNoticeDetailImg.setVisibility(View.VISIBLE);
@@ -495,9 +497,9 @@ public class Home_Fragment extends BaseFragment {
                                     public void setOnClick(View view, int position) {
 
                                         if (beans.get(position).getFunctionname().equals("中央精神")) {
-                                            WebViewCurrencyActivity.start(getActivity(), "中央精神", URLS.DYNAMICMODULE + "中央精神","hide");
+                                            WebViewCurrencyActivity.start(getActivity(), "中央精神", URLS.DYNAMICMODULE + "中央精神", "hide");
                                         } else if (beans.get(position).getFunctionname().equals("党组声音")) {
-                                            WebViewCurrencyActivity.start(getActivity(), "党组声音", URLS.DYNAMICMODULE + "党组声音","hide");
+                                            WebViewCurrencyActivity.start(getActivity(), "党组声音", URLS.DYNAMICMODULE + "党组声音", "hide");
                                         } else if (beans.get(position).getFunctionname().equals("党委新闻")) {
                                             DynamicActivity.start(getActivity(), "党委新闻");
                                         } else if (beans.get(position).getFunctionname().equals("基层交流")) {
@@ -508,11 +510,11 @@ public class Home_Fragment extends BaseFragment {
 //                                            DynamicActivity.start(getActivity(), "党务知识");
                                             PartyAffairsActivity.start(getActivity(), "党务知识");
                                         } else if (beans.get(position).getFunctionname().equals("在线考试")) {
-                                            WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid(),"hide");
+                                            WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid(), "hide");
                                         } else if (beans.get(position).getFunctionname().equals("党费缴纳")) {
                                             PayPartyFeesActivity.start(getActivity());
                                         } else if (beans.get(position).getFunctionname().equals("三会一课")) {
-                                            ToastUtils.getInstance().showTextToast(getActivity(), "暂无内容");
+                                            ThreeSessionsActivity.start(getActivity());
                                         }
                                     }
                                 }
@@ -588,84 +590,138 @@ public class Home_Fragment extends BaseFragment {
                 });
 
     }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        //扫描结果回调
-//        if (resultCode == RESULT_OK) { //RESULT_OK = -1
-//            Bundle bundle = data.getExtras();
-//            String scanResult = bundle.getString("qr_scan_result");
-//            //将扫描出的信息显示出来
-//            qrCodeText.setText(scanResult);
-//        }
-//    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-                //扫描结果回调
+        //扫描结果回调
         if (resultCode == RESULT_OK) { //RESULT_OK = -1
             Bundle bundle = data.getExtras();
             String scanResult = bundle.getString("qr_scan_result");
-            //将扫描出的信息显示出来
-            homeNoticeDetail.setText(scanResult);
+            try {
+                String pid = successBean.getPid();
+                String username = successBean.getUsername();
+                long userid = successBean.getUserid();
+                String encode = URLEncoder.encode(username, "utf-8");
+                String strurl = scanResult + "&username=" + encode + "&userid=" + userid + "&pid=" + pid;
+                Log.e("TAG", "strurl" + strurl);
+                getScanningResult(strurl);
 
-//  threeMeeting/threeMeeting/sign.ht
+            } catch (Exception e) {
+            }
+        }
+    }
+
+    private void getScanningResult(String url) {
+
+        OkHttpUtils
+                .get()
+                .url(url)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e("TAG", "这是失败的方法1" + e.toString());
+
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.e("TAG", "response:" + response);
 
 
-//            //提示是否放弃当前操作的对话框
-//            IOSDialog.Builder builder = new IOSDialog.Builder(getActivity());
-//            builder.setTitle("温馨提示");
-//            String msg = "您已经拍摄张照片，现在退出的话，拍摄的照片将会清除，您确定退出吗?";
-//            builder.setMessage(String.format(msg, imageLists.size()));
-//            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//
-//
-//
-//                }
-//            });
-//            builder.setNegativeButton("取消", null);
-//            builder.create().show();
-//
-//
-//
-//
-//
-
-getpopw();
+                        try {
+                            Gson gson = new Gson();
+                            SignInBean bean = gson.fromJson(response, SignInBean.class);
+                            String meetingname = bean.getMeetingname();
+                            String meetingaddress = bean.getMeetingaddress();
+                            long meetingtime = bean.getMeetingtime();
+                            long meingtime = meetingtime / 1000;
+                            showPopwindowMenu(getActivity(), meetingname, meetingaddress, meingtime + "", 1);
 
 
+                        } catch (Exception e) {
+                            showPopwindowMenu(getActivity(), null, null, null, 2);
+
+                        }
+
+                    }
+                });
+    }
+
+    private void showPopwindowMenu(Activity activity, String name, String site, String time, int judge) {
+
+        View popView = View.inflate(getActivity(), R.layout.reset_pwd_sure, null);
+        ImageView popwImg = (ImageView) popView.findViewById(R.id.popw_img);
+        TextView popwImgName = (TextView) popView.findViewById(R.id.popw_img_name);
+        ImageView popwClosed = (ImageView) popView.findViewById(R.id.popw_closed);
+        TextView popwName = (TextView) popView.findViewById(R.id.popw_name);
+        TextView popwTime = (TextView) popView.findViewById(R.id.popw_time);
+        TextView popwPlace = (TextView) popView.findViewById(R.id.popw_place);
+        TextView popwVerify = (TextView) popView.findViewById(R.id.popw_verify);
+
+
+        if (judge == 1) {
+            try {
+                popwName.setText(name);
+                popwPlace.setText(site);
+
+                String releasetimes = DateUtils.timesTwo(time);
+                popwTime.setText(releasetimes);
+            } catch (Exception e) {
+            }
+
+        } else {
+            popwImg.setImageResource(R.mipmap.sign_fail);
+            popwImgName.setText("签到失败");
         }
 
 
+
+
+        int width = getResources().getDisplayMetrics().widthPixels;
+        int height = getResources().getDisplayMetrics().heightPixels;
+        final PopupWindow popWindow = new PopupWindow(popView, width, height);
+        popWindow.setContentView(popView);
+        popWindow.setFocusable(true);
+        popWindow.setOutsideTouchable(false);// 设置允许在外点击消失
+//        View.OnClickListener listener = new View.OnClickListener() {
+//            public void onClick(View v) {
+//                switch (v.getId()) {
+//                    case R.id.popw_closed:
+//                        Toast.makeText(getActivity(), "关闭", Toast.LENGTH_SHORT).show();
+//                        popWindow.dismiss();
+//                        break;
+//                    case R.id.popw_verify:
+//                        Toast.makeText(getActivity(), "确认", Toast.LENGTH_SHORT).show();
+//                        popWindow.dismiss();
+//                        break;
+//                }
+//                popWindow.dismiss();
+//            }
+//        };
+//        popwClosed.setOnClickListener(listener);
+
+        popwClosed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                popWindow.dismiss();
+            }
+        });
+
+
+        popwVerify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                popWindow.dismiss();
+            }
+        });
+        // 设置好参数之后再show
+        popWindow.showAtLocation(activity.getWindow().getDecorView(), Gravity.CENTER, 0, 0);
     }
 
-    private void getpopw() {
 
-//        1     // 用于PopupWindow的View
-//        2     View contentView=LayoutInflater.from(context).inflate(layoutRes, null, false);
-//        3     // 创建PopupWindow对象，其中：
-//        4     // 第一个参数是用于PopupWindow中的View，第二个参数是PopupWindow的宽度，
-//        5     // 第三个参数是PopupWindow的高度，第四个参数指定PopupWindow能否获得焦点  ,其中有好几个构造,我只是用了其中一个
-//        6     PopupWindow window=new PopupWindow(contentView, 100, 100, true);
-//        7     // 设置PopupWindow的背景   必须设置背景,要不setoutsidetouchable(true)不管用,按back键也不会管用,具体看源码,如果背景不为空的话,会在外面套一层布局
-//        8     window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        9     // 设置PopupWindow是否能响应外部点击事件
-//        10     window.setOutsideTouchable(true);
-//        11     // 设置PopupWindow是否能响应点击事件,具体是其中的item的响应事件
-//        12     window.setTouchable(true);
-//        13     // 显示PopupWindow，其中：
-//        14     // 第一个参数是PopupWindow的锚点，第二和第三个参数分别是PopupWindow相对锚点的x、y偏移
-//        15     window.showAsDropDown(anchor, xoff, yoff);
-//        16
-//        19     window.showAtLocation(parent, gravity, x, y);
-//        ---------------------
-//                作者：小股东
-//        来源：CSDN
-//        原文：https://blog.csdn.net/qq_35893839/article/details/78247299
-//        版权声明：本文为博主原创文章，转载请附上博文链接！
-    }
 }

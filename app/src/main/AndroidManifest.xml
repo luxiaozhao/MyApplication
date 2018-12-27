@@ -387,7 +387,9 @@
             android:exported="false"
             android:screenOrientation="behind" />
         <activity android:name=".zxing.activity.CaptureActivity" />
-        <activity android:name=".mvp.home.activity.ScanItActivity"></activity>
+        <activity android:name=".mvp.home.activity.ScanItActivity" />
+        <activity android:name=".mvp.home.activity.ThreeSessionsActivity" />
+        <activity android:name=".mvp.home.activity.SessionsItemActivity"></activity>
     </application>
 
 </manifest>
