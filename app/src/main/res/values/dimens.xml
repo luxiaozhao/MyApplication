@@ -8,7 +8,8 @@
     <dimen name="dividing_line_height_2">2dp</dimen>
     <dimen name="choose_image_folder_list">360dp</dimen>
     <dimen name="navigation_bar_height">48dp</dimen>
-
+  <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="lay_1">1dp</dimen>
     <dimen name="lay_2">2dp</dimen>

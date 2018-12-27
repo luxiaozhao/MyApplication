@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.wisdom.partybuilding">
 
-    <!--
-    android:versionCode="1"
-    android:versionName="1.0.0"
-    -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" /> <!-- 使用照相机权限 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 自动聚焦权限 -->
 
 
     <!-- <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="21" /> -->
@@ -42,14 +43,12 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.VIBRATE" />
 
     <!-- //////////////////////////// -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -76,7 +75,6 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".start.GuideActivity"
             android:screenOrientation="portrait"
@@ -87,17 +85,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".mvp.common.MainActivity"
-            android:screenOrientation="portrait"
-        >
+            android:screenOrientation="portrait">
 
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
 
         </activity>
 
@@ -242,20 +239,22 @@
             </intent-filter>
         </receiver>
 
-        <!--<activity-->
-            <!--android:name=".start.GuideActivity"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:theme="@style/App.Theme.Launch">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+        <!-- <activity -->
+        <!-- android:name=".start.GuideActivity" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:theme="@style/App.Theme.Launch"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        <!--</activity>-->
 
-        <!--<activity-->
-            <!--android:name=".mvp.common.MainActivity"-->
-            <!--android:screenOrientation="portrait" />-->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+
+
+        <!-- <activity -->
+        <!-- android:name=".mvp.common.MainActivity" -->
+        <!-- android:screenOrientation="portrait" /> -->
         <activity
             android:name=".mvp.home.activity.LoginActivity"
             android:screenOrientation="portrait" />
@@ -336,17 +335,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main3Activity" />
-<!--分享-->
+        <!-- 分享 -->
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -358,40 +356,38 @@
         </activity>
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"/>
-
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
             android:noHistory="true"
             tools:ignore="DuplicateActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="wx5da20be46a1af30b" />
-                <!--wx5da20be46a1af30b-->
-                <!--tencent100424468-->
+                <!-- wx5da20be46a1af30b -->
+                <!-- tencent100424468 -->
             </intent-filter>
-
         </activity>
-
-
 
         <!-- 支付宝 -->
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
-            android:screenOrientation="behind"></activity>
+            android:screenOrientation="behind" />
         <activity
             android:name="com.alipay.sdk.auth.AuthActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
-            android:screenOrientation="behind"></activity>
-
+            android:screenOrientation="behind" />
+        <activity android:name=".zxing.activity.CaptureActivity" />
+        <activity android:name=".mvp.home.activity.ScanItActivity"></activity>
     </application>
 
 </manifest>

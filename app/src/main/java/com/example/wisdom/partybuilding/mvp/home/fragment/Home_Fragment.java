@@ -9,7 +9,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,27 +20,29 @@ import android.widget.TextView;
 import com.example.wisdom.partybuilding.R;
 import com.example.wisdom.partybuilding.base.BaseFragment;
 import com.example.wisdom.partybuilding.base.IPresenter;
+import com.example.wisdom.partybuilding.mvp.bean.Home_CarouselmapBean;
 import com.example.wisdom.partybuilding.mvp.bean.NoticeBeanno1;
+import com.example.wisdom.partybuilding.mvp.bean.SuccessBean;
+import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
 import com.example.wisdom.partybuilding.mvp.bean.home.HomeDynamicBean;
-import com.example.wisdom.partybuilding.mvp.home.adapter.FolderAdapter;
-import com.example.wisdom.partybuilding.mvp.home.adapter.GlideImageLoader;
-import com.example.wisdom.partybuilding.mvp.home.activity.NoticeAdapter;
-import com.example.wisdom.partybuilding.mvp.home.activity.TidingsActivity;
+import com.example.wisdom.partybuilding.mvp.bean.login.AttestBean;
 import com.example.wisdom.partybuilding.mvp.common.MainActivity;
 import com.example.wisdom.partybuilding.mvp.common.WebViewCurrencyActivity;
 import com.example.wisdom.partybuilding.mvp.home.activity.DynamicActivity;
+import com.example.wisdom.partybuilding.mvp.home.activity.LoginActivity;
+import com.example.wisdom.partybuilding.mvp.home.activity.NoticeAdapter;
 import com.example.wisdom.partybuilding.mvp.home.activity.PartyAffairsActivity;
 import com.example.wisdom.partybuilding.mvp.home.activity.PayPartyFeesActivity;
 import com.example.wisdom.partybuilding.mvp.home.activity.SearchActivity;
-import com.example.wisdom.partybuilding.mvp.home.activity.LoginActivity;
-import com.example.wisdom.partybuilding.mvp.bean.Home_CarouselmapBean;
-import com.example.wisdom.partybuilding.mvp.bean.SuccessBean;
-import com.example.wisdom.partybuilding.mvp.bean.home.DynamicBean;
-import com.example.wisdom.partybuilding.mvp.bean.login.AttestBean;
+import com.example.wisdom.partybuilding.mvp.home.activity.TidingsActivity;
+import com.example.wisdom.partybuilding.mvp.home.adapter.FolderAdapter;
+import com.example.wisdom.partybuilding.mvp.home.adapter.GlideImageLoader;
 import com.example.wisdom.partybuilding.mvp.home.adapter.LandscapeAdapter;
 import com.example.wisdom.partybuilding.net.Contants;
 import com.example.wisdom.partybuilding.net.URLS;
+import com.example.wisdom.partybuilding.utils.CommonUtil;
 import com.example.wisdom.partybuilding.utils.ToastUtils;
+import com.example.wisdom.partybuilding.zxing.activity.CaptureActivity;
 import com.google.gson.Gson;
 import com.orhanobut.hawk.Hawk;
 import com.youth.banner.Banner;
@@ -86,6 +87,13 @@ public class Home_Fragment extends BaseFragment {
 
     @BindView(R.id.home_swiperefreshlayout)
     SwipeRefreshLayout homeSwiperefreshlayout;
+
+
+    //打开扫描界面请求码
+    private int REQUEST_CODE = 0x01;
+    //扫描成功返回码
+    private int RESULT_OK = 0xA1;
+
 
     Unbinder unbinder;
     private List<HomeDynamicBean.CarouselmapBean> beans = new ArrayList<>();
@@ -187,7 +195,18 @@ public class Home_Fragment extends BaseFragment {
                 SearchActivity.start(getActivity());
                 break;
             case R.id.home_scanit:
-                ToastUtils.getInstance().showTextToast(getActivity(), "此功能暂不开发");
+
+//                ScanItActivity.start(getActivity());
+
+                //打开二维码扫描界面
+                if (CommonUtil.isCameraCanUse()) {
+                    Intent intent = new Intent(getActivity(), CaptureActivity.class);
+                    startActivityForResult(intent, REQUEST_CODE);
+                } else {
+                    ToastUtils.getInstance().showTextToast(getActivity(),"请打开此应用的摄像头权限！");
+                }
+
+
                 break;
             case R.id.banner:
                 break;
@@ -569,5 +588,84 @@ public class Home_Fragment extends BaseFragment {
                 });
 
     }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        //扫描结果回调
+//        if (resultCode == RESULT_OK) { //RESULT_OK = -1
+//            Bundle bundle = data.getExtras();
+//            String scanResult = bundle.getString("qr_scan_result");
+//            //将扫描出的信息显示出来
+//            qrCodeText.setText(scanResult);
+//        }
+//    }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+                //扫描结果回调
+        if (resultCode == RESULT_OK) { //RESULT_OK = -1
+            Bundle bundle = data.getExtras();
+            String scanResult = bundle.getString("qr_scan_result");
+            //将扫描出的信息显示出来
+            homeNoticeDetail.setText(scanResult);
+
+//  threeMeeting/threeMeeting/sign.ht
+
+
+//            //提示是否放弃当前操作的对话框
+//            IOSDialog.Builder builder = new IOSDialog.Builder(getActivity());
+//            builder.setTitle("温馨提示");
+//            String msg = "您已经拍摄张照片，现在退出的话，拍摄的照片将会清除，您确定退出吗?";
+//            builder.setMessage(String.format(msg, imageLists.size()));
+//            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//
+//
+//
+//                }
+//            });
+//            builder.setNegativeButton("取消", null);
+//            builder.create().show();
+//
+//
+//
+//
+//
+
+getpopw();
+
+
+        }
+
+
+    }
+
+    private void getpopw() {
+
+//        1     // 用于PopupWindow的View
+//        2     View contentView=LayoutInflater.from(context).inflate(layoutRes, null, false);
+//        3     // 创建PopupWindow对象，其中：
+//        4     // 第一个参数是用于PopupWindow中的View，第二个参数是PopupWindow的宽度，
+//        5     // 第三个参数是PopupWindow的高度，第四个参数指定PopupWindow能否获得焦点  ,其中有好几个构造,我只是用了其中一个
+//        6     PopupWindow window=new PopupWindow(contentView, 100, 100, true);
+//        7     // 设置PopupWindow的背景   必须设置背景,要不setoutsidetouchable(true)不管用,按back键也不会管用,具体看源码,如果背景不为空的话,会在外面套一层布局
+//        8     window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        9     // 设置PopupWindow是否能响应外部点击事件
+//        10     window.setOutsideTouchable(true);
+//        11     // 设置PopupWindow是否能响应点击事件,具体是其中的item的响应事件
+//        12     window.setTouchable(true);
+//        13     // 显示PopupWindow，其中：
+//        14     // 第一个参数是PopupWindow的锚点，第二和第三个参数分别是PopupWindow相对锚点的x、y偏移
+//        15     window.showAsDropDown(anchor, xoff, yoff);
+//        16
+//        19     window.showAtLocation(parent, gravity, x, y);
+//        ---------------------
+//                作者：小股东
+//        来源：CSDN
+//        原文：https://blog.csdn.net/qq_35893839/article/details/78247299
+//        版权声明：本文为博主原创文章，转载请附上博文链接！
+    }
 }

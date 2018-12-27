@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mvp.home.activity.ScanItActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_20"
+        android:background="#ff0000"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_52"
+        android:background="#ff0000">
+
+        <ImageView
+            android:layout_marginLeft="@dimen/lay_10"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/lay_25"
+            android:layout_height="@dimen/lay_25"
+            android:src="@mipmap/top_back"/>
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的"
+            android:textSize="@dimen/font_18"
+            android:textColor="#FFF"/>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/qrCodeText"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:text="这是结果"/>
+
+
+</RelativeLayout>
