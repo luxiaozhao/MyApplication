@@ -24,12 +24,13 @@
             android:textSize="@dimen/font_16" />
 
         <LinearLayout
+            android:padding="@dimen/lay_5"
             android:id="@+id/meeting_adapter_sign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/meeting_adapter_tiem"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/lay_12"
+            android:layout_marginTop="@dimen/lay_7"
             android:layout_marginBottom="@dimen/lay_15"
             android:gravity="center_vertical">
 
@@ -53,8 +54,10 @@
         <!--notes-->
 
         <LinearLayout
+            android:padding="@dimen/lay_5"
+            android:layout_marginLeft="@dimen/lay_90"
             android:layout_marginRight="@dimen/lay_90"
-            android:layout_marginTop="@dimen/lay_12"
+            android:layout_marginTop="@dimen/lay_7"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/meeting_adapter_tiem"
             android:id="@+id/meeting_adapter_notes"

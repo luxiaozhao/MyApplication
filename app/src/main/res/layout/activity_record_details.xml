@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:orientation="vertical"
+    tools:context=".mvp.home.activity.RecordDetailsActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_20"
+        android:background="#ff0000" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_52"
+        android:background="#ff0000">
+
+        <ImageView
+            android:id="@+id/record_details_return"
+            android:layout_width="@dimen/lay_25"
+            android:layout_height="@dimen/lay_25"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/lay_10"
+            android:layout_marginTop="@dimen/lay_22"
+            android:src="@mipmap/top_back" />
+
+        <TextView
+            android:id="@+id/record_details_title"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/lay_50"
+            android:layout_marginRight="@dimen/lay_50"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="标题标题标题标题标题标题标题标题标题标题标题标题标题"
+            android:textColor="#FFF"
+            android:textSize="@dimen/font_18"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/lay_15"
+            android:layout_marginRight="@dimen/lay_15"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/lay_50">
+
+
+            <TextView
+                android:id="@+id/record_details_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/lay_22"
+                android:text="撒上来到昆明v来看什么的了但是铲山的v稍等v"
+                android:textColor="#0b0b0b"
+                android:textSize="@dimen/font_18"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/lay_8"
+                android:gravity="center_vertical">
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lay_1"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="@dimen/lay_20"
+                    android:layout_height="@dimen/lay_20"
+                    android:src="@mipmap/sign1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="签到成功"
+                    android:textColor="#ff0000" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="@dimen/lay_18"
+                android:id="@+id/record_details_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="会议时间：" />
+
+            <TextView
+                android:layout_marginTop="@dimen/lay_18"
+                android:id="@+id/record_details_host"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="主持人：" />
+
+            <TextView
+                android:layout_marginTop="@dimen/lay_18"
+                android:id="@+id/record_details_site"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="会议地点：" />
+
+            <TextView
+                android:layout_marginTop="@dimen/lay_18"
+                android:id="@+id/record_details_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" 记 录 人 ：" />
+            <TextView
+                android:layout_marginTop="@dimen/lay_18"
+                android:id="@+id/record_details_number_people"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="应到人数：" />
+            <TextView
+                android:layout_marginTop="@dimen/lay_18"
+                android:id="@+id/record_details_actual_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="实到人数：" />
+            <TextView
+                android:layout_marginTop="@dimen/lay_18"
+                android:id="@+id/record_details_topic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="会议议题：" />
+            <TextView
+                android:layout_marginTop="@dimen/lay_18"
+                android:id="@+id/record_details_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="会议内容："
+                android:lineSpacingExtra="15dp"
+                android:lineSpacingMultiplier="1" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

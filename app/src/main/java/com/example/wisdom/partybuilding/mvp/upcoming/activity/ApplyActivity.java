@@ -70,12 +70,11 @@ public class ApplyActivity extends BaseActivity {
     @BindView(R.id.apply_talk_situation_se)
     MyLinearLayout applytalksituationse;
 
-    private int mCurrentDialogStyle = com.qmuiteam.qmui.R.style.QMUI_Dialog;
 
 
     boolean aBoolean_yes = true;
     boolean aBoolean_no = true;
-
+    private int mCurrentDialogStyle = com.qmuiteam.qmui.R.style.QMUI_Dialog;
     private QMUIDialog.EditTextDialogBuilder applyNameInputDialog;
     private QMUIDialog.EditTextDialogBuilder InputDialog;
 //

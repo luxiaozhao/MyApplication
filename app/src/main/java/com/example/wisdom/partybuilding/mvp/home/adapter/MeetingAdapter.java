@@ -2,7 +2,6 @@ package com.example.wisdom.partybuilding.mvp.home.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,34 +42,38 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(final MeetingAdapter.ViewHolder holder, final int position) {
-        String meetingtitle = list.get(position).getMeetingtitle();
-        Log.e("TTT","meetingtitle:"+meetingtitle);
+
         holder.meetingadaptertiem.setText(list.get(position).getMeetingtitle());
 
-//        try {
-//            list.get(position).getReleasetime();
-//            holder.notice_adapter_time.setText();
-//
-//        }catch (Exception e){}
+
+        holder.meeting_adapter_notes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onClickLinstener != null) {
+                    onClickLinstener.setOnClickaNotes(view, position);
+                }
+            }
+        });
+        holder.meeting_adapter_sign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onClickLinstener != null) {
+                    onClickLinstener.setOnClickaSign(view, position);
+                }
+
+            }
+        });
 
 
-//        try {
-//            long releasetime = list.get(position).getReleasetime();
-//            long releasetimess = releasetime / 1000;
-//            String releasetimes = DateUtils.timesTwo(releasetimess + "");
-//            holder.notice_adapter_time.setText(releasetimes);
-//
-//        } catch (Exception e) {
-//        }
+        holder.meeting_adapter_linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onClickLinstener != null) {
+                    onClickLinstener.setOnClickaLinear(view, position);
+                }
 
-//        holder.notice_adapter_layout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (onClickLinstener != null) {
-//                    onClickLinstener.setOnClick(view, position);
-//                }
-//            }
-//        });
+            }
+        });
     }
 
     @Override
@@ -98,131 +101,12 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.ViewHold
 
     //定义点击接口
     public interface onClickLinstener {
-        void setOnClick(View view, int position);
+
+        void setOnClickaNotes(View view, int position);
+
+        void setOnClickaSign(View view, int position);
+
+        void setOnClickaLinear(View view, int position);
     }
 
 }
-
-//        RecyclerView.Adapter<MeetingAdapter.ViewHolder> {
-//    private LayoutInflater mInflater;
-//    private List<MeetingBean.MeetingsBean> meetingsBeans;
-//
-//    //接口监听
-//    MeetingAdapter.onClickLinstener onClickLinstener;
-//
-//    public void setOnClickLinstener(MeetingAdapter.onClickLinstener onClickLinstener) {
-//        this.onClickLinstener = onClickLinstener;
-//    }
-//
-//    public MeetingAdapter(Context context, List<MeetingBean.MeetingsBean> datats) {
-//        mInflater = LayoutInflater.from(context);
-//        meetingsBeans = datats;
-//    }
-//
-//    public class ViewHolder extends RecyclerView.ViewHolder {
-//        public ViewHolder(View arg0) {
-//            super(arg0);
-//        }
-//        TextView meetingTiem,meetingSignName;
-//        LinearLayout meetingNotes,meetingSign,meetingLinear;
-//        ImageView meetingSignImg;
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return meetingsBeans.size();
-//    }
-//
-//    /**
-//     * 创建ViewHolder
-//     */
-//    @Override
-//    public MeetingAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-//        View view = mInflater.inflate(R.layout.meeting_adapter_layout,//MeetingAdapter
-//                viewGroup, false);
-//        MeetingAdapter.ViewHolder viewHolder = new MeetingAdapter.ViewHolder(view);
-//
-//        viewHolder.meetingTiem = (TextView) view
-//                .findViewById(R.id.meeting_adapter_tiem);
-//
-//        viewHolder.meetingNotes = (LinearLayout) view
-//                .findViewById(R.id.meeting_adapter_notes);
-//        viewHolder.meetingSign = (LinearLayout) view
-//                .findViewById(R.id.meeting_adapter_sign);
-//
-//
-//        viewHolder.meetingSignName = (TextView) view
-//                .findViewById(R.id.meeting_adapter_sign_name);
-//
-//
-//        viewHolder.meetingSignImg = (ImageView) view
-//                .findViewById(R.id.meeting_adapter_sign_img);
-//        viewHolder.meetingLinear = (LinearLayout) view
-//                .findViewById(R.id.meeting_adapter_linear);
-//        return viewHolder;
-//    }
-//
-//    /**
-//     * 设置值
-//     */
-//    @Override
-//    public void onBindViewHolder(final MeetingAdapter.ViewHolder viewHolder, final int position) {
-//
-//        viewHolder.meetingTiem.setText(meetingsBeans.get(position).getMeetingtitle());
-////        if (mDatas.get(position).getFunctionname().equals("中央精神")) {
-////            viewHolder.mImg.setImageResource(R.mipmap.centralspirit);
-////        } else if (mDatas.get(position).getFunctionname().equals("党组声音")) {
-////            viewHolder.mImg.setImageResource(R.mipmap.r44);
-////        } else if (mDatas.get(position).getFunctionname().equals("党委新闻")) {
-////            viewHolder.mImg.setImageResource(R.mipmap.dangweixinwen);
-////        } else if (mDatas.get(position).getFunctionname().equals("基层交流")) {
-////            viewHolder.mImg.setImageResource(R.mipmap.grassroots_exchange);
-////        } else if (mDatas.get(position).getFunctionname().equals("学习园地")) {
-////            viewHolder.mImg.setImageResource(R.mipmap.g66);
-////        } else if (mDatas.get(position).getFunctionname().equals("党务知识")) {
-////            viewHolder.mImg.setImageResource(R.mipmap.r33);
-////        } else if (mDatas.get(position).getFunctionname().equals("在线考试")) {
-////            viewHolder.mImg.setImageResource(R.mipmap.examination);
-////        } else if (mDatas.get(position).getFunctionname().equals("缴纳党费")) {
-////            viewHolder.mImg.setImageResource(R.mipmap.pay_party_fees);
-////        } else if (mDatas.get(position).getFunctionname().equals("三会一课")) {
-////
-////            viewHolder.mImg.setImageResource(R.mipmap.r22);
-////        } else {
-////
-//////            holder.adapter_linear.setVisibility(View.GONE);
-////        }
-//
-//        viewHolder.meetingNotes.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (onClickLinstener != null) {
-//                    onClickLinstener.setOnClickaNotes(view, position);
-//                }
-//            }
-//        });
-//
-//        viewHolder.meetingSign.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (onClickLinstener != null) {
-//                    onClickLinstener.setOnClickaSign(view, position);
-//                }
-//            }
-//        });
-//          viewHolder.meetingLinear.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (onClickLinstener != null) {
-//                    onClickLinstener.setOnClickaLinear(view, position);
-//                }
-//            }
-//        });
-//    }
-//    //定义点击接口
-//    public interface onClickLinstener {
-//        void setOnClickaNotes(View view, int position);
-//        void setOnClickaSign(View view, int position);
-//        void setOnClickaLinear(View view, int position);
-//    }
-//}

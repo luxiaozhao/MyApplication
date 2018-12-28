@@ -142,18 +142,6 @@ public class Home_Fragment extends BaseFragment {
             }
         });
 
-
-        homeSwiperefreshlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                getdata();
-                ToastUtils.getInstance().showTextToast(getActivity(), "下啦刷新");
-                if (homeSwiperefreshlayout.isRefreshing()) {//如果正在刷新
-                    homeSwiperefreshlayout.setRefreshing(false);//取消刷新
-                }
-            }
-        });
-
     }
 
     @Override
@@ -169,12 +157,7 @@ public class Home_Fragment extends BaseFragment {
     private void getdata() {
         tipDialog.show();
         getBanner();// 首页——轮播图
-        getTidings();// 首页——新闻
-        getNotice();// 首页——通知
-        getDynamic();// 首页——动态
-        tipDialog.cancel();
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -190,7 +173,6 @@ public class Home_Fragment extends BaseFragment {
         unbinder.unbind();
     }
 
-
     @OnClick({R.id.denglu, R.id.home_search, R.id.home_scanit, R.id.banner, R.id.home_notice, R.id.home_news_more})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -202,23 +184,19 @@ public class Home_Fragment extends BaseFragment {
                 SearchActivity.start(getActivity());
                 break;
             case R.id.home_scanit:
+                getjudgeEntry(3);
 
-//                ScanItActivity.start(getActivity());
-
-                //打开二维码扫描界面
-                if (CommonUtil.isCameraCanUse()) {
-                    Intent intent = new Intent(getActivity(), CaptureActivity.class);
-                    startActivityForResult(intent, REQUEST_CODE);
-                } else {
-                    ToastUtils.getInstance().showTextToast(getActivity(), "请打开此应用的摄像头权限！");
-                }
-
-
+//                //打开二维码扫描界面
+//                if (CommonUtil.isCameraCanUse()) {
+//                    Intent intent = new Intent(getActivity(), CaptureActivity.class);
+//                    startActivityForResult(intent, REQUEST_CODE);
+//                } else {
+//                    ToastUtils.getInstance().showTextToast(getActivity(), "请打开此应用的摄像头权限！");
+//                }
                 break;
             case R.id.banner:
                 break;
             case R.id.home_notice:
-
 
 //view.officeapps.live.com/op/view.aspx?src=http://www.ncac.gov.cn/sitefiles/services/wcm/utils.aspx?type=Download&publishmentSystemID=470&channelID=574&contentID=20880
 
@@ -386,8 +364,6 @@ public class Home_Fragment extends BaseFragment {
      * 首页——轮播图
      * */
     private void getBanner() {
-
-
         OkHttpUtils
                 .get()
                 .url(URLS.HOME_CAROUSELMAP)
@@ -395,30 +371,25 @@ public class Home_Fragment extends BaseFragment {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        Log.e("TAG", "这是失败的方法1" + e.toString());
-
+                        getTidings();// 首页——新闻
                         List<String> strings = new ArrayList<>();
                         for (int i = 0; i < 3; i++) {
                             strings.add("ssss");
                         }
-
-
                         //        //设置图片加载器
                         banner.setImageLoader(new GlideImageLoader());
                         //        //设置图片集合
                         banner.setImages(strings);
                         //        //banner设置方法全部调用完毕时最后调用
-//                        banner.setIndicatorGravity(BannerConfig.CENTER);
                         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
                         banner.start();
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
+                        getTidings();// 首页——新闻
                         Gson gson = new Gson();
-//                        {"carouselmap":
                         String responses = "{\"carouselmap\":" + response + "}";
-//                        String responses = "{carouselmap:" + response + "}";
                         Home_CarouselmapBean bean = gson.fromJson(responses, Home_CarouselmapBean.class);
                         carousel_urllist.addAll(bean.getCarouselmap());
 
@@ -447,8 +418,6 @@ public class Home_Fragment extends BaseFragment {
      * 首页——动态
      * */
     private void getDynamic() {
-//        HOME_DYNAMIC_LIST
-
         OkHttpUtils
                 .get()
                 .url(URLS.HOME_DYNAMIC_LIST)
@@ -457,13 +426,16 @@ public class Home_Fragment extends BaseFragment {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Log.e("TAG", "这是失败的方法1" + e.toString());
+                        tipDialog.cancel();
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
+                        tipDialog.cancel();
                         Gson gson = new Gson();
                         String responses = "{carouselmap:" + response + "}";
                         HomeDynamicBean bean = gson.fromJson(responses, HomeDynamicBean.class);
+                        beans.clear();
                         beans.addAll(bean.getCarouselmap());
 //                        folderAdapter.notifyDataSetChanged();
 //                        landscapeAdapter.notifyDataSetChanged();
@@ -510,11 +482,12 @@ public class Home_Fragment extends BaseFragment {
 //                                            DynamicActivity.start(getActivity(), "党务知识");
                                             PartyAffairsActivity.start(getActivity(), "党务知识");
                                         } else if (beans.get(position).getFunctionname().equals("在线考试")) {
-                                            WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid(), "hide");
+//                                            WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + successBean.getSid() + "&pid=" + successBean.getPid(), "hide");
+                                            getjudgeEntry(2);
                                         } else if (beans.get(position).getFunctionname().equals("党费缴纳")) {
                                             PayPartyFeesActivity.start(getActivity());
                                         } else if (beans.get(position).getFunctionname().equals("三会一课")) {
-                                            ThreeSessionsActivity.start(getActivity());
+                                            getjudgeEntry(1);
                                         }
                                     }
                                 }
@@ -522,6 +495,56 @@ public class Home_Fragment extends BaseFragment {
 
                     }
                 });
+
+    }
+
+    private void getjudgeEntry(final int type) {
+
+        if (Hawk.contains(Contants.loginInformation)) {
+            final SuccessBean successBeans = Hawk.get(Contants.loginInformation);
+            OkHttpUtils
+                    .get()
+                    .url(URLS.REVERIFICATION)
+                    .addParams("sid", successBeans.getSid())
+                    .addParams("pid", successBeans.getPid())
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            LoginActivity.start(getActivity());
+                        }
+
+                        @Override
+                        public void onResponse(String response, int id) {
+                            Gson gson = new Gson();
+                            AttestBean bean = gson.fromJson(response, AttestBean.class);
+                            if (bean.isCode()) {
+                                switch (type) {
+                                    case 1: //三会一课
+                                        ThreeSessionsActivity.start(getActivity());
+                                        break;
+                                    case 2:
+                                        WebViewCurrencyActivity.start(getActivity(), "在线考试", URLS.ONLINEEXAM + successBeans.getSid() + "&pid=" + successBeans.getPid(), "hide");
+                                        break;
+                                    case 3:
+                                        //打开二维码扫描界面
+                                        if (CommonUtil.isCameraCanUse()) {
+                                            Intent intent = new Intent(getActivity(), CaptureActivity.class);
+                                            startActivityForResult(intent, REQUEST_CODE);
+                                        }else {
+                                            ToastUtils.getInstance().showTextToast(getActivity(),"请打开手机权限");
+                                        }
+                                        break;
+                                }
+
+                            } else {
+                                LoginActivity.start(getActivity());
+                            }
+                        }
+                    });
+        } else {
+            LoginActivity.start(getActivity());
+        }
 
     }
 
@@ -556,9 +579,10 @@ public class Home_Fragment extends BaseFragment {
                         }
                     });
         } else {
+
             homeNoticeDetail.setText("暂无通知");
         }
-
+        getDynamic();// 首页——动态
     }
 
 
@@ -577,11 +601,14 @@ public class Home_Fragment extends BaseFragment {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Log.e("TAG", "这是失败的方法1" + e.toString());
+                        getNotice();// 首页——通知
 
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
+                        getNotice();// 首页——通知
+
                         Gson gson = new Gson();
                         DynamicBean bean = gson.fromJson(response, DynamicBean.class);
                         bwws.addAll(bean.getNews());
@@ -628,13 +655,9 @@ public class Home_Fragment extends BaseFragment {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        Log.e("TAG", "response:" + response);
-
-
                         try {
                             Gson gson = new Gson();
                             SignInBean bean = gson.fromJson(response, SignInBean.class);
-
                             if (bean.getStatus().equals("fail")) {
                                 showPopwindowMenuException(getActivity(), bean.getMsg());
                             } else {
@@ -646,7 +669,6 @@ public class Home_Fragment extends BaseFragment {
                             }
                         } catch (Exception e) {
                             showPopwindowMenuException(getActivity(), null);
-
                         }
 
                     }
@@ -749,6 +771,7 @@ public class Home_Fragment extends BaseFragment {
         });
         // 设置好参数之后再show
         popWindow.showAtLocation(activity.getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+
     }
 
 }

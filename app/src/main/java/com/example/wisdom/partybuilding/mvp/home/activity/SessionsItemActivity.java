@@ -20,6 +20,7 @@ import com.example.wisdom.partybuilding.mvp.bean.home.MeetingBean;
 import com.example.wisdom.partybuilding.mvp.home.adapter.MeetingAdapter;
 import com.example.wisdom.partybuilding.net.Contants;
 import com.example.wisdom.partybuilding.net.URLS;
+import com.example.wisdom.partybuilding.utils.ToastUtils;
 import com.google.gson.Gson;
 import com.orhanobut.hawk.Hawk;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -40,13 +41,11 @@ public class SessionsItemActivity extends BaseActivity {
     TextView sessionsItemTitle;
     @BindView(R.id.sessions_item_relative)
     RecyclerView sessionsItemRelative;
-
     @BindView(R.id.sessions_item_layout)
     RelativeLayout sessions_item_layout;
     @BindView(R.id.sessions_item_layout_recy)
     LinearLayout sessions_item_layout_recy;
 
-    private MeetingAdapter meetingAdapter;
     private List<MeetingBean.MeetingsBean> meetings = new ArrayList<>();
     private MeetingAdapter folderAdapter1;
 
@@ -114,7 +113,7 @@ public class SessionsItemActivity extends BaseActivity {
 
     }
 
-    private void getdata(String url, String pid, String type, String deptid) {
+    private void getdata(String url, String pid, final String type, String deptid) {
 
         OkHttpUtils
                 .get()
@@ -129,6 +128,7 @@ public class SessionsItemActivity extends BaseActivity {
                         Log.e("TAGG", "response---------------" + e.toString());
                         sessions_item_layout.setVisibility(View.VISIBLE);
                         sessions_item_layout_recy.setVisibility(View.GONE);
+
                     }
 
                     @Override
@@ -150,12 +150,30 @@ public class SessionsItemActivity extends BaseActivity {
                             sessionsItemRelative.setAdapter(folderAdapter1);
                             sessions_item_layout.setVisibility(View.GONE);
                             sessions_item_layout_recy.setVisibility(View.VISIBLE);
-                        }catch (Exception e){
+
+                            folderAdapter1.setOnClickLinstener(new MeetingAdapter.onClickLinstener() {
+                                @Override
+                                public void setOnClickaNotes(View view, int position) {
+                                    MeetingBean.MeetingsBean meetingsBean = meetings.get(position);
+                                    MeetingRecordActivity.start(activity,meetingsBean);
+                                }
+
+                                @Override
+                                public void setOnClickaSign(View view, int position) {
+                                    ToastUtils.getInstance().showTextToast(activity, "签到成功");
+                                }
+
+                                @Override
+                                public void setOnClickaLinear(View view, int position) {
+                                    MeetingBean.MeetingsBean meetingsBean = meetings.get(position);
+                                    RecordDetailsActivity.start(activity, sessionsItemTitle.getText().toString(), meetingsBean);
+                                }
+                            });
+
+                        } catch (Exception e) {
                             sessions_item_layout_recy.setVisibility(View.GONE);
                             sessions_item_layout.setVisibility(View.VISIBLE);
-
                         }
-
                     }
                 });
 

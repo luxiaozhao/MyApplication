@@ -389,7 +389,9 @@
         <activity android:name=".zxing.activity.CaptureActivity" />
         <activity android:name=".mvp.home.activity.ScanItActivity" />
         <activity android:name=".mvp.home.activity.ThreeSessionsActivity" />
-        <activity android:name=".mvp.home.activity.SessionsItemActivity"></activity>
+        <activity android:name=".mvp.home.activity.SessionsItemActivity" />
+        <activity android:name=".mvp.home.activity.RecordDetailsActivity" />
+        <activity android:name=".mvp.home.activity.MeetingRecordActivity"></activity>
     </application>
 
 </manifest>

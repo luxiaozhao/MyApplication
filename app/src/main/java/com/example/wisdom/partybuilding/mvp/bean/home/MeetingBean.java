@@ -1,8 +1,9 @@
 package com.example.wisdom.partybuilding.mvp.bean.home;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class MeetingBean {
+public class MeetingBean implements Serializable{
 
     private List<MeetingsBean> meetings;
 
@@ -14,7 +15,7 @@ public class MeetingBean {
         this.meetings = meetings;
     }
 
-    public static class MeetingsBean {
+    public static class MeetingsBean implements Serializable {
         /**
          * createBy : null
          * createtime : null

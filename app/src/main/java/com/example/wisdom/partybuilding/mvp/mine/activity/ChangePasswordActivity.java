@@ -91,14 +91,17 @@ public class ChangePasswordActivity extends BaseActivity {
 
                                 @Override
                                 public void onResponse(String response, int id) {
-                                    Gson gson = new Gson();
-                                    amendPasswordBean bean = gson.fromJson(response, amendPasswordBean.class);
-                                    if (bean.isCode()) {
-                                        ToastUtils.getInstance().showTextToast(ChangePasswordActivity.this, bean.getMsg());
-                                        finish();
-                                    } else {
-                                        ToastUtils.getInstance().showTextToast(ChangePasswordActivity.this, bean.getMsg());
-                                    }
+                                    try {
+                                        Gson gson = new Gson();
+                                        amendPasswordBean bean = gson.fromJson(response, amendPasswordBean.class);
+                                        if (bean.isCode()) {
+                                            ToastUtils.getInstance().showTextToast(ChangePasswordActivity.this, bean.getMsg());
+                                            finish();
+                                        } else {
+                                            ToastUtils.getInstance().showTextToast(ChangePasswordActivity.this, bean.getMsg());
+                                        }
+                                    }catch (Exception e){}
+
                                 }
                             });
                 }else {
