@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".mvp.home.activity.SessionsItemActivity">
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/lay_20"
-        android:background="#ff0000"/>
+        android:background="#ff0000" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,32 +20,78 @@
 
         <ImageView
             android:id="@+id/sessions_item_return"
-            android:layout_marginLeft="@dimen/lay_10"
-            android:layout_centerVertical="true"
             android:layout_width="@dimen/lay_25"
             android:layout_height="@dimen/lay_25"
-            android:src="@mipmap/top_back"/>
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/lay_10"
+            android:src="@mipmap/top_back" />
 
         <TextView
             android:id="@+id/sessions_item_title"
-            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:text="标题"
-            android:textSize="@dimen/font_18"
-            android:textColor="#FFF"/>
+            android:textColor="#FFF"
+            android:textSize="@dimen/font_18" />
 
     </RelativeLayout>
 
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/sessions_item_relative"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+    <LinearLayout
+        android:id="@+id/sessions_item_layout_recy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/sessions_item_relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ></android.support.v7.widget.RecyclerView>
 
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="暂无更多数据"
+            android:gravity="center_horizontal"/>
 
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/sessions_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="150dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@mipmap/null_img" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/lay_15"
+                android:text="暂无数据"
+                android:textColor="#888"
+                android:textSize="@dimen/font_15" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 
 </LinearLayout>

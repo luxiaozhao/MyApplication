@@ -52,7 +52,6 @@ public class Notice_Fragment extends BaseFragment {
     @Override
     protected void initEventAndData() {
 
-
         getdata(1,20);
 
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -65,12 +64,7 @@ public class Notice_Fragment extends BaseFragment {
         folderAdapter1.setOnClickLinstener(new NoticeAdapter.onClickLinstener() {
             @Override
             public void setOnClick(View view, int position) {
-
                 WebViewCurrencyActivity.start(getActivity(), "通知公告", URLS.HOME_NOTICE_DETAIL + bwws.get(position).getId(),"titile");
-
-
-
-//                TidingsActivity.start(getActivity());
             }
         });
 

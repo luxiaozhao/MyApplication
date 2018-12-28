@@ -2,13 +2,14 @@ package com.example.wisdom.partybuilding.mvp.home.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.wisdom.partybuilding.R;
@@ -19,7 +20,6 @@ import com.example.wisdom.partybuilding.mvp.bean.home.MeetingBean;
 import com.example.wisdom.partybuilding.mvp.home.adapter.MeetingAdapter;
 import com.example.wisdom.partybuilding.net.Contants;
 import com.example.wisdom.partybuilding.net.URLS;
-import com.example.wisdom.partybuilding.utils.GsonUtil;
 import com.google.gson.Gson;
 import com.orhanobut.hawk.Hawk;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -40,6 +40,12 @@ public class SessionsItemActivity extends BaseActivity {
     TextView sessionsItemTitle;
     @BindView(R.id.sessions_item_relative)
     RecyclerView sessionsItemRelative;
+
+    @BindView(R.id.sessions_item_layout)
+    RelativeLayout sessions_item_layout;
+    @BindView(R.id.sessions_item_layout_recy)
+    LinearLayout sessions_item_layout_recy;
+
     private MeetingAdapter meetingAdapter;
     private List<MeetingBean.MeetingsBean> meetings = new ArrayList<>();
     private MeetingAdapter folderAdapter1;
@@ -52,6 +58,7 @@ public class SessionsItemActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        ButterKnife.bind(this);
         SuccessBean successBean = Hawk.get(Contants.loginInformation);
 
         String stringExtra = getIntent().getStringExtra("time");
@@ -78,8 +85,6 @@ public class SessionsItemActivity extends BaseActivity {
 //        sessionsItemRelative.setLayoutManager(new GridLayoutManager(activity, 1));
 //        sessionsItemRelative.setAdapter(folderAdapter1);
 //
-
-
 
 
 //        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false);
@@ -122,30 +127,37 @@ public class SessionsItemActivity extends BaseActivity {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Log.e("TAGG", "response---------------" + e.toString());
+                        sessions_item_layout.setVisibility(View.VISIBLE);
+                        sessions_item_layout_recy.setVisibility(View.GONE);
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
-                        String responses = "{meetings:" + response + "}";
-                        Gson gson = new Gson();
-                        MeetingBean bean = gson.fromJson(responses, MeetingBean.class);
+                        try {
+                            String responses = "{meetings:" + response + "}";
+                            Gson gson = new Gson();
+                            MeetingBean bean = gson.fromJson(responses, MeetingBean.class);
 
-                        meetings = bean.getMeetings();
+                            meetings = bean.getMeetings();
 
 //                        folderAdapter1.notifyDataSetChanged();
 
-                        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false);
-                        folderAdapter1 = new MeetingAdapter(activity, meetings);
-                        sessionsItemRelative.setLayoutManager(linearLayoutManager1);
-                        sessionsItemRelative.setNestedScrollingEnabled(false);
-                        sessionsItemRelative.setLayoutManager(new GridLayoutManager(activity, 1));
-                        sessionsItemRelative.setAdapter(folderAdapter1);
+                            LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false);
+                            folderAdapter1 = new MeetingAdapter(activity, meetings);
+                            sessionsItemRelative.setLayoutManager(linearLayoutManager1);
+                            sessionsItemRelative.setNestedScrollingEnabled(false);
+                            sessionsItemRelative.setLayoutManager(new GridLayoutManager(activity, 1));
+                            sessionsItemRelative.setAdapter(folderAdapter1);
+                            sessions_item_layout.setVisibility(View.GONE);
+                            sessions_item_layout_recy.setVisibility(View.VISIBLE);
+                        }catch (Exception e){
+                            sessions_item_layout_recy.setVisibility(View.GONE);
+                            sessions_item_layout.setVisibility(View.VISIBLE);
 
+                        }
 
-                        Log.e("TAGG", "response---------------" + GsonUtil.GsonString(meetings));
                     }
                 });
-
 
     }
 
@@ -164,20 +176,12 @@ public class SessionsItemActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
-
     @OnClick({R.id.sessions_item_return})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.sessions_item_return:
                 finish();
                 break;
-
         }
     }
 }
